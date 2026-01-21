@@ -1,0 +1,404 @@
+{
+  "users": [
+    {
+      "id": "e48f",
+      "Name": "John Smith",
+      "Email": "john.smith@example.com",
+      "Password": "John1234!",
+      "type": "admin"
+    },
+    {
+      "id": "1e36",
+      "Name": "Emma Johnson",
+      "Email": "emma.johnson@example.com",
+      "Password": "Emma2026!"
+    },
+    {
+      "id": "9fca",
+      "Name": "Michael Brown",
+      "Email": "michael.brown@example.com",
+      "Password": "MikeB2026!"
+    },
+    {
+      "id": "446f",
+      "Name": "Sophia Davis",
+      "Email": "sophia.davis@example.com",
+      "Password": "Sophia!D1"
+    },
+    {
+      "id": "609e",
+      "Name": "Olivia Wilson",
+      "Email": "olivia.wilson@example.com",
+      "Password": "OliviaW123"
+    },
+    {
+      "id": "ee9f",
+      "Name": "Jack Miller",
+      "Email": "jack.miller@example.com",
+      "Password": "JackM!2026"
+    },
+    {
+      "id": "abb2",
+      "Name": "Lucas Martinez",
+      "Email": "lucas.martinez@example.com",
+      "Password": "LucasM#456"
+    },
+    {
+      "id": "b4bc",
+      "Name": "Mia Garcia",
+      "Email": "mia.garcia@example.com",
+      "Password": "MiaG@789"
+    },
+    {
+      "id": "11b8",
+      "Name": "Ethan Rodriguez",
+      "Email": "ethan.rodriguez@example.com",
+      "Password": "EthanR2026"
+    },
+    {
+      "id": "4c55",
+      "Name": "Ava Hernandez",
+      "Email": "ava.hernandez@example.com",
+      "Password": "AvaH!321"
+    },
+    {
+      "id": "2a04",
+      "Name": "Noah Lopez",
+      "Email": "noah.lopez@example.com",
+      "Password": "NoahL$2026"
+    },
+    {
+      "id": "f181",
+      "Name": "Isabella Gonzalez",
+      "Email": "isabella.gonzalez@example.com",
+      "Password": "IsabellaG1"
+    },
+    {
+      "id": "8053",
+      "Name": "Liam Wilson",
+      "Email": "liam.wilson@example.com",
+      "Password": "LiamW#2026"
+    },
+    {
+      "id": "9436",
+      "Name": "Charlotte Anderson",
+      "Email": "charlotte.anderson@example.com",
+      "Password": "CharlotteA!"
+    },
+    {
+      "id": "963f",
+      "Name": "Benjamin Thomas",
+      "Email": "benjamin.thomas@example.com",
+      "Password": "BenT@2026"
+    },
+    {
+      "id": "9c2b",
+      "Name": "Amelia Taylor",
+      "Email": "amelia.taylor@example.com",
+      "Password": "AmeliaT1!"
+    },
+    {
+      "id": "938b",
+      "Name": "James Moore",
+      "Email": "james.moore@example.com",
+      "Password": "JamesM!23"
+    },
+    {
+      "id": "ae40",
+      "Name": "Harper Jackson",
+      "Email": "harper.jackson@example.com",
+      "Password": "HarperJ2026"
+    },
+    {
+      "id": "5ab3",
+      "Name": "Elijah Martin",
+      "Email": "elijah.martin@example.com",
+      "Password": "ElijahM#456"
+    },
+    {
+      "id": "76c2",
+      "Name": "Evelyn Lee",
+      "Email": "evelyn.lee@example.com",
+      "Password": "EvelynL!789"
+    },
+    {
+      "id": "a83d",
+      "Name": "Alexander Perez",
+      "Email": "alexander.perez@example.com",
+      "Password": "AlexP@2026"
+    },
+    {
+      "id": "c0e8",
+      "Name": "Sofia White",
+      "Email": "sofia.white@example.com",
+      "Password": "SofiaW123"
+    },
+    {
+      "id": "e960",
+      "Name": "Daniel Harris",
+      "Email": "daniel.harris@example.com",
+      "Password": "DanH!2026"
+    },
+    {
+      "id": "0af3",
+      "Name": "Scarlett Sanchez",
+      "Email": "scarlett.sanchez@example.com",
+      "Password": "ScarlettS1!"
+    },
+    {
+      "id": "b847",
+      "Name": "Matthew Clark",
+      "Email": "matthew.clark@example.com",
+      "Password": "MattC#2026"
+    },
+    {
+      "id": "a954",
+      "Name": "Victoria Lewis",
+      "Email": "victoria.lewis@example.com",
+      "Password": "VictoriaL!"
+    },
+    {
+      "id": "4396",
+      "Name": "Joseph Robinson",
+      "Email": "joseph.robinson@example.com",
+      "Password": "JosephR123"
+    },
+    {
+      "id": "3ad4",
+      "Name": "Luna Walker",
+      "Email": "luna.walker@example.com",
+      "Password": "LunaW!456"
+    },
+    {
+      "id": "0526",
+      "Name": "Henry Hall",
+      "Email": "henry.hall@example.com",
+      "Password": "HenryH2026"
+    },
+    {
+      "id": "c0d8",
+      "Name": "Aria Allen",
+      "Email": "aria.allen@example.com",
+      "Password": "AriaA#789"
+    },
+    {
+      "id": "9f90",
+      "Name": "Sebastian Young",
+      "Email": "sebastian.young@example.com",
+      "Password": "SebY!2026"
+    },
+    {
+      "id": "eaaa",
+      "Name": "Chloe King",
+      "Email": "chloe.king@example.com",
+      "Password": "ChloeK123"
+    },
+    {
+      "id": "04bd",
+      "Name": "Jackie Scott",
+      "Email": "jackie.scott@example.com",
+      "Password": "JackieS!1"
+    },
+    {
+      "id": "acae",
+      "Name": "Owen Green",
+      "Email": "owen.green@example.com",
+      "Password": "OwenG#2026"
+    },
+    {
+      "id": "3234",
+      "Name": "Nora Adams",
+      "Email": "nora.adams@example.com",
+      "Password": "NoraA!789"
+    },
+    {
+      "id": "ae82",
+      "Name": "Wyatt Baker",
+      "Email": "wyatt.baker@example.com",
+      "Password": "WyattB2026"
+    },
+    {
+      "id": "e6b0",
+      "Name": "Ella Gonzalez",
+      "Email": "ella.gonzalez@example.com",
+      "Password": "EllaG!123"
+    },
+    {
+      "id": "b09e",
+      "Name": "Zoe Perez",
+      "Email": "zoe.perez@example.com",
+      "Password": "ZoeP!456"
+    },
+    {
+      "id": "4632",
+      "Name": "Liam Allen",
+      "Email": "liam.allen@example.com",
+      "Password": "LiamA123!"
+    },
+    {
+      "id": "ade0",
+      "Name": "Zara Carter",
+      "Email": "zara.carter@example.com",
+      "Password": "ZaraC!2026"
+    },
+    {
+      "id": "91a9",
+      "Name": "Fuga Est aut pariat",
+      "Email": "Necessitatibus vitae",
+      "Password": "Voluptatem ad facere"
+    },
+    {
+      "id": "d8a9",
+      "Name": "Exercitationem odio ",
+      "Email": "Laudantium exercita",
+      "Password": "Delectus consequat"
+    },
+    {
+      "id": "a897",
+      "Name": "Sit do reiciendis s",
+      "Email": "Sapiente aut sequi e",
+      "Password": "Qui ut eiusmod deser"
+    },
+    {
+      "id": "6586"
+    },
+    {
+      "id": "a94e"
+    },
+    {
+      "Name": "Jack",
+      "Email": "jack@gmail.com",
+      "Password": "jack123",
+      "Number": "92838383",
+      "Province": "Mollit id ",
+      "City": "Voluptatem ",
+      "Street": "Esse est ",
+      "Address": "Consequatur Consequ Esse est ",
+      "cart": [
+        {
+          "id": "441b",
+          "Quantity": 2
+        },
+        {
+          "id": "afa4",
+          "Quantity": 1
+        }
+      ],
+      "id": "ff22"
+    },
+    {
+      "id": "e613"
+    },
+    {
+      "id": "25b2"
+    },
+    {
+      "id": "7632"
+    },
+    {
+      "id": "c41e"
+    },
+    {
+      "id": "c920"
+    },
+    {
+      "id": "bd86"
+    },
+    {
+      "id": "5de7"
+    },
+    {
+      "id": "2c97"
+    },
+    {
+      "id": "ef32"
+    },
+    {
+      "id": "27d7"
+    },
+    {
+      "id": "6524"
+    },
+    {
+      "id": "856c"
+    },
+    {
+      "id": "6c13"
+    },
+    {
+      "id": "cc01"
+    },
+    {
+      "id": "760a"
+    },
+    {
+      "Name": "q",
+      "Email": "jack@gmail.com",
+      "Password": "q",
+      "Number": "21123",
+      "Province": "Et magna voluptatibu",
+      "City": "Voluptatem asperiore",
+      "Street": "Amet reprehenderit ",
+      "Address": "Dolore tempore nobi",
+      "cart": [
+        {
+          "id": "1948",
+          "Quantity": 1
+        },
+        {
+          "id": "441b",
+          "Quantity": 2
+        },
+        {
+          "id": "afa4",
+          "Quantity": 1
+        }
+      ],
+      "id": "dee9"
+    },
+    {
+      "id": "333e",
+      "Name": "o",
+      "Email": "o",
+      "Password": "o"
+    },
+    {
+      "Name": "Sint hic debitis sin",
+      "Email": "i",
+      "Password": "2345",
+      "Number": "64",
+      "Province": "Eligendi adipisicing",
+      "City": "Est quae culpa assu",
+      "Street": "Eos incididunt nostr",
+      "Address": "Laborum Qui corrupt",
+      "cart": [],
+      "id": "cd71"
+    }
+  ],
+  "products": [
+    {
+      "Name": "Wireless Bluetooth Headphone",
+      "price": "55",
+      "Description": "High-quality over-ear headphones with noise cancellation and long battery life.",
+      "image": "https://images.unsplash.com/photo-1610041321327-b794c052db27?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "Category": "electronics",
+      "id": "1948"
+    },
+    {
+      "Name": "art of war",
+      "price": "65",
+      "Description": " The main idea of \"The Art of War\" is, \"He will win who knows when to fight and when not to fight. He will win who knows how to handle both superior and inferior forces.",
+      "image": "https://images.unsplash.com/photo-1541963463532-d68292c34b19?q=80&w=688&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "Category": "books",
+      "id": "441b"
+    },
+    {
+      "Name": "Electronic Devices Pack",
+      "price": "555",
+      "Description": "Radiation Sticker for All Electronic Devices / Sunflower Pattern Anti-radiation Mobile Phone Sticker / Universal Self-adhesive EMR Blocker Patch for Laptop Smartphones\nRatings 1",
+      "image": "https://media.bazaarvoice.com/Shutterstock_1875797686.png",
+      "Category": "electronics",
+      "id": "afa4"
+    }
+  ]
+}
