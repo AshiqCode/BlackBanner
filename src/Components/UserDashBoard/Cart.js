@@ -1,8 +1,8 @@
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import useFetch from "../../Hooks/usefetch";
 import Loading from "../DashBoard/Loading";
 import { useEffect, useState } from "react";
-import { toast } from "react-toastify";
+import NavBar from "./NavBar";
 
 const Cart = () => {
   const [cartProducts, setCartProducts] = useState([]);
@@ -11,7 +11,6 @@ const Cart = () => {
   const { data, setData, Ispending } = useFetch(
     `http://localhost:3000/users/${param}`
   );
-  const user = localStorage.getItem("user");
   const cart = data.cart;
 
   useEffect(() => {
@@ -50,32 +49,7 @@ const Cart = () => {
   return (
     <div className="min-h-screen bg-gray-50 text-gray-900 flex flex-col">
       {/* Navbar */}
-      <header className="flex justify-between items-center px-6 py-4 border-b border-gray-300 bg-white">
-        {/* Logo */}
-        <h1 className="text-2xl font-semibold tracking-tight select-none">
-          Black<span className="text-yellow-500"> Banner</span>
-        </h1>
-
-        {/* Nav Links */}
-        <nav className="flex items-center gap-6 text-sm font-medium">
-          {/* Home */}
-          <Link
-            to="/"
-            className="px-3 py-2 rounded-md text-gray-700 hover:bg-gray-100 hover:text-yellow-500 transition-colors"
-          >
-            Home
-          </Link>
-
-          {/* Cart (only if user exists) */}
-          <Link
-            to={`/Profile/${user}`}
-            className="px-3 py-2 rounded-md text-gray-700 hover:bg-gray-100 hover:text-yellow-500 transition-colors"
-          >
-            Profile
-          </Link>
-        </nav>
-      </header>
-
+      <NavBar />
       {/* Main Content */}
       {Ispending && <Loading />}
       {!Ispending && (

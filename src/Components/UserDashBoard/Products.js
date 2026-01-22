@@ -2,10 +2,9 @@ import { useState } from "react";
 import useFetch from "../../Hooks/usefetch";
 import Loading from "../DashBoard/Loading";
 import { Link } from "react-router-dom";
+import NavBar from "./NavBar";
 const Products = () => {
   const { data, Ispending } = useFetch("http://localhost:3000/products");
-
-  const user = localStorage.getItem("user");
 
   const urls = [
     {
@@ -26,33 +25,7 @@ const Products = () => {
   return (
     <div className="min-h-screen bg-white text-gray-900">
       {/* Navbar */}
-      <header className="flex justify-between items-center px-6 py-4 border-b border-gray-300">
-        {/* Logo */}
-        <h1 className="text-3xl font-semibold tracking-tight select-none">
-          Black<span className="text-yellow-500"> Banner</span>
-        </h1>
-
-        {/* Nav Links */}
-        <nav className="flex items-center gap-6 text-sm font-medium">
-          {/* Cart */}
-          {user && (
-            <Link
-              to={`/Cart/${user}`}
-              className="relative flex items-center justify-center w-10 h-10 rounded-full bg-gray-100 text-gray-800 hover:bg-yellow-500 hover:text-black transition-all duration-300 shadow-sm"
-            >
-              <span className="text-lg">🛒</span>
-            </Link>
-          )}
-
-          {/* Profile / Login */}
-          <Link
-            to={user ? `/Profile/${user}` : "/Login"}
-            className="flex items-center justify-center h-10 px-4 rounded-md text-gray-900 hover:bg-gray-100 hover:text-yellow-500 transition-colors"
-          >
-            {user ? "Profile" : "Login"}
-          </Link>
-        </nav>
-      </header>
+      <NavBar />
 
       {/* Main Content */}
       <main className="flex-1 bg-gray-50 min-h-screen">

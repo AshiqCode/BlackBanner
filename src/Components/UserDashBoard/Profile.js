@@ -1,15 +1,15 @@
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import useFetch from "../../Hooks/usefetch";
 import Loading from "../DashBoard/Loading";
 import { toast } from "react-toastify";
 import { useEffect, useState } from "react";
+import NavBar from "./NavBar";
 
 const Profile = () => {
   const param = useParams().user;
   const { data, setData, Ispending } = useFetch(
     `http://localhost:3000/users/${param}`
   );
-  const user = localStorage.getItem("user");
   const [isEdit, setIsEdit] = useState(false);
   const [isChangePassword, setIsChangePassword] = useState(false);
   const [Name, setFullName] = useState(data.Name);
@@ -22,6 +22,10 @@ const Profile = () => {
   const [Address, setAddress] = useState(data.Address);
   const [NewPassword, setNewPassword] = useState("");
   const [ConfirmPassword, setConfirmPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [showNewPassword, setShowNewPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
   const cart = data.cart;
   useEffect(() => {
     if (data) {
@@ -50,7 +54,7 @@ const Profile = () => {
       };
 
       newUser = { ...newUser, cart };
-      console.log(newUser);
+      // console.log(newUser);
       setData(newUser);
 
       fetch(`http://localhost:3000/users/${param}`, {
@@ -76,7 +80,7 @@ const Profile = () => {
             method: "PUT",
             body: JSON.stringify(userData),
           });
-          setData(userData);
+          // setData(userData);
           toast.success("Password Change successfully ");
           setIsChangePassword(false);
         }
@@ -91,45 +95,7 @@ const Profile = () => {
   return (
     <div className="min-h-screen bg-gray-50 text-gray-900 flex flex-col">
       {/* Navbar */}
-      <header className="flex justify-between items-center px-6 py-4 border-b border-gray-300 bg-white">
-        {/* Logo */}
-        <h1 className="text-2xl font-semibold tracking-tight select-none">
-          Black<span className="text-yellow-500"> Banner</span>
-        </h1>
-
-        {/* Nav Links */}
-        <nav className="flex items-center gap-6 text-sm font-medium">
-          {/* Home */}
-          <Link
-            to="/"
-            className="px-3 py-2 rounded-md text-gray-700 hover:bg-gray-100 hover:text-yellow-500 transition-colors"
-          >
-            Home
-          </Link>
-
-          {/* Cart (only if user exists) */}
-          {user && (
-            <Link
-              to={`/Cart/${user}`}
-              className="relative flex items-center justify-center w-10 h-10 rounded-full bg-gray-100 text-gray-800 hover:bg-yellow-500 hover:text-black transition-all duration-300 shadow-sm"
-            >
-              <span className="text-lg">🛒</span>
-            </Link>
-          )}
-
-          {/* Logout */}
-          <Link
-            to="/"
-            onClick={() => {
-              localStorage.removeItem("user");
-              toast.success("LogOut successfully");
-            }}
-            className="px-3 py-2 rounded-md text-gray-700 hover:bg-red-50 hover:text-red-500 transition-colors"
-          >
-            Logout
-          </Link>
-        </nav>
-      </header>
+      <NavBar />
 
       {/* Main Content */}
       {Ispending && <Loading />}
@@ -177,11 +143,6 @@ const Profile = () => {
                 <div>
                   <p className="text-gray-500">Email</p>
                   <p className="font-medium">{data.Email}</p>
-                </div>
-
-                <div>
-                  <p className="text-gray-500">Password</p>
-                  <p className="font-medium">{data.Password}</p>
                 </div>
 
                 <div>
@@ -372,51 +333,65 @@ const Profile = () => {
                 {/* Form */}
                 <div className="flex flex-col gap-4">
                   {/* Current Password */}
-                  <div>
+                  <div className="relative">
                     <label className="block text-sm font-semibold text-gray-700 mb-1">
                       Current Password
                     </label>
                     <input
-                      type="text"
-                      onChange={(e) => {
-                        setPassword(e.target.value);
-                      }}
+                      type={showPassword ? "text" : "password"}
+                      onChange={(e) => setPassword(e.target.value)}
                       placeholder="Enter current password"
-                      className="w-full rounded border px-3 py-2 text-sm 
-                       focus:ring-2 focus:ring-yellow-400 focus:outline-none"
+                      className="w-full rounded border px-3 py-2 text-sm focus:ring-2 focus:ring-yellow-400 focus:outline-none"
                     />
+                    <button
+                      type="button"
+                      onClick={() => setShowPassword(!showPassword)}
+                      className="absolute right-3 top-9 text-gray-500"
+                    >
+                      {showPassword ? "🙈" : "👁️"}
+                    </button>
                   </div>
 
                   {/* New Password */}
-                  <div>
+                  <div className="relative">
                     <label className="block text-sm font-semibold text-gray-700 mb-1">
                       New Password
                     </label>
                     <input
-                      type="text"
-                      onChange={(e) => {
-                        setNewPassword(e.target.value);
-                      }}
+                      type={showNewPassword ? "text" : "password"}
+                      onChange={(e) => setNewPassword(e.target.value)}
                       placeholder="Enter new password"
-                      className="w-full rounded border px-3 py-2 text-sm 
-                       focus:ring-2 focus:ring-yellow-400 focus:outline-none"
+                      className="w-full rounded border px-3 py-2 text-sm focus:ring-2 focus:ring-yellow-400 focus:outline-none"
                     />
+                    <button
+                      type="button"
+                      onClick={() => setShowNewPassword(!showNewPassword)}
+                      className="absolute right-3 top-9 text-gray-500"
+                    >
+                      {showNewPassword ? "🙈" : "👁️"}
+                    </button>
                   </div>
 
                   {/* Confirm New Password */}
-                  <div>
+                  <div className="relative">
                     <label className="block text-sm font-semibold text-gray-700 mb-1">
                       Confirm New Password
                     </label>
                     <input
-                      type="text"
-                      onChange={(e) => {
-                        setConfirmPassword(e.target.value);
-                      }}
+                      type={showConfirmPassword ? "text" : "password"}
+                      onChange={(e) => setConfirmPassword(e.target.value)}
                       placeholder="Confirm new password"
-                      className="w-full rounded border px-3 py-2 text-sm 
-                       focus:ring-2 focus:ring-yellow-400 focus:outline-none"
+                      className="w-full rounded border px-3 py-2 text-sm focus:ring-2 focus:ring-yellow-400 focus:outline-none"
                     />
+                    <button
+                      type="button"
+                      onClick={() =>
+                        setShowConfirmPassword(!showConfirmPassword)
+                      }
+                      className="absolute right-3 top-9 text-gray-500"
+                    >
+                      {showConfirmPassword ? "🙈" : "👁️"}
+                    </button>
                   </div>
                 </div>
 

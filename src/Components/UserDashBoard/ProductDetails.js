@@ -1,7 +1,8 @@
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import useFetch from "../../Hooks/usefetch";
 import Loading from "../DashBoard/Loading";
 import { toast } from "react-toastify";
+import NavBar from "./NavBar";
 
 const ProductDetails = () => {
   const param = useParams().id;
@@ -61,29 +62,7 @@ const ProductDetails = () => {
           <Loading />
         </div>
       )}
-      <header className="flex justify-between items-center px-6 py-4 border-b border-gray-300">
-        {/* Logo */}
-        <h1 className="text-3xl font-semibold tracking-tight select-none">
-          Black<span className="text-yellow-500"> Banner</span>
-        </h1>
-
-        {/* Nav Links */}
-        <nav className="flex gap-4 text-sm font-medium">
-          <Link
-            to="/"
-            className="text-gray-900 hover:text-yellow-500 transition-colors"
-          >
-            Home
-          </Link>
-
-          <Link
-            to={user ? `/Profile/${user}` : "/Login"}
-            className="text-gray-900 hover:text-yellow-500 transition-colors"
-          >
-            {user ? "Profile" : "Login"}
-          </Link>
-        </nav>
-      </header>
+      <NavBar />
 
       {/* Main Content */}
       <main className="flex justify-center items-start capitalize  px-4 bg-gray-50">
