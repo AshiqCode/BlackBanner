@@ -388,7 +388,20 @@
       "City": "Repudiandae alias vo",
       "Street": "Quidem aliquam quia ",
       "Address": "In et consequat Ali",
-      "cart": [],
+      "cart": [
+        {
+          "id": "afa4",
+          "Quantity": 1
+        },
+        {
+          "id": "1948",
+          "Quantity": 1
+        },
+        {
+          "id": "441b",
+          "Quantity": 1
+        }
+      ],
       "id": "b70d"
     }
   ],
@@ -411,7 +424,7 @@
     },
     {
       "Name": "Electronic Devices Pack",
-      "price": "555",
+      "price": "125",
       "Description": "Radiation Sticker for All Electronic Devices / Sunflower Pattern Anti-radiation Mobile Phone Sticker / Universal Self-adhesive EMR Blocker Patch for Laptop Smartphones\nRatings 1",
       "image": "https://media.bazaarvoice.com/Shutterstock_1875797686.png",
       "Category": "electronics",

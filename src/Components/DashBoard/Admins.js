@@ -2,14 +2,15 @@ import { useEffect, useState } from "react";
 import useFetch from "../../Hooks/usefetch";
 import Loading from "./Loading";
 
-const UsersOverView = () => {
+const Admins = () => {
   const { data, Ispending } = useFetch("http://localhost:3000/users");
-  const [usersData, setUsersData] = useState([]);
+  const [adminData, setAdminData] = useState([]);
 
   useEffect(() => {
-    const users = data.filter((user) => user.type !== "admin");
-    setUsersData(users);
+    const admin = data.filter((user) => user.type === "admin");
+    setAdminData(admin);
   }, [data]);
+  //   console.log(usersData);
 
   return (
     <div className="flex-1 bg-gray-50 min-h-screen">
@@ -35,7 +36,7 @@ const UsersOverView = () => {
         {/* Users Grid */}
         {!Ispending && (
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            {usersData.map((user) => (
+            {adminData.map((user) => (
               <div
                 key={user.id}
                 className="bg-white p-6 rounded-xl shadow-sm border border-gray-200 hover:shadow-lg transition-all duration-200 flex flex-col gap-4"
@@ -74,4 +75,4 @@ const UsersOverView = () => {
   );
 };
 
-export default UsersOverView;
+export default Admins;

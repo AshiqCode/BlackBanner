@@ -14,7 +14,7 @@ const Cart = () => {
   const cart = data.cart;
 
   useEffect(() => {
-    if (cart) {
+    if (cart && cartProducts.length == 0) {
       cart.map((product) => {
         fetch(`http://localhost:3000/products/${product.id}`)
           .then((res) => res.json())
@@ -24,24 +24,26 @@ const Cart = () => {
       });
     }
   }, [cart]);
-  console.log(cartProducts);
+  // console.log(cartProducts);
 
   const increaseQuantityHandle = () => {};
+
   const removeItem = (productId) => {
     const newCart = cartProducts.filter((item) => item.id !== productId);
     // console.log(cartProducts, newCart);
     setCartProducts(newCart);
 
-    const oldData = data;
-    const newCartIDS = oldData.cart.filter((item) => item.id !== productId);
-    console.log(data, newCartIDS);
+    console.log(newCart);
 
-    oldData.cart = newCartIDS;
-    // console.log(data);
-    setData(oldData);
+    const newData = data;
+    const newCartIDS = newData.cart.filter((item) => item.id !== productId);
+
+    newData.cart = newCartIDS;
+    console.log(newData);
+    setData(newData);
     fetch(`http://localhost:3000/users/${param}`, {
       method: "PUT",
-      body: JSON.stringify(data),
+      body: JSON.stringify(newData),
     });
   };
 

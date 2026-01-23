@@ -5,12 +5,15 @@ import { useState } from "react";
 import Products from "./Products";
 import ViewOrders from "./ViewOrders";
 import { useNavigate } from "react-router-dom";
+import Admins from "./Admins";
 const Dashboard = () => {
   const [overView, setOverView] = useState(true);
   const [addProduct, setAddProduct] = useState(false);
   const [usersOverView, setUsersOverView] = useState(false);
   const [product, setProduct] = useState(false);
   const [viewOrders, setViewOrders] = useState(false);
+  const [admins, setAdmins] = useState(false);
+
   const navigate = useNavigate();
 
   return (
@@ -48,11 +51,13 @@ const Dashboard = () => {
                 setUsersOverView(false);
                 setViewOrders(false);
                 setProduct(false);
+                setAdmins(false);
               }}
               className="px-3 py-2 rounded hover:bg-yellow-400 hover:text-black cursor-pointer transition-colors"
             >
               Overview
             </li>
+
             <li
               onClick={() => {
                 setAddProduct(true);
@@ -60,6 +65,7 @@ const Dashboard = () => {
                 setUsersOverView(false);
                 setProduct(false);
                 setViewOrders(false);
+                setAdmins(false);
               }}
               className="px-3 py-2 rounded hover:bg-yellow-400 hover:text-black cursor-pointer transition-colors"
             >
@@ -69,9 +75,23 @@ const Dashboard = () => {
               onClick={() => {
                 setAddProduct(false);
                 setOverView(false);
+                setUsersOverView(false);
+                setViewOrders(false);
+                setProduct(false);
+                setAdmins(true);
+              }}
+              className="px-3 py-2 rounded hover:bg-yellow-400 hover:text-black cursor-pointer transition-colors"
+            >
+              Admins
+            </li>
+            <li
+              onClick={() => {
+                setAddProduct(false);
+                setOverView(false);
                 setUsersOverView(true);
                 setViewOrders(false);
                 setProduct(false);
+                setAdmins(false);
               }}
               className="px-3 py-2 rounded hover:bg-yellow-400 hover:text-black cursor-pointer transition-colors"
             >
@@ -84,6 +104,7 @@ const Dashboard = () => {
                 setViewOrders(false);
                 setUsersOverView(false);
                 setProduct(true);
+                setAdmins(false);
               }}
               className="px-3 py-2 rounded hover:bg-yellow-400 hover:text-black cursor-pointer transition-colors"
             >
@@ -97,6 +118,7 @@ const Dashboard = () => {
                 setViewOrders(true);
                 setUsersOverView(false);
                 setProduct(false);
+                setAdmins(false);
               }}
               className="px-3 py-2 rounded hover:bg-yellow-400 hover:text-black cursor-pointer transition-colors"
             >
@@ -112,6 +134,7 @@ const Dashboard = () => {
           {usersOverView && <UsersOverView />}
           {product && <Products />}
           {viewOrders && <ViewOrders />}
+          {admins && <Admins />}
         </main>
       </div>
 
