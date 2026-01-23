@@ -35,17 +35,18 @@ const NavBar = () => {
           {user ? "Profile" : "Login"}
         </Link>
 
-        {isUser && (
+        {isUser && user && (
           <Link
             to={"/"}
             onClick={() => {
               localStorage.removeItem("user");
+              localStorage.removeItem("type");
               setIsUser(false);
               toast.success("Logout successfully");
             }}
             className="flex items-center justify-center h-10 px-4 rounded-md text-gray-900 hover:bg-gray-100 hover:text-yellow-500 transition-colors"
           >
-            {user ? "Logout" : ""}
+            {user ? "Logout" : "ab"}
           </Link>
         )}
       </nav>
