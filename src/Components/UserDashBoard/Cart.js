@@ -14,7 +14,7 @@ const Cart = () => {
   const cart = data.cart;
 
   useEffect(() => {
-    if (cart && cartProducts.length == 0) {
+    if (cart && cartProducts.length === 0) {
       cart.map((product) => {
         fetch(`http://localhost:3000/products/${product.id}`)
           .then((res) => res.json())

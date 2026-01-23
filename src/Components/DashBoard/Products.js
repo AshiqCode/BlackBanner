@@ -15,6 +15,7 @@ const Products = () => {
   const { data, setData, Ispending } = useFetch(
     "http://localhost:3000/products"
   );
+  console.log(data);
   const editHandle = (product) => {
     setIsEdit(true);
     setProductName(product.Name);
@@ -23,7 +24,7 @@ const Products = () => {
     setImage(product.image);
     setCategory(product.Category);
     setID(product.id);
-    // console.log(id);
+
     // console.log(productName);
   };
   const saveEdits = () => {
@@ -87,7 +88,9 @@ const Products = () => {
         </div>
 
         {Ispending && <Loading />}
-        {isAddProduct && <AddProduct setIsAddProduct={setIsAddProduct} />}
+        {isAddProduct && (
+          <AddProduct setIsAddProduct={setIsAddProduct} setData={setData} />
+        )}
         {/* Products Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           {data.map((product) => (

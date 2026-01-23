@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
 
-const AddProduct = ({ setIsAddProduct }) => {
+const AddProduct = ({ setIsAddProduct, setData }) => {
   const [productName, setProductName] = useState("");
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
@@ -12,150 +12,123 @@ const AddProduct = ({ setIsAddProduct }) => {
     if (productName && price && description && image && category) {
       const product = {
         Name: productName,
-        price: price,
+        price,
         Description: description,
         Category: category,
-        image: image,
+        image,
       };
+
       fetch("http://localhost:3000/products", {
         method: "POST",
         body: JSON.stringify(product),
-      });
+      })
+        .then((res) => res.json())
+        .then((json) => {
+          setData((prev) => [...prev, json]);
+        });
+      // setData((prev) => [...prev, product]);
+
+      toast.success("Product Added");
+
       setProductName("");
       setPrice("");
       setDescription("");
-      setCategory("");
       setImage("");
-      toast.success("Product Added");
+      setCategory("");
+      setIsAddProduct(false);
     } else {
       toast.error("Fill All Inputs");
     }
   };
 
   return (
-    <div className="fixed inset-0 bg-gray-50 z-50 overflow-auto p-6 flex items-center justify-center">
-      <main className="w-full max-w-5xl bg-white rounded shadow-lg flex flex-col md:flex-row gap-8 p-6">
+    <div className="fixed inset-0 z-50 bg-black bg-opacity-40 flex items-center justify-center px-4">
+      <div className="w-full max-w-lg bg-white rounded-lg shadow-lg p-6">
+        {/* Header */}
+        <div className="flex items-center justify-between mb-5">
+          <h2 className="text-lg font-semibold text-gray-900">Add Product</h2>
+          <button
+            onClick={() => setIsAddProduct(false)}
+            className="text-gray-500 hover:text-gray-700 text-2xl leading-none"
+          >
+            ×
+          </button>
+        </div>
+
         {/* Form */}
-        <div className="flex-1">
-          {/* Title */}
-          <div className="flex items-center gap-3 mb-6">
-            <span className="text-xl font-medium text-gray-700">
-              Add Product
-            </span>
-          </div>
+        <div className="flex flex-col gap-4">
+          <input
+            type="text"
+            placeholder="Product Name"
+            value={productName}
+            onChange={(e) => setProductName(e.target.value)}
+            className="w-full px-3 py-2 text-sm text-gray-800
+                       border border-gray-300 rounded-md
+                       placeholder-gray-400
+                       focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400
+                       transition"
+          />
 
-          <div className="flex flex-col gap-4">
-            {/* Product Name */}
-            <div>
-              <label className="block text-sm font-semibold mb-1 text-gray-700">
-                Product Name
-              </label>
-              <input
-                type="text"
-                onChange={(e) => setProductName(e.target.value)}
-                value={productName}
-                placeholder="Enter product name"
-                className="w-full rounded border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400"
-              />
-            </div>
+          <input
+            type="number"
+            placeholder="Price"
+            value={price}
+            onChange={(e) => setPrice(e.target.value)}
+            className="w-full px-3 py-2 text-sm text-gray-800
+                       border border-gray-300 rounded-md
+                       placeholder-gray-400
+                       focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400
+                       transition"
+          />
 
-            {/* Price */}
-            <div>
-              <label className="block text-sm font-semibold mb-1 text-gray-700">
-                Price ($)
-              </label>
-              <input
-                type="number"
-                onChange={(e) => setPrice(e.target.value)}
-                value={price}
-                placeholder="Enter price"
-                className="w-full rounded border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400"
-              />
-            </div>
+          <input
+            type="text"
+            placeholder="Image URL"
+            value={image}
+            onChange={(e) => setImage(e.target.value)}
+            className="w-full px-3 py-2 text-sm text-gray-800
+                       border border-gray-300 rounded-md
+                       placeholder-gray-400
+                       focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400
+                       transition"
+          />
 
-            {/* Image URL */}
-            <div>
-              <label className="block text-sm font-semibold mb-1 text-gray-700">
-                Image URL
-              </label>
-              <input
-                type="text"
-                onChange={(e) => setImage(e.target.value)}
-                value={image}
-                placeholder="Image URL"
-                className="w-full rounded border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400"
-              />
-            </div>
+          <textarea
+            rows={3}
+            placeholder="Description"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            className="w-full px-3 py-2 text-sm text-gray-800
+                       border border-gray-300 rounded-md
+                       placeholder-gray-400 resize-none
+                       focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400
+                       transition"
+          />
 
-            {/* Description */}
-            <div>
-              <label className="block text-sm font-semibold mb-1 text-gray-700">
-                Description
-              </label>
-              <textarea
-                placeholder="Enter product description"
-                rows={4}
-                onChange={(e) => setDescription(e.target.value)}
-                value={description}
-                className="w-full rounded border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400"
-              />
-            </div>
+          <select
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+            className="w-full px-3 py-2 text-sm text-gray-800
+                       border border-gray-300 rounded-md bg-white
+                       focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400
+                       transition"
+          >
+            <option value="">Select category</option>
+            <option value="electronics">Electronics</option>
+            <option value="fashion">Fashion</option>
+            <option value="books">Books</option>
+            <option value="other">Other</option>
+          </select>
 
-            {/* Category */}
-            <div>
-              <label className="block text-sm font-semibold mb-1 text-gray-700">
-                Category
-              </label>
-              <select
-                onChange={(e) => setCategory(e.target.value)}
-                value={category}
-                className="w-full rounded border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400"
-              >
-                <option value="">Select category</option>
-                <option value="electronics">Electronics</option>
-                <option value="fashion">Fashion</option>
-                <option value="books">Books</option>
-                <option value="other">Other</option>
-              </select>
-            </div>
-
-            {/* Submit Button */}
-            <button
-              onClick={AddProductHandle}
-              className="w-full rounded bg-[#f0c14b] py-2 text-sm font-medium text-black border border-[#a88734] shadow-[inset_0_1px_0_rgba(255,255,255,0.6)] hover:bg-[#eeb933] active:bg-[#e6ac2c] transition-colors mt-4"
-            >
-              Add Product
-            </button>
-            <button
-              onClick={() => {
-                setIsAddProduct(false);
-              }}
-              className="w-full rounded bg-[#f0c14b] py-2 text-sm font-medium text-black border border-[#a88734] shadow-[inset_0_1px_0_rgba(255,255,255,0.6)] hover:bg-[#eeb933] active:bg-[#e6ac2c] transition-colors mt-4"
-            >
-              Close
-            </button>
-          </div>
+          <button
+            onClick={AddProductHandle}
+            className="mt-2 w-full py-2 rounded-md bg-yellow-500 text-black font-semibold
+                       hover:bg-yellow-600 transition"
+          >
+            Add Product
+          </button>
         </div>
-
-        {/* Info Panel */}
-        <div className="flex-1 bg-gray-50 p-6 rounded shadow border border-gray-200">
-          <h2 className="text-xl font-semibold mb-3">Instructions & Tips</h2>
-          <p className="text-gray-700 mb-2">
-            Fill out all the product details carefully. Ensure the price is
-            accurate and provide a clear description. Select the correct
-            category to help users find your product easily.
-          </p>
-          <p className="text-gray-700">
-            After submitting, the product will appear in your dashboard and can
-            be edited or removed anytime. Make sure your information is complete
-            to maintain a professional store appearance.
-          </p>
-
-          <h1 className="text-6xl font-semibold tracking-tight select-none text-center mt-10">
-            Black<span className="text-yellow-500"> Banner</span>
-          </h1>
-        </div>
-      </main>
+      </div>
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import useFetch from "../../Hooks/usefetch";
 import Loading from "./Loading";
-import { type } from "@testing-library/user-event/dist/type";
+
 import { toast } from "react-toastify";
 
 const Admins = () => {
