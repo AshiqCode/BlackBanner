@@ -1,8 +1,30 @@
-import useFetch from "../../Hooks/usefetch";
+import { useEffect, useState } from "react";
 
 const Overview = () => {
-  const { data } = useFetch("http://localhost:3000/users");
+  const [totalUsers, setTotalUsers] = useState([]);
+  const [totalProducts, setTotalProducts] = useState([]);
+  const [totalExpense, setTotalExpense] = useState([]);
+  useEffect(() => {
+    fetch("http://localhost:3000/users")
+      .then((res) => res.json())
+      .then((json) => setTotalUsers(json));
 
+    fetch("http://localhost:3000/products")
+      .then((res) => res.json())
+      .then((json) => setTotalProducts(json));
+
+    fetch("http://localhost:3000/products")
+      .then((res) => res.json())
+      .then((json) => {
+        const prices = json.map((product) => Number(product.price));
+        setTotalExpense(prices);
+      });
+  }, []);
+
+  const total = totalExpense.reduce((a, b) => a + b, 0);
+  // console.log(total);
+
+  // console.log(totalExpense);
   return (
     <div className="flex-1 p-6">
       {/* Dashboard Content */}
@@ -13,15 +35,15 @@ const Overview = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
           <div className="bg-gray-100  p-6 rounded shadow text-center">
             <h3 className="text-xl font-semibold mb-2">Total Users</h3>
-            <p className="text-gray-700 text-2xl">{data.length}</p>
+            <p className="text-gray-700 text-2xl">{totalUsers.length}</p>
           </div>
           <div className="bg-gray-100  p-6 rounded shadow text-center">
-            <h3 className="text-xl font-semibold mb-2">Active Sessions</h3>
-            <p className="text-gray-700 text-2xl">567</p>
+            <h3 className="text-xl font-semibold mb-2">Total Products</h3>
+            <p className="text-gray-700 text-2xl">{totalProducts.length}</p>
           </div>
           <div className="bg-gray-100  p-6 rounded shadow text-center">
-            <h3 className="text-xl font-semibold mb-2">Revenue</h3>
-            <p className="text-gray-700 text-2xl">$12,345</p>
+            <h3 className="text-xl font-semibold mb-2">Expense</h3>
+            <p className="text-gray-700 text-2xl">${total}</p>
           </div>
         </div>
 

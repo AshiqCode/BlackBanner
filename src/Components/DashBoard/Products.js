@@ -15,7 +15,6 @@ const Products = () => {
   const { data, setData, Ispending } = useFetch(
     "http://localhost:3000/products"
   );
-  console.log(data);
   const editHandle = (product) => {
     setIsEdit(true);
     setProductName(product.Name);
