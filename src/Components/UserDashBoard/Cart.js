@@ -24,6 +24,7 @@ const Cart = () => {
       });
     }
   }, [cart]);
+  console.log(cartProducts);
 
   const increaseQuantityHandle = () => {};
   const removeItem = (productId) => {
@@ -56,10 +57,10 @@ const Cart = () => {
         <main className="flex-1 max-w-6xl mx-auto w-full px-6 py-12">
           <h2 className="text-2xl font-bold mb-6">Your Shopping Cart</h2>
 
-          {cartProducts.map((product) => {
+          {cartProducts.map((product, index) => {
             return (
               <div
-                key={product.id}
+                key={index}
                 className="flex mt-6 flex-col sm:flex-row gap-4 bg-white rounded-xl shadow border border-gray-200 p-4 hover:shadow-lg transition"
               >
                 {/* Product Image */}

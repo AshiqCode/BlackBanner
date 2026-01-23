@@ -24,8 +24,17 @@ const Login = () => {
         toast.error("invalid password");
         return;
       }
-      navigate("/");
+
+      // navigate("/");
       localStorage.setItem("user", user.id);
+      localStorage.setItem("type", user.type);
+      if (user.type === "admin") {
+        navigate("/dashboard");
+        // console.log("admin");
+      } else {
+        navigate("/");
+        // console.log("user");
+      }
     } else {
       toast.error("Fill All Inputs");
     }

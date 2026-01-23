@@ -2,9 +2,9 @@
   "users": [
     {
       "id": "e48f",
-      "Name": "John Smith",
-      "Email": "john.smith@example.com",
-      "Password": "John1234!",
+      "Name": "c",
+      "Email": "c",
+      "Password": "c",
       "type": "admin"
     },
     {
@@ -388,12 +388,7 @@
       "City": "Repudiandae alias vo",
       "Street": "Quidem aliquam quia ",
       "Address": "In et consequat Ali",
-      "cart": [
-        {
-          "id": "1948",
-          "Quantity": 1
-        }
-      ],
+      "cart": [],
       "id": "b70d"
     }
   ],
