@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
 
-const AddProduct = () => {
+const AddProduct = ({ setIsAddProduct }) => {
   const [productName, setProductName] = useState("");
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
   const [image, setImage] = useState("");
   const [category, setCategory] = useState("");
+
   const AddProductHandle = () => {
     if (productName && price && description && image && category) {
       const product = {
@@ -16,9 +17,8 @@ const AddProduct = () => {
         Category: category,
         image: image,
       };
-      // console.log(product);
       fetch("http://localhost:3000/products", {
-        method: "Post",
+        method: "POST",
         body: JSON.stringify(product),
       });
       setProductName("");
@@ -31,12 +31,13 @@ const AddProduct = () => {
       toast.error("Fill All Inputs");
     }
   };
+
   return (
-    <div className="flex-1 p-6 bg-gray-50">
-      <main className="max-w-5xl mx-auto bg-white p-6 rounded shadow-lg flex flex-col md:flex-row gap-8">
+    <div className="fixed inset-0 bg-gray-50 z-50 overflow-auto p-6 flex items-center justify-center">
+      <main className="w-full max-w-5xl bg-white rounded shadow-lg flex flex-col md:flex-row gap-8 p-6">
         {/* Form */}
         <div className="flex-1">
-          {/* Logo + Title */}
+          {/* Title */}
           <div className="flex items-center gap-3 mb-6">
             <span className="text-xl font-medium text-gray-700">
               Add Product
@@ -51,9 +52,7 @@ const AddProduct = () => {
               </label>
               <input
                 type="text"
-                onChange={(e) => {
-                  setProductName(e.target.value);
-                }}
+                onChange={(e) => setProductName(e.target.value)}
                 value={productName}
                 placeholder="Enter product name"
                 className="w-full rounded border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400"
@@ -67,9 +66,7 @@ const AddProduct = () => {
               </label>
               <input
                 type="number"
-                onChange={(e) => {
-                  setPrice(e.target.value);
-                }}
+                onChange={(e) => setPrice(e.target.value)}
                 value={price}
                 placeholder="Enter price"
                 className="w-full rounded border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400"
@@ -83,9 +80,7 @@ const AddProduct = () => {
               </label>
               <input
                 type="text"
-                onChange={(e) => {
-                  setImage(e.target.value);
-                }}
+                onChange={(e) => setImage(e.target.value)}
                 value={image}
                 placeholder="Image URL"
                 className="w-full rounded border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400"
@@ -100,9 +95,7 @@ const AddProduct = () => {
               <textarea
                 placeholder="Enter product description"
                 rows={4}
-                onChange={(e) => {
-                  setDescription(e.target.value);
-                }}
+                onChange={(e) => setDescription(e.target.value)}
                 value={description}
                 className="w-full rounded border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400"
               />
@@ -114,9 +107,7 @@ const AddProduct = () => {
                 Category
               </label>
               <select
-                onChange={(e) => {
-                  setCategory(e.target.value);
-                }}
+                onChange={(e) => setCategory(e.target.value)}
                 value={category}
                 className="w-full rounded border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400"
               >
@@ -135,10 +126,18 @@ const AddProduct = () => {
             >
               Add Product
             </button>
+            <button
+              onClick={() => {
+                setIsAddProduct(false);
+              }}
+              className="w-full rounded bg-[#f0c14b] py-2 text-sm font-medium text-black border border-[#a88734] shadow-[inset_0_1px_0_rgba(255,255,255,0.6)] hover:bg-[#eeb933] active:bg-[#e6ac2c] transition-colors mt-4"
+            >
+              Close
+            </button>
           </div>
         </div>
 
-        {/* Paragraph / Info Div */}
+        {/* Info Panel */}
         <div className="flex-1 bg-gray-50 p-6 rounded shadow border border-gray-200">
           <h2 className="text-xl font-semibold mb-3">Instructions & Tips</h2>
           <p className="text-gray-700 mb-2">

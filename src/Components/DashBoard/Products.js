@@ -2,6 +2,7 @@ import { useState } from "react";
 import useFetch from "../../Hooks/usefetch";
 import Loading from "./Loading";
 import { toast } from "react-toastify";
+import AddProduct from "./AddProduct";
 const Products = () => {
   const [isEdit, setIsEdit] = useState(false);
   const [productName, setProductName] = useState("");
@@ -10,6 +11,7 @@ const Products = () => {
   const [image, setImage] = useState("");
   const [category, setCategory] = useState("");
   const [id, setID] = useState("");
+  const [isAddProduct, setIsAddProduct] = useState(false);
   const { data, setData, Ispending } = useFetch(
     "http://localhost:3000/products"
   );
@@ -67,8 +69,25 @@ const Products = () => {
     <div className="flex-1 p-6">
       {/* Dashboard Content */}
       <main className="flex-1 p-6 bg-gray-50 min-h-screen">
-        <h2 className="text-2xl font-bold mb-6 text-gray-900">Products</h2>
+        <div className="mb-6 flex items-center justify-between">
+          {/* Title */}
+          <h2 className="text-2xl font-bold text-gray-900">Products</h2>
+
+          {/* Add Product Button */}
+          <button
+            className="px-4 py-2 text-sm font-semibold text-white bg-blue-600 rounded-lg
+               shadow hover:bg-blue-700 hover:shadow-md focus:outline-none focus:ring-2
+               focus:ring-blue-400 active:scale-95 transition-all duration-200"
+            onClick={() => {
+              setIsAddProduct(true);
+            }}
+          >
+            Add Product
+          </button>
+        </div>
+
         {Ispending && <Loading />}
+        {isAddProduct && <AddProduct setIsAddProduct={setIsAddProduct} />}
         {/* Products Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           {data.map((product) => (

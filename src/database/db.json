@@ -2,94 +2,10 @@
   "users": [
     {
       "id": "e48f",
-      "Name": "c",
-      "Email": "c",
-      "Password": "c",
+      "Name": "Harper Jackson",
+      "Email": "harperjackson@gmail.com",
+      "Password": "harperjackson123",
       "type": "admin"
-    },
-    {
-      "id": "1e36",
-      "Name": "Emma Johnson",
-      "Email": "emma.johnson@example.com",
-      "Password": "Emma2026!"
-    },
-    {
-      "id": "9fca",
-      "Name": "Michael Brown",
-      "Email": "michael.brown@example.com",
-      "Password": "MikeB2026!"
-    },
-    {
-      "id": "446f",
-      "Name": "Sophia Davis",
-      "Email": "sophia.davis@example.com",
-      "Password": "Sophia!D1"
-    },
-    {
-      "id": "609e",
-      "Name": "Olivia Wilson",
-      "Email": "olivia.wilson@example.com",
-      "Password": "OliviaW123"
-    },
-    {
-      "id": "ee9f",
-      "Name": "Jack Miller",
-      "Email": "jack.miller@example.com",
-      "Password": "JackM!2026"
-    },
-    {
-      "id": "abb2",
-      "Name": "Lucas Martinez",
-      "Email": "lucas.martinez@example.com",
-      "Password": "LucasM#456"
-    },
-    {
-      "id": "b4bc",
-      "Name": "Mia Garcia",
-      "Email": "mia.garcia@example.com",
-      "Password": "MiaG@789"
-    },
-    {
-      "id": "11b8",
-      "Name": "Ethan Rodriguez",
-      "Email": "ethan.rodriguez@example.com",
-      "Password": "EthanR2026"
-    },
-    {
-      "id": "4c55",
-      "Name": "Ava Hernandez",
-      "Email": "ava.hernandez@example.com",
-      "Password": "AvaH!321"
-    },
-    {
-      "id": "2a04",
-      "Name": "Noah Lopez",
-      "Email": "noah.lopez@example.com",
-      "Password": "NoahL$2026"
-    },
-    {
-      "id": "f181",
-      "Name": "Isabella Gonzalez",
-      "Email": "isabella.gonzalez@example.com",
-      "Password": "IsabellaG1"
-    },
-    {
-      "id": "8053",
-      "Name": "Liam Wilson",
-      "Email": "liam.wilson@example.com",
-      "Password": "LiamW#2026"
-    },
-    {
-      "id": "9436",
-      "Name": "Charlotte Anderson",
-      "Email": "charlotte.anderson@example.com",
-      "Password": "CharlotteA!"
-    },
-    {
-      "id": "963f",
-      "Name": "Benjamin Thomas",
-      "Email": "benjamin.thomas@example.com",
-      "Password": "BenT@2026"
     },
     {
       "id": "9c2b",
@@ -254,155 +170,46 @@
       "Password": "Delectus consequat"
     },
     {
-      "id": "a897",
-      "Name": "Sit do reiciendis s",
-      "Email": "Sapiente aut sequi e",
-      "Password": "Qui ut eiusmod deser"
+      "id": "b8c6",
+      "Name": "Illum cum qui non b",
+      "Email": "Voluptate laboris co",
+      "Password": "Aliqua Amet dolore",
+      "type": "admin"
     },
     {
-      "id": "6586"
+      "id": "bdce",
+      "Name": "Illum cum qui non b",
+      "Email": "Voluptate laboris co",
+      "Password": "Aliqua Amet dolore",
+      "type": "admin"
     },
     {
-      "id": "a94e"
+      "id": "2de0",
+      "Name": "Ex sit consectetur i",
+      "Email": "hoxo@mailinator.com",
+      "Password": "Sed adipisicing anim",
+      "type": "admin"
     },
     {
-      "Name": "Jack",
-      "Email": "jack@gmail.com",
-      "Password": "jack123",
-      "Number": "92838383",
-      "Province": "Mollit id ",
-      "City": "Voluptatem ",
-      "Street": "Esse est ",
-      "Address": "Consequatur Consequ Esse est ",
-      "cart": [
-        {
-          "id": "441b",
-          "Quantity": 2
-        },
-        {
-          "id": "afa4",
-          "Quantity": 1
-        }
-      ],
-      "id": "ff22"
+      "id": "3630",
+      "Name": "Velit rerum aut quae",
+      "Email": "wohoramup@mailinator.com",
+      "Password": "Et officia qui ad et",
+      "type": "admin"
     },
     {
-      "id": "e613"
+      "id": "9588",
+      "Name": "Elit qui ",
+      "Email": "kutegu@mailinator.com",
+      "Password": "Rerum est hic natus",
+      "type": "admin"
     },
     {
-      "id": "25b2"
-    },
-    {
-      "id": "7632"
-    },
-    {
-      "id": "c41e"
-    },
-    {
-      "id": "c920"
-    },
-    {
-      "id": "bd86"
-    },
-    {
-      "id": "5de7"
-    },
-    {
-      "id": "2c97"
-    },
-    {
-      "id": "ef32"
-    },
-    {
-      "id": "27d7"
-    },
-    {
-      "id": "6524"
-    },
-    {
-      "id": "856c"
-    },
-    {
-      "id": "6c13"
-    },
-    {
-      "id": "cc01"
-    },
-    {
-      "id": "760a"
-    },
-    {
-      "Name": "q",
-      "Email": "jack@gmail.com",
-      "Password": "q",
-      "Number": "21123",
-      "Province": "Et magna voluptatibu",
-      "City": "Voluptatem asperiore",
-      "Street": "Amet reprehenderit ",
-      "Address": "Dolore tempore nobi",
-      "cart": [
-        {
-          "id": "1948",
-          "Quantity": 1
-        },
-        {
-          "id": "441b",
-          "Quantity": 2
-        },
-        {
-          "id": "afa4",
-          "Quantity": 1
-        }
-      ],
-      "id": "dee9"
-    },
-    {
-      "id": "333e",
-      "Name": "o",
-      "Email": "o",
-      "Password": "o"
-    },
-    {
-      "Name": "a",
-      "Email": "i",
-      "Password": "123",
-      "Number": "64",
-      "Province": "Eligendi adipisicing",
-      "City": "Est quae culpa assu",
-      "Street": "Eos incididunt nostr",
-      "Address": "Laborum Qui corrupt",
-      "cart": [
-        {
-          "id": "441b",
-          "Quantity": 1
-        }
-      ],
-      "id": "cd71"
-    },
-    {
-      "Name": "a",
-      "Email": "a",
-      "Password": "a",
-      "Number": "8289",
-      "Province": "Nostrum quisquam et ",
-      "City": "Repudiandae alias vo",
-      "Street": "Quidem aliquam quia ",
-      "Address": "In et consequat Ali",
-      "cart": [
-        {
-          "id": "afa4",
-          "Quantity": 1
-        },
-        {
-          "id": "1948",
-          "Quantity": 1
-        },
-        {
-          "id": "441b",
-          "Quantity": 1
-        }
-      ],
-      "id": "b70d"
+      "id": "4fca",
+      "Name": "Dolore ",
+      "Email": "bihon@mailinator.com",
+      "Password": "Aut enim mollit null",
+      "type": "admin"
     }
   ],
   "products": [
@@ -429,6 +236,14 @@
       "image": "https://media.bazaarvoice.com/Shutterstock_1875797686.png",
       "Category": "electronics",
       "id": "afa4"
+    },
+    {
+      "id": "8c34",
+      "Name": "Temporibus quae ea i",
+      "price": "31",
+      "Description": "Commodo quasi eum co",
+      "Category": "electronics",
+      "image": "Blanditiis cupiditat"
     }
   ]
 }

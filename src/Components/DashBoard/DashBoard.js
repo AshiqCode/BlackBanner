@@ -58,7 +58,7 @@ const Dashboard = () => {
               Overview
             </li>
 
-            <li
+            {/* <li
               onClick={() => {
                 setAddProduct(true);
                 setOverView(false);
@@ -70,7 +70,7 @@ const Dashboard = () => {
               className="px-3 py-2 rounded hover:bg-yellow-400 hover:text-black cursor-pointer transition-colors"
             >
               Add Product
-            </li>
+            </li> */}
             <li
               onClick={() => {
                 setAddProduct(false);
