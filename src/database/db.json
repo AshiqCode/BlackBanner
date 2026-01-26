@@ -156,40 +156,61 @@
       "Email": "wupexeg@mailinator.com",
       "Password": "Dolore itaque tempor",
       "type": "admin"
+    },
+    {
+      "Name": "p",
+      "Email": "p",
+      "Password": "p",
+      "Number": "43",
+      "Province": "Nisi aspernatur magn",
+      "City": "Soluta iusto Nam bla",
+      "Street": "Qui quam et nisi rep",
+      "Address": "Aut voluptas veniam",
+      "cart": [
+        {
+          "id": "c6ed",
+          "Quantity": 7
+        },
+        {
+          "id": "c6ee",
+          "Quantity": 4
+        }
+      ],
+      "id": "f477"
     }
   ],
   "products": [
     {
-      "Name": "Cupiditate est sed ",
-      "price": "92",
-      "Description": "Praesentium nesciunt",
-      "image": "Ab veniam eos ipsam",
-      "Category": "books",
-      "id": "66f9"
+      "Name": "Laptop Pro Max",
+      "price": "1200",
+      "Description": "A powerful laptop built for both work and gaming, featuring a high-resolution display, long-lasting battery, and fast processing speed to handle all your tasks smoothly.",
+      "image": "https://cdn.mos.cms.futurecdn.net/sCTUm3TGXAahNHu7wghtpP.jpg",
+      "Category": "electronics",
+      "id": "c6eb"
     },
     {
-      "id": "7244",
-      "Name": "Natus sed officia co",
-      "price": "87",
-      "Description": "Quo nisi nihil fugia",
-      "image": "Sed veritatis in et ",
-      "Category": "books"
+      "Name": "Wireless Earbuds",
+      "price": "150",
+      "Description": "Premium wireless earbuds with noise-cancelling technology, long battery life, and superior sound quality for music lovers and busy professionals on the go.",
+      "image": "https://static-01.daraz.pk/p/fd53b330045ce5965d625ab0b7c60b2b.jpg",
+      "Category": "electronics",
+      "id": "c6ec"
     },
     {
-      "id": "677d",
-      "Name": "Ex non et laudantium",
-      "price": "3",
-      "Description": "Fuga Veritatis dolo",
-      "image": "Esse iste id sunt c",
-      "Category": "fashion"
+      "Name": "Smartwatch X",
+      "price": "200",
+      "Description": "A sleek and modern smartwatch that tracks your fitness, monitors your health, and keeps you connected with notifications, all in one compact device.",
+      "image": "https://st2.depositphotos.com/1017986/10270/i/450/depositphotos_102703000-stock-photo-close-up-of-smart-watch.jpg",
+      "Category": "electronics",
+      "id": "c6ed"
     },
     {
-      "id": "d406",
-      "Name": "Eius eaque quasi rep",
-      "price": "62",
-      "Description": "Quod beatae sit ut e",
-      "image": "Et consectetur proi",
-      "Category": "books"
+      "Name": "Portable Charger",
+      "price": "40",
+      "Description": "A compact and lightweight portable charger that quickly powers up your devices wherever you are, perfect for travel, work, or daily use.",
+      "image": "https://png.pngtree.com/thumb_back/fh260/background/20260109/pngtree-fully-charged-black-power-bank-placed-on-dark-surface-with-soft-image_21043350.webp",
+      "Category": "electronics",
+      "id": "c6ee"
     }
   ]
 }

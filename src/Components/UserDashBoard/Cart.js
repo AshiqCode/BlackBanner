@@ -19,27 +19,78 @@ const Cart = () => {
         fetch(`http://localhost:3000/products/${product.id}`)
           .then((res) => res.json())
           .then((json) => {
-            setCartProducts((prev) => [...prev, json]);
+            setCartProducts((prev) => [
+              ...prev,
+              { ...json, quantity: product.Quantity },
+            ]);
           });
       });
     }
   }, [cart]);
-  // console.log(cartProducts);
+  // console.log(cartProducts, "Products");
+  // console.log(data.cart, "Quanity");
 
-  const increaseQuantityHandle = () => {};
+  const increaseQuantityHandle = (productId) => {
+    // console.log(productId);
+    const updatedCart = cartProducts.map((product) => {
+      if (product.id === productId) {
+        return { ...product, quantity: product.quantity + 1 };
+      }
+      return product;
+    });
+    setCartProducts(updatedCart);
+    const updatedData = { ...data };
+    updatedData.cart = updatedCart.map((item) => ({
+      id: item.id,
+      Quantity: item.quantity, // match your original cart structure
+    }));
+    setData(updatedData);
+
+    // Update backend
+    fetch(`http://localhost:3000/users/${param}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(updatedData),
+    });
+  };
+  const decreaseQuantityHandle = (productId) => {
+    const updatedCart = cartProducts.map((product) => {
+      if (product.id === productId) {
+        const newQuantity = product.quantity > 1 ? product.quantity - 1 : 1;
+        return { ...product, quantity: newQuantity };
+      }
+      return product;
+    });
+
+    setCartProducts(updatedCart);
+
+    const updatedData = { ...data };
+    updatedData.cart = updatedCart.map((item) => ({
+      id: item.id,
+      Quantity: item.quantity, // match your original cart structure
+    }));
+    setData(updatedData);
+
+    // Update backend
+    fetch(`http://localhost:3000/users/${param}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(updatedData),
+    });
+  };
 
   const removeItem = (productId) => {
     const newCart = cartProducts.filter((item) => item.id !== productId);
     // console.log(cartProducts, newCart);
     setCartProducts(newCart);
 
-    console.log(newCart);
+    // console.log(newCart);
 
     const newData = data;
     const newCartIDS = newData.cart.filter((item) => item.id !== productId);
 
     newData.cart = newCartIDS;
-    console.log(newData);
+    // console.log(newData);
     setData(newData);
     fetch(`http://localhost:3000/users/${param}`, {
       method: "PUT",
@@ -96,12 +147,21 @@ const Cart = () => {
 
                     {/* Actions */}
                     <div className="flex items-center gap-2">
-                      <button className="px-3 py-1 text-sm bg-gray-100 hover:bg-gray-200 rounded transition">
+                      <button
+                        onClick={() => {
+                          decreaseQuantityHandle(product.id);
+                        }}
+                        className="px-3 py-1 text-sm bg-gray-100 hover:bg-gray-200 rounded transition"
+                      >
                         −
                       </button>
-                      <span className="text-sm font-medium"></span>
+                      <span className="text-sm font-medium">
+                        {product.quantity}
+                      </span>
                       <button
-                        onClick={increaseQuantityHandle}
+                        onClick={() => {
+                          increaseQuantityHandle(product.id);
+                        }}
                         className="px-3 py-1 text-sm bg-gray-100 hover:bg-gray-200 rounded transition"
                       >
                         +
