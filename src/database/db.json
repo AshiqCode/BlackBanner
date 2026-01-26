@@ -1,36 +1,6 @@
 {
   "users": [
     {
-      "id": "938b",
-      "Name": "James Moore",
-      "Email": "james.moore@example.com",
-      "Password": "JamesM!23"
-    },
-    {
-      "id": "ae40",
-      "Name": "Harper Jackson",
-      "Email": "harper.jackson@example.com",
-      "Password": "HarperJ2026"
-    },
-    {
-      "id": "5ab3",
-      "Name": "Elijah Martin",
-      "Email": "elijah.martin@example.com",
-      "Password": "ElijahM#456"
-    },
-    {
-      "id": "76c2",
-      "Name": "Evelyn Lee",
-      "Email": "evelyn.lee@example.com",
-      "Password": "EvelynL!789"
-    },
-    {
-      "id": "a83d",
-      "Name": "Alexander Perez",
-      "Email": "alexander.perez@example.com",
-      "Password": "AlexP@2026"
-    },
-    {
       "id": "c0e8",
       "Name": "Sofia White",
       "Email": "sofia.white@example.com",
@@ -167,28 +137,35 @@
       "type": "admin"
     },
     {
-      "id": "f62b",
-      "Name": "c",
-      "Email": "c",
-      "Password": "c"
+      "id": "47d9",
+      "Name": "Totam consectetur q",
+      "Email": "vedygalup@mailinator.com",
+      "Password": "Rem vero ea sequi pa",
+      "type": "admin"
     },
     {
-      "id": "afa4",
-      "Name": "Nihil dolorum duis a",
-      "price": "81",
-      "Description": "Ullam ea quibusdam q",
-      "image": "Rerum iste anim fuga",
-      "Category": "books"
+      "id": "9837",
+      "Name": "Ex elit commodi sae",
+      "Email": "hyxuno@mailinator.com",
+      "Password": "Nihil iusto eu volup",
+      "type": "admin"
+    },
+    {
+      "id": "3434",
+      "Name": "Dolore",
+      "Email": "wupexeg@mailinator.com",
+      "Password": "Dolore itaque tempor",
+      "type": "admin"
     }
   ],
   "products": [
     {
-      "id": "66f9",
       "Name": "Cupiditate est sed ",
       "price": "92",
       "Description": "Praesentium nesciunt",
       "image": "Ab veniam eos ipsam",
-      "Category": "books"
+      "Category": "books",
+      "id": "66f9"
     },
     {
       "id": "7244",

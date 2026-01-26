@@ -11,6 +11,12 @@ const Admins = () => {
   const [Name, setName] = useState("");
   const [Email, setEmail] = useState("");
   const [Password, setPassword] = useState("");
+  const [currentPage, setCurrentPage] = useState(0); // current page index
+  const pageSize = 5; // number of admins per page
+  const startIndex = currentPage * pageSize;
+  const endIndex = startIndex + pageSize;
+  const currentAdmins = adminData.slice(startIndex, endIndex);
+  const totalPages = Math.ceil(adminData.length / pageSize);
 
   const handleAddAdmin = () => {
     const admin = {
@@ -73,50 +79,94 @@ const Admins = () => {
 
         {/* Users Grid */}
         {!Ispending && (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {adminData.map((user) => (
-              <div
-                key={user.id}
-                className="bg-white border border-gray-200 rounded-lg shadow-sm
-                   hover:shadow-md transition-all duration-200"
+          <div className="overflow-x-auto">
+            <table className="min-w-full border border-gray-200 divide-y divide-gray-200">
+              <thead className="bg-gray-50">
+                <tr>
+                  <th
+                    scope="col"
+                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                  >
+                    Name
+                  </th>
+                  <th
+                    scope="col"
+                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                  >
+                    Email
+                  </th>
+                  <th
+                    scope="col"
+                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                  >
+                    Password
+                  </th>
+                </tr>
+              </thead>
+              <tbody className="bg-white divide-y divide-gray-200">
+                {currentAdmins.map((user) => (
+                  <tr
+                    key={user.id}
+                    className="hover:bg-gray-50 transition-colors"
+                  >
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                      {user.Name}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 break-all">
+                      {user.Email}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 tracking-widest">
+                      {user.Password}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            <div className="flex justify-center items-center gap-2 mt-4">
+              {/* Prev button */}
+              <button
+                className={`px-3 py-1 rounded ${
+                  currentPage === 0 ? "bg-gray-300" : "bg-yellow-500 text-white"
+                }`}
+                onClick={() =>
+                  currentPage > 0 && setCurrentPage(currentPage - 1)
+                }
+                disabled={currentPage === 0}
               >
-                <div className="p-6 flex flex-col gap-5">
-                  {/* Header */}
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <h3 className="text-base font-semibold text-gray-900">
-                        {user.Name}
-                      </h3>
-                    </div>
-                  </div>
+                Prev
+              </button>
 
-                  <div className="h-px bg-gray-200" />
+              {/* Page numbers */}
+              {Array.from({ length: totalPages }).map((_, index) => (
+                <button
+                  key={index}
+                  className={`px-3 py-1 rounded ${
+                    currentPage === index
+                      ? "bg-red-500 text-white"
+                      : "bg-gray-700 text-white"
+                  }`}
+                  onClick={() => setCurrentPage(index)}
+                >
+                  {index + 1}
+                </button>
+              ))}
 
-                  {/* Details */}
-                  <div className="space-y-3 text-sm">
-                    <div className="flex flex-col">
-                      <span className="text-xs uppercase tracking-wide text-gray-500">
-                        Email
-                      </span>
-                      <span className="text-gray-800 break-all">
-                        {user.Email}
-                      </span>
-                    </div>
-
-                    <div className="flex flex-col">
-                      <span className="text-xs uppercase tracking-wide text-gray-500">
-                        Password
-                      </span>
-                      <span className="text-gray-800 tracking-widest">
-                        {user.Password}
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* Delete Button */}
-                </div>
-              </div>
-            ))}
+              {/* Next button */}
+              <button
+                className={`px-3 py-1 rounded ${
+                  currentPage === totalPages - 1
+                    ? "bg-gray-300"
+                    : "bg-yellow-500 text-white"
+                }`}
+                onClick={() =>
+                  currentPage < totalPages - 1 &&
+                  setCurrentPage(currentPage + 1)
+                }
+                disabled={currentPage === totalPages - 1}
+              >
+                Next
+              </button>
+            </div>
           </div>
         )}
         {isaddAdmin && (

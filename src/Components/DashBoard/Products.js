@@ -67,7 +67,7 @@ const Products = () => {
         image: image,
         Category: category,
       };
-      console.log(newProduct);
+      // console.log(newProduct);
 
       fetch("http://localhost:3000/products", {
         method: "POST",
@@ -88,7 +88,7 @@ const Products = () => {
   };
 
   const deleteHandle = (id) => {
-    const confirm = window.confirm("delete user");
+    const confirm = window.confirm("delete Product");
     if (confirm) {
       fetch(`http://localhost:3000/products/${id}`, {
         method: "DELETE",
