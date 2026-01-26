@@ -1,19 +1,6 @@
 {
   "users": [
     {
-      "id": "e48f",
-      "Name": "Harper Jackson",
-      "Email": "harperjackson@gmail.com",
-      "Password": "harperjackson123",
-      "type": "admin"
-    },
-    {
-      "id": "9c2b",
-      "Name": "Amelia Taylor",
-      "Email": "amelia.taylor@example.com",
-      "Password": "AmeliaT1!"
-    },
-    {
       "id": "938b",
       "Name": "James Moore",
       "Email": "james.moore@example.com",
@@ -152,52 +139,6 @@
       "Password": "LiamA123!"
     },
     {
-      "id": "ade0",
-      "Name": "Zara Carter",
-      "Email": "zara.carter@example.com",
-      "Password": "ZaraC!2026"
-    },
-    {
-      "id": "91a9",
-      "Name": "Fuga Est aut pariat",
-      "Email": "Necessitatibus vitae",
-      "Password": "Voluptatem ad facere"
-    },
-    {
-      "id": "d8a9",
-      "Name": "Exercitationem odio ",
-      "Email": "Laudantium exercita",
-      "Password": "Delectus consequat"
-    },
-    {
-      "id": "b8c6",
-      "Name": "Illum cum qui non b",
-      "Email": "Voluptate laboris co",
-      "Password": "Aliqua Amet dolore",
-      "type": "admin"
-    },
-    {
-      "id": "bdce",
-      "Name": "Illum cum qui non b",
-      "Email": "Voluptate laboris co",
-      "Password": "Aliqua Amet dolore",
-      "type": "admin"
-    },
-    {
-      "id": "2de0",
-      "Name": "Ex sit consectetur i",
-      "Email": "hoxo@mailinator.com",
-      "Password": "Sed adipisicing anim",
-      "type": "admin"
-    },
-    {
-      "id": "3630",
-      "Name": "Velit rerum aut quae",
-      "Email": "wohoramup@mailinator.com",
-      "Password": "Et officia qui ad et",
-      "type": "admin"
-    },
-    {
       "id": "9588",
       "Name": "Elit qui ",
       "Email": "kutegu@mailinator.com",
@@ -210,32 +151,68 @@
       "Email": "bihon@mailinator.com",
       "Password": "Aut enim mollit null",
       "type": "admin"
+    },
+    {
+      "id": "e512",
+      "Name": "Recusandae Deleniti",
+      "Email": "hyxuno@mailinator.com",
+      "Password": "Itaque nulla aliquid",
+      "type": "admin"
+    },
+    {
+      "id": "6d07",
+      "Name": "a",
+      "Email": "a",
+      "Password": "a",
+      "type": "admin"
+    },
+    {
+      "id": "f62b",
+      "Name": "c",
+      "Email": "c",
+      "Password": "c"
+    },
+    {
+      "id": "afa4",
+      "Name": "Nihil dolorum duis a",
+      "price": "81",
+      "Description": "Ullam ea quibusdam q",
+      "image": "Rerum iste anim fuga",
+      "Category": "books"
     }
   ],
   "products": [
     {
-      "Name": "Wireless Bluetooth Headphone",
-      "price": "55",
-      "Description": "High-quality over-ear headphones with noise cancellation and long battery life.",
-      "image": "https://images.unsplash.com/photo-1610041321327-b794c052db27?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      "Category": "electronics",
-      "id": "1948"
+      "id": "66f9",
+      "Name": "Cupiditate est sed ",
+      "price": "92",
+      "Description": "Praesentium nesciunt",
+      "image": "Ab veniam eos ipsam",
+      "Category": "books"
     },
     {
-      "Name": "art of war",
-      "price": "65",
-      "Description": " The main idea of \"The Art of War\" is, \"He will win who knows when to fight and when not to fight. He will win who knows how to handle both superior and inferior forces.",
-      "image": "https://images.unsplash.com/photo-1541963463532-d68292c34b19?q=80&w=688&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      "Category": "books",
-      "id": "441b"
+      "id": "7244",
+      "Name": "Natus sed officia co",
+      "price": "87",
+      "Description": "Quo nisi nihil fugia",
+      "image": "Sed veritatis in et ",
+      "Category": "books"
     },
     {
-      "Name": "Electronic Devices Pack",
-      "price": "125",
-      "Description": "Radiation Sticker for All Electronic Devices / Sunflower Pattern Anti-radiation Mobile Phone Sticker / Universal Self-adhesive EMR Blocker Patch for Laptop Smartphones\nRatings 1",
-      "image": "https://media.bazaarvoice.com/Shutterstock_1875797686.png",
-      "Category": "electronics",
-      "id": "afa4"
+      "id": "677d",
+      "Name": "Ex non et laudantium",
+      "price": "3",
+      "Description": "Fuga Veritatis dolo",
+      "image": "Esse iste id sunt c",
+      "Category": "fashion"
+    },
+    {
+      "id": "d406",
+      "Name": "Eius eaque quasi rep",
+      "price": "62",
+      "Description": "Quod beatae sit ut e",
+      "image": "Et consectetur proi",
+      "Category": "books"
     }
   ]
 }

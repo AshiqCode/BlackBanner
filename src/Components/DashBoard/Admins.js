@@ -22,10 +22,13 @@ const Admins = () => {
     fetch("http://localhost:3000/users", {
       method: "POST",
       body: JSON.stringify(admin),
-    });
-    setIsaddAdmin(false);
-    toast.success("New Admin Added");
-    setData((prev) => [...prev, admin]);
+    })
+      .then((res) => res.json())
+      .then((json) => {
+        setData((prev) => [...prev, json]);
+        setIsaddAdmin(false);
+        toast.success("New Admin Added");
+      });
   };
 
   useEffect(() => {

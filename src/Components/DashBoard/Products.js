@@ -2,7 +2,7 @@ import { useState } from "react";
 import useFetch from "../../Hooks/usefetch";
 import Loading from "./Loading";
 import { toast } from "react-toastify";
-import AddProduct from "./AddProduct";
+// import AddProduct from "./AddProduct";/
 const Products = () => {
   const [isEdit, setIsEdit] = useState(false);
   const [productName, setProductName] = useState("");
@@ -27,44 +27,95 @@ const Products = () => {
     // console.log(productName);
   };
   const saveEdits = () => {
-    const editedProduct = {
-      Name: productName,
-      price: price,
-      Description: description,
-      image: image,
-      Category: category,
-      id: id,
-    };
+    if (isEdit) {
+      const editedProduct = {
+        Name: productName,
+        price: price,
+        Description: description,
+        image: image,
+        Category: category,
+        id: id,
+      };
 
-    // console.log(id);
-    // console.log(editedProduct.id);
-    fetch(`http://localhost:3000/products/${id}`, {
-      method: "PUT",
-      body: JSON.stringify(editedProduct),
-    });
-    const newArray = data.map((product) => {
-      if (id === product.id) {
-        return editedProduct;
-      } else {
-        return product;
-      }
-    });
-    setData(newArray);
-    setIsEdit(false);
-    toast.success("Product Edited");
-  };
-  const deleteHandle = (id) => {
-    fetch(`http://localhost:3000/products/${id}`, {
-      method: "DELETE",
-    });
-    setData(
-      data.filter((e) => {
-        return e.id !== id;
+      // console.log(id);
+      // console.log(editedProduct.id);
+      fetch(`http://localhost:3000/products/${id}`, {
+        method: "PUT",
+        body: JSON.stringify(editedProduct),
+      });
+      const newArray = data.map((product) => {
+        if (id === product.id) {
+          return editedProduct;
+        } else {
+          return product;
+        }
+      });
+      setData(newArray);
+      setIsEdit(false);
+      toast.success("Product Edited");
+      setProductName("");
+      setPrice("");
+      setDescription("");
+      setImage("");
+      setCategory("");
+      setID("");
+    } else {
+      const newProduct = {
+        Name: productName,
+        price: price,
+        Description: description,
+        image: image,
+        Category: category,
+      };
+      console.log(newProduct);
+
+      fetch("http://localhost:3000/products", {
+        method: "POST",
+        body: JSON.stringify(newProduct),
       })
-    );
-    toast.success("Product Deleted");
-    // console.log(id);
+        .then((res) => res.json())
+        .then((json) => {
+          setData((prev) => [...prev, json]);
+          setProductName("");
+          setPrice("");
+          setDescription("");
+          setImage("");
+          setCategory("");
+          setID("");
+          setIsAddProduct(false);
+        });
+    }
   };
+
+  const deleteHandle = (id) => {
+    const confirm = window.confirm("delete user");
+    if (confirm) {
+      fetch(`http://localhost:3000/products/${id}`, {
+        method: "DELETE",
+      });
+      setData(
+        data.filter((e) => {
+          return e.id !== id;
+        })
+      );
+      toast.success("Product Deleted");
+      // console.log(id);
+    }
+  };
+
+  const cancelHandle = () => {
+    setIsEdit(false);
+    setIsAddProduct(false);
+    setProductName("");
+    setPrice("");
+    setDescription("");
+    setImage("");
+    setCategory("");
+    setID("");
+  };
+
+  // console.log(data);
+
   return (
     <div className="flex-1 p-6">
       {/* Dashboard Content */}
@@ -80,6 +131,7 @@ const Products = () => {
                focus:ring-blue-400 active:scale-95 transition-all duration-200"
             onClick={() => {
               setIsAddProduct(true);
+              // console.log(isAddProduct);
             }}
           >
             Add Product
@@ -87,9 +139,9 @@ const Products = () => {
         </div>
 
         {Ispending && <Loading />}
-        {isAddProduct && (
+        {/* {isAddProduct && (
           <AddProduct setIsAddProduct={setIsAddProduct} setData={setData} />
-        )}
+        )} */}
         {/* Products Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           {data.map((product) => (
@@ -140,14 +192,14 @@ const Products = () => {
 
           {/* Overlay */}
         </div>
-        {isEdit && (
+        {(isEdit || isAddProduct) && (
           <div className="fixed inset-0 bg-black bg-opacity-30 backdrop-blur-sm flex items-center justify-center z-50">
             {/* Form Container */}
             <div className="bg-white w-1/3 max-w-2xl p-8 rounded-xl shadow-lg relative">
               {/* Logo + Title */}
               <div className="flex items-center gap-3 mb-6">
                 <span className="text-xl font-medium text-gray-700">
-                  Edit Product
+                  {isAddProduct ? "Add Produce" : "Edit Product"}
                 </span>
               </div>
 
@@ -233,13 +285,11 @@ const Products = () => {
                     onClick={saveEdits}
                     className="w-32 rounded bg-[#f0c14b] py-2 text-sm font-medium text-black border border-[#a88734] shadow-[inset_0_1px_0_rgba(255,255,255,0.6)] hover:bg-[#eeb933] active:bg-[#e6ac2c] transition-colors"
                   >
-                    Save Edits
+                    {isAddProduct ? "Add" : "Save   Edit"}
                   </button>
 
                   <button
-                    onClick={() => {
-                      setIsEdit(false);
-                    }}
+                    onClick={cancelHandle}
                     className="w-32 rounded bg-[#f0c14b] py-2 text-sm font-medium text-black border border-[#a88734] shadow-[inset_0_1px_0_rgba(255,255,255,0.6)] hover:bg-[#eeb933] active:bg-[#e6ac2c] transition-colors"
                   >
                     Cancel
