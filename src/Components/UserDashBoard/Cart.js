@@ -49,7 +49,6 @@ const Cart = () => {
     // Update backend
     fetch(`http://localhost:3000/users/${param}`, {
       method: "PUT",
-      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(updatedData),
     });
   };
@@ -74,7 +73,6 @@ const Cart = () => {
     // Update backend
     fetch(`http://localhost:3000/users/${param}`, {
       method: "PUT",
-      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(updatedData),
     });
   };

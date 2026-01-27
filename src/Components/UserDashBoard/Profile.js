@@ -39,7 +39,9 @@ const Profile = () => {
       setAddress(data.Address || "");
     }
   }, [data]);
-
+  const cancleHandle = () => {
+    setIsEdit(false);
+  };
   const saveEdits = () => {
     if (Name && Password) {
       var newUser = {
@@ -306,7 +308,7 @@ const Profile = () => {
                   </button>
 
                   <button
-                    onClick={() => setIsEdit(false)}
+                    onClick={cancleHandle}
                     className="w-36 rounded bg-gray-200 py-2 text-sm font-medium hover:bg-gray-300 transition"
                   >
                     Cancel

@@ -1,114 +1,6 @@
 {
   "users": [
     {
-      "id": "c0e8",
-      "Name": "Sofia White",
-      "Email": "sofia.white@example.com",
-      "Password": "SofiaW123"
-    },
-    {
-      "id": "e960",
-      "Name": "Daniel Harris",
-      "Email": "daniel.harris@example.com",
-      "Password": "DanH!2026"
-    },
-    {
-      "id": "0af3",
-      "Name": "Scarlett Sanchez",
-      "Email": "scarlett.sanchez@example.com",
-      "Password": "ScarlettS1!"
-    },
-    {
-      "id": "b847",
-      "Name": "Matthew Clark",
-      "Email": "matthew.clark@example.com",
-      "Password": "MattC#2026"
-    },
-    {
-      "id": "a954",
-      "Name": "Victoria Lewis",
-      "Email": "victoria.lewis@example.com",
-      "Password": "VictoriaL!"
-    },
-    {
-      "id": "4396",
-      "Name": "Joseph Robinson",
-      "Email": "joseph.robinson@example.com",
-      "Password": "JosephR123"
-    },
-    {
-      "id": "3ad4",
-      "Name": "Luna Walker",
-      "Email": "luna.walker@example.com",
-      "Password": "LunaW!456"
-    },
-    {
-      "id": "0526",
-      "Name": "Henry Hall",
-      "Email": "henry.hall@example.com",
-      "Password": "HenryH2026"
-    },
-    {
-      "id": "c0d8",
-      "Name": "Aria Allen",
-      "Email": "aria.allen@example.com",
-      "Password": "AriaA#789"
-    },
-    {
-      "id": "9f90",
-      "Name": "Sebastian Young",
-      "Email": "sebastian.young@example.com",
-      "Password": "SebY!2026"
-    },
-    {
-      "id": "eaaa",
-      "Name": "Chloe King",
-      "Email": "chloe.king@example.com",
-      "Password": "ChloeK123"
-    },
-    {
-      "id": "04bd",
-      "Name": "Jackie Scott",
-      "Email": "jackie.scott@example.com",
-      "Password": "JackieS!1"
-    },
-    {
-      "id": "acae",
-      "Name": "Owen Green",
-      "Email": "owen.green@example.com",
-      "Password": "OwenG#2026"
-    },
-    {
-      "id": "3234",
-      "Name": "Nora Adams",
-      "Email": "nora.adams@example.com",
-      "Password": "NoraA!789"
-    },
-    {
-      "id": "ae82",
-      "Name": "Wyatt Baker",
-      "Email": "wyatt.baker@example.com",
-      "Password": "WyattB2026"
-    },
-    {
-      "id": "e6b0",
-      "Name": "Ella Gonzalez",
-      "Email": "ella.gonzalez@example.com",
-      "Password": "EllaG!123"
-    },
-    {
-      "id": "b09e",
-      "Name": "Zoe Perez",
-      "Email": "zoe.perez@example.com",
-      "Password": "ZoeP!456"
-    },
-    {
-      "id": "4632",
-      "Name": "Liam Allen",
-      "Email": "liam.allen@example.com",
-      "Password": "LiamA123!"
-    },
-    {
       "id": "9588",
       "Name": "Elit qui ",
       "Email": "kutegu@mailinator.com",
@@ -158,25 +50,52 @@
       "type": "admin"
     },
     {
-      "Name": "p",
-      "Email": "p",
-      "Password": "p",
-      "Number": "43",
-      "Province": "Nisi aspernatur magn",
-      "City": "Soluta iusto Nam bla",
-      "Street": "Qui quam et nisi rep",
-      "Address": "Aut voluptas veniam",
-      "cart": [
-        {
-          "id": "c6ed",
-          "Quantity": 7
-        },
-        {
-          "id": "c6ee",
-          "Quantity": 4
-        }
-      ],
-      "id": "f477"
+      "id": "a308",
+      "Name": "Deleniti doloremque ",
+      "Email": "Explicabo Suscipit ",
+      "Password": "Ea provident quas n"
+    },
+    {
+      "id": "ed4b",
+      "Name": "Est sed iste qui ac",
+      "Email": "Ut non minim fugiat ",
+      "Password": "Et occaecat fuga In"
+    },
+    {
+      "id": "a7f1",
+      "Name": "Ut vel illum dicta ",
+      "Email": "Anim voluptas impedi",
+      "Password": "At qui architecto de"
+    },
+    {
+      "id": "2de8",
+      "Name": "Aliqua In harum dol",
+      "Email": "Doloribus ullam atqu",
+      "Password": "Enim in quae ut comm"
+    },
+    {
+      "id": "5388",
+      "Name": "Voluptatum explicabo",
+      "Email": "Voluptatibus similiq",
+      "Password": "Sint eu eum quibusd"
+    },
+    {
+      "id": "ece6",
+      "Name": "Exercitation nulla h",
+      "Email": "Qui omnis quam volup",
+      "Password": "Voluptatum similique"
+    },
+    {
+      "id": "0075",
+      "Name": "Tempor architecto no",
+      "Email": "Culpa cillum ea max",
+      "Password": "Quasi id non optio "
+    },
+    {
+      "id": "3575",
+      "Name": "Natus excepturi duci",
+      "Email": "Sit a doloremque in",
+      "Password": "Officia officia mole"
     }
   ],
   "products": [
