@@ -3,6 +3,7 @@ import useFetch from "../../Hooks/usefetch";
 import Loading from "../DashBoard/Loading";
 import { toast } from "react-toastify";
 import NavBar from "./NavBar";
+import { useEffect, useState } from "react";
 
 const ProductDetails = () => {
   const param = useParams().id;
@@ -10,6 +11,24 @@ const ProductDetails = () => {
   const { data, Ispending } = useFetch(
     `http://localhost:3000/products/${param}`
   );
+
+  const [stockStatus, setStockStatus] = useState("");
+  const [isStock, setIsStock] = useState(false);
+
+  useEffect(() => {
+    if (!data) return;
+
+    if (data.StockQuantity === 0) {
+      setStockStatus("Item is out of stock");
+      setIsStock(true);
+    } else if (data.StockQuantity > 0 && data.StockQuantity <= 3) {
+      setStockStatus(data.StockQuantity + " Items are left");
+    } else {
+      setStockStatus();
+    }
+  }, [data]);
+
+  console.log(stockStatus);
 
   const navigate = useNavigate();
   const AddToCartHandle = () => {
@@ -97,11 +116,26 @@ const ProductDetails = () => {
                 {data.Description}
               </p>
 
+              {/* stockStatus */}
+              {stockStatus && (
+                // <p className="text-green-500  leading-relaxed">{stockStatus}</p>
+                <span className="inline-block w-fit text-xs font-medium bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full">
+                  {stockStatus}
+                </span>
+              )}
+
               {/* Actions */}
               <div className="flex gap-3 mt-6">
                 <button
+                  disabled={isStock}
                   onClick={AddToCartHandle}
-                  className="flex-1 py-3 bg-yellow-500 hover:bg-yellow-400 text-black font-medium rounded-lg transition"
+                  className={`flex-1 py-3 font-medium rounded-lg transition
+      ${
+        isStock
+          ? "bg-gray-300 text-gray-500 cursor-not-allowed"
+          : "bg-yellow-500 hover:bg-yellow-400 text-black"
+      }
+    `}
                 >
                   Add to Cart
                 </button>

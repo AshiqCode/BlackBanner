@@ -2,6 +2,7 @@ import { useState } from "react";
 import useFetch from "../../Hooks/usefetch";
 import Loading from "./Loading";
 import { toast } from "react-toastify";
+import DeletePopUp from "./DeletePopUp";
 // import AddProduct from "./AddProduct";/
 const Products = () => {
   const [isEdit, setIsEdit] = useState(false);
@@ -10,11 +11,26 @@ const Products = () => {
   const [description, setDescription] = useState("");
   const [image, setImage] = useState("");
   const [category, setCategory] = useState("");
+  const [stockQuantity, setStockQuantity] = useState("");
   const [id, setID] = useState("");
   const [isAddProduct, setIsAddProduct] = useState(false);
+  const [isDeletePopUp, setIsDeletePopUp] = useState(false);
+  const [idToDelete, setIdToDelete] = useState("");
+
   const { data, setData, Ispending } = useFetch(
     "http://localhost:3000/products"
   );
+
+  const clearForm = () => {
+    setProductName("");
+    setPrice("");
+    setDescription("");
+    setImage("");
+    setCategory("");
+    setStockQuantity("");
+    setID("");
+  };
+
   const editHandle = (product) => {
     setIsEdit(true);
     setProductName(product.Name);
@@ -22,30 +38,33 @@ const Products = () => {
     setDescription(product.Description);
     setImage(product.image);
     setCategory(product.Category);
+    setStockQuantity(product.StockQuantity);
     setID(product.id);
 
-    // console.log(productName);
+    // console.log(product.Name);
   };
   const saveEdits = () => {
+    let payload = {
+      Name: productName,
+      price: Number(price),
+      Description: description,
+      image: image,
+      Category: category,
+      StockQuantity: Number(stockQuantity),
+    };
+    if (id) {
+      payload = { ...payload, id };
+    }
     if (isEdit) {
-      const editedProduct = {
-        Name: productName,
-        price: price,
-        Description: description,
-        image: image,
-        Category: category,
-        id: id,
-      };
-
       // console.log(id);
       // console.log(editedProduct.id);
       fetch(`http://localhost:3000/products/${id}`, {
         method: "PUT",
-        body: JSON.stringify(editedProduct),
+        body: JSON.stringify(payload),
       });
       const newArray = data.map((product) => {
         if (id === product.id) {
-          return editedProduct;
+          return payload;
         } else {
           return product;
         }
@@ -53,54 +72,35 @@ const Products = () => {
       setData(newArray);
       setIsEdit(false);
       toast.success("Product Edited");
-      setProductName("");
-      setPrice("");
-      setDescription("");
-      setImage("");
-      setCategory("");
-      setID("");
+      clearForm();
     } else {
-      const newProduct = {
-        Name: productName,
-        price: price,
-        Description: description,
-        image: image,
-        Category: category,
-      };
       // console.log(newProduct);
 
       fetch("http://localhost:3000/products", {
         method: "POST",
-        body: JSON.stringify(newProduct),
+        body: JSON.stringify(payload),
       })
         .then((res) => res.json())
         .then((json) => {
           setData((prev) => [...prev, json]);
-          setProductName("");
-          setPrice("");
-          setDescription("");
-          setImage("");
-          setCategory("");
-          setID("");
+          clearForm();
           setIsAddProduct(false);
         });
     }
   };
 
-  const deleteHandle = (id) => {
-    const confirm = window.confirm("delete Product");
-    if (confirm) {
-      fetch(`http://localhost:3000/products/${id}`, {
-        method: "DELETE",
-      });
-      setData(
-        data.filter((e) => {
-          return e.id !== id;
-        })
-      );
-      toast.success("Product Deleted");
-      // console.log(id);
-    }
+  const deleteHandle = () => {
+    fetch(`http://localhost:3000/products/${idToDelete}`, {
+      method: "DELETE",
+    });
+    setData(
+      data.filter((e) => {
+        return e.id !== idToDelete;
+      })
+    );
+    toast.success("Product Deleted");
+    // console.log(id);
+    setIsDeletePopUp(false);
   };
 
   const cancelHandle = () => {
@@ -110,6 +110,7 @@ const Products = () => {
     setPrice("");
     setDescription("");
     setImage("");
+    setStockQuantity("");
     setCategory("");
     setID("");
   };
@@ -162,6 +163,9 @@ const Products = () => {
                   {product.Name}
                 </h3>
                 <p className="text-gray-700 font-medium">${product.price}</p>
+                <p className="text-gray-700 font-medium">
+                  Item In Stock {product.StockQuantity}
+                </p>
                 <p className="text-gray-600 text-sm">{product.Description}</p>
                 <span className="text-yellow-500 font-semibold mt-auto">
                   {product.Category}
@@ -180,7 +184,8 @@ const Products = () => {
                 </button>
                 <button
                   onClick={() => {
-                    deleteHandle(product.id);
+                    setIdToDelete(product.id);
+                    setIsDeletePopUp(true);
                   }}
                   className="flex-1 py-2 px-4 bg-red-500 hover:bg-red-400 text-white rounded shadow transition text-sm"
                 >
@@ -247,6 +252,21 @@ const Products = () => {
                   />
                 </div>
 
+                {/* Stock Quantity */}
+                <div>
+                  <label className="block text-sm font-semibold mb-1 text-gray-700">
+                    Stock Quantity
+                  </label>
+
+                  <input
+                    type="number"
+                    onChange={(e) => setStockQuantity(e.target.value)}
+                    value={stockQuantity}
+                    placeholder="Stock Quantity"
+                    className="w-full rounded border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400"
+                  />
+                </div>
+
                 {/* Description */}
                 <div>
                   <label className="block text-sm font-semibold mb-1 text-gray-700">
@@ -298,6 +318,15 @@ const Products = () => {
               </div>
             </div>
           </div>
+        )}
+
+        {isDeletePopUp && (
+          <DeletePopUp
+            setIsDeletePopUp={setIsDeletePopUp}
+            deletehandle={() => {
+              deleteHandle();
+            }}
+          />
         )}
       </main>
     </div>

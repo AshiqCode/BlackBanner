@@ -26,7 +26,21 @@
       "Name": "a",
       "Email": "a",
       "Password": "a",
-      "type": "admin"
+      "type": "admin",
+      "cart": [
+        {
+          "id": "1bee",
+          "Quantity": 22
+        },
+        {
+          "id": "216c",
+          "Quantity": 1
+        },
+        {
+          "id": "6a8d",
+          "Quantity": 3
+        }
+      ]
     },
     {
       "id": "47d9",
@@ -50,86 +64,126 @@
       "type": "admin"
     },
     {
-      "id": "a308",
-      "Name": "Deleniti doloremque ",
-      "Email": "Explicabo Suscipit ",
-      "Password": "Ea provident quas n"
+      "id": "df58",
+      "Name": "Modi repellendus Am",
+      "Email": "Eveniet deserunt ir",
+      "Password": "Enim cumque sint no"
     },
     {
-      "id": "ed4b",
-      "Name": "Est sed iste qui ac",
-      "Email": "Ut non minim fugiat ",
-      "Password": "Et occaecat fuga In"
+      "id": "b458",
+      "Name": "Labore excepteur et ",
+      "Email": "Aut id ipsum magnam",
+      "Password": "Eos dolore occaecat"
     },
     {
-      "id": "a7f1",
-      "Name": "Ut vel illum dicta ",
-      "Email": "Anim voluptas impedi",
-      "Password": "At qui architecto de"
+      "id": "4f57",
+      "Name": "Soluta ducimus iste",
+      "Email": "Eiusmod tempor qui a",
+      "Password": "Qui cupiditate qui n"
     },
     {
-      "id": "2de8",
-      "Name": "Aliqua In harum dol",
-      "Email": "Doloribus ullam atqu",
-      "Password": "Enim in quae ut comm"
+      "id": "8534",
+      "Name": "Ab ut saepe ut id q",
+      "Email": "Fugit sed accusamus",
+      "Password": "Sit harum explicabo"
     },
     {
-      "id": "5388",
-      "Name": "Voluptatum explicabo",
-      "Email": "Voluptatibus similiq",
-      "Password": "Sint eu eum quibusd"
+      "id": "c8a2",
+      "Name": "z",
+      "Email": "z",
+      "Password": "z"
     },
     {
-      "id": "ece6",
-      "Name": "Exercitation nulla h",
-      "Email": "Qui omnis quam volup",
-      "Password": "Voluptatum similique"
+      "id": "8deb",
+      "Name": "Magni sed fugiat fu",
+      "Email": "Quos dicta ducimus ",
+      "Password": "Consequatur dolores"
     },
     {
-      "id": "0075",
-      "Name": "Tempor architecto no",
-      "Email": "Culpa cillum ea max",
-      "Password": "Quasi id non optio "
+      "id": "87f9",
+      "Name": "Porro in aut dolore ",
+      "Email": "Illum non itaque su",
+      "Password": "Et quasi maxime tota"
     },
     {
-      "id": "3575",
-      "Name": "Natus excepturi duci",
-      "Email": "Sit a doloremque in",
-      "Password": "Officia officia mole"
+      "id": "7f65",
+      "Name": "In anim ipsa vel of",
+      "Email": "Nam laborum Tempore",
+      "Password": "Labore est et ad off"
+    },
+    {
+      "id": "6d0b",
+      "Name": "Facilis inventore al",
+      "Email": "Similique quis rerum",
+      "Password": "Quia dolore nostrum "
+    },
+    {
+      "id": "ef9c",
+      "Name": "Nobis velit volupta",
+      "Email": "Id quo eius laborios",
+      "Password": "Et qui reprehenderit"
+    },
+    {
+      "Name": "q",
+      "Email": "q",
+      "Password": "q",
+      "Number": "91",
+      "Province": "Qui consequatur Ea ",
+      "City": "Dolor asperiores neq",
+      "Street": "Nulla sequi rerum el",
+      "Address": "Pariatur Ea aut qui",
+      "id": "a2b0",
+      "cart": [
+        {
+          "id": "9b59",
+          "Quantity": 3
+        },
+        {
+          "id": "62a2",
+          "Quantity": 1
+        },
+        {
+          "id": "5e14",
+          "Quantity": 2
+        },
+        {
+          "id": "ff38",
+          "Quantity": 2
+        },
+        {
+          "id": "69e9",
+          "Quantity": 3
+        }
+      ]
     }
   ],
   "products": [
     {
-      "Name": "Laptop Pro Max",
-      "price": "1200",
-      "Description": "A powerful laptop built for both work and gaming, featuring a high-resolution display, long-lasting battery, and fast processing speed to handle all your tasks smoothly.",
-      "image": "https://cdn.mos.cms.futurecdn.net/sCTUm3TGXAahNHu7wghtpP.jpg",
-      "Category": "electronics",
-      "id": "c6eb"
+      "Name": "Dolor dicta nostrum ",
+      "price": 70,
+      "Description": "Eiusmod optio eum n",
+      "image": "Adipisci qui laborio",
+      "Category": "books",
+      "StockQuantity": 4,
+      "id": "1bee"
     },
     {
-      "Name": "Wireless Earbuds",
-      "price": "150",
-      "Description": "Premium wireless earbuds with noise-cancelling technology, long battery life, and superior sound quality for music lovers and busy professionals on the go.",
-      "image": "https://static-01.daraz.pk/p/fd53b330045ce5965d625ab0b7c60b2b.jpg",
-      "Category": "electronics",
-      "id": "c6ec"
+      "Name": "Ea aute cillum id au",
+      "price": 32,
+      "Description": "Repellendus Pariatu",
+      "image": "Ut aut rerum aperiam",
+      "Category": "fashion",
+      "StockQuantity": 2,
+      "id": "6a8d"
     },
     {
-      "Name": "Smartwatch X",
-      "price": "200",
-      "Description": "A sleek and modern smartwatch that tracks your fitness, monitors your health, and keeps you connected with notifications, all in one compact device.",
-      "image": "https://st2.depositphotos.com/1017986/10270/i/450/depositphotos_102703000-stock-photo-close-up-of-smart-watch.jpg",
-      "Category": "electronics",
-      "id": "c6ed"
-    },
-    {
-      "Name": "Portable Charger",
-      "price": "40",
-      "Description": "A compact and lightweight portable charger that quickly powers up your devices wherever you are, perfect for travel, work, or daily use.",
-      "image": "https://png.pngtree.com/thumb_back/fh260/background/20260109/pngtree-fully-charged-black-power-bank-placed-on-dark-surface-with-soft-image_21043350.webp",
-      "Category": "electronics",
-      "id": "c6ee"
+      "Name": "Deserunt dolorem max",
+      "price": 60,
+      "Description": "Id reprehenderit exe",
+      "image": "Pariatur A quisquam",
+      "Category": "fashion",
+      "StockQuantity": 67890,
+      "id": "216c"
     }
   ]
 }

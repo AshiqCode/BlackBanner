@@ -1,34 +1,4 @@
-import { useEffect, useState } from "react";
-import useFetch from "../../Hooks/usefetch";
-import { toast } from "react-toastify";
-
-const DeletePopUp = ({
-  setIsDeletePopUp,
-  userId,
-  data,
-  usersData,
-  setUsersData,
-}) => {
-  //   const [usersData, setUsersData] = useState([]);
-
-  //   useEffect(() => {
-  //     const users = data.filter((user) => user.type !== "admin");
-  //     setUsersData(users);
-  //   }, [data]);
-
-  const deletehandle = () => {
-    // console.log(userId);
-    fetch(`http://localhost:3000/users/${userId}`, {
-      method: "DELETE",
-    });
-    setUsersData(
-      usersData.filter((e) => {
-        return e.id !== userId;
-      })
-    );
-    setIsDeletePopUp(false);
-    toast.success("User Deleted successfully");
-  };
+const DeletePopUp = ({ setIsDeletePopUp, deletehandle }) => {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
       <div className="relative w-full max-w-md rounded-lg bg-white p-6 shadow-lg">

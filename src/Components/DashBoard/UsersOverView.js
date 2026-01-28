@@ -8,7 +8,7 @@ const UsersOverView = () => {
   const [usersData, setUsersData] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
   const [isDeletePopUp, setIsDeletePopUp] = useState(false);
-  const [currentUserId, setCurrentUserId] = useState("");
+  const [id, setId] = useState("");
   const pageSize = 5;
   const startIndex = currentPage * pageSize;
   const endIndex = startIndex + pageSize;
@@ -19,20 +19,17 @@ const UsersOverView = () => {
     setUsersData(users);
   }, [data]);
 
-  // const deletehandle = (userId) => {
-  //   const confirm = window.confirm("delete Product");
-  //   if (confirm) {
-  //     // console.log(userId);
-  //     fetch(`http://localhost:3000/users/${userId}`, {
-  //       method: "DELETE",
-  //     });
-  //     setUsersData(
-  //       usersData.filter((e) => {
-  //         return e.id !== userId;
-  //       })
-  //     );
-  //   }
-  // };
+  const deletehandle = () => {
+    fetch(`http://localhost:3000/users/${id}`, {
+      method: "DELETE",
+    });
+    setUsersData(
+      usersData.filter((e) => {
+        return e.id !== id;
+      })
+    );
+    setIsDeletePopUp(false);
+  };
 
   return (
     <div className="flex-1 bg-gray-50 min-h-screen">
@@ -105,10 +102,9 @@ const UsersOverView = () => {
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
                       <button
                         className="flex items-center gap-2 px-3 py-1 text-white bg-red-600 rounded-lg shadow hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-400 active:scale-95 transition-all duration-200"
-                        // onClick={() => deletehandle(user.id)}
                         onClick={() => {
+                          setId(user.id);
                           setIsDeletePopUp(true);
-                          setCurrentUserId(user.id);
                         }}
                       >
                         <svg
@@ -132,17 +128,6 @@ const UsersOverView = () => {
                 ))}
               </tbody>
             </table>
-
-            {isDeletePopUp && (
-              <DeletePopUp
-                setIsDeletePopUp={setIsDeletePopUp}
-                userId={currentUserId}
-                data={data}
-                usersData={usersData}
-                setUsersData={setUsersData}
-              />
-            )}
-
             <div className="flex justify-center items-center gap-2 mt-4">
               {/* Prev button */}
               <button
@@ -193,6 +178,14 @@ const UsersOverView = () => {
               </button>
             </div>
           </div>
+        )}
+        {isDeletePopUp && (
+          <DeletePopUp
+            setIsDeletePopUp={setIsDeletePopUp}
+            deletehandle={() => {
+              deletehandle();
+            }}
+          />
         )}
       </main>
     </div>
