@@ -13,14 +13,14 @@ const ProductDetails = () => {
   );
 
   const [stockStatus, setStockStatus] = useState("");
-  const [isStock, setIsStock] = useState(false);
+  const [isOutOfStock, setIsOutOfStock] = useState(false);
 
   useEffect(() => {
     if (!data) return;
 
     if (data.StockQuantity === 0) {
       setStockStatus("Item is out of stock");
-      setIsStock(true);
+      setIsOutOfStock(true);
     } else if (data.StockQuantity > 0 && data.StockQuantity <= 3) {
       setStockStatus(data.StockQuantity + " Items are left");
     } else {
@@ -127,11 +127,11 @@ const ProductDetails = () => {
               {/* Actions */}
               <div className="flex gap-3 mt-6">
                 <button
-                  disabled={isStock}
+                  disabled={isOutOfStock}
                   onClick={AddToCartHandle}
                   className={`flex-1 py-3 font-medium rounded-lg transition
       ${
-        isStock
+        isOutOfStock
           ? "bg-gray-300 text-gray-500 cursor-not-allowed"
           : "bg-yellow-500 hover:bg-yellow-400 text-black"
       }

@@ -13,6 +13,8 @@ const Cart = () => {
   );
   const cart = data.cart;
 
+  console.log(cart);
+
   useEffect(() => {
     if (cart && cartProducts.length === 0) {
       cart.map((product) => {
@@ -34,7 +36,9 @@ const Cart = () => {
     // console.log(productId);
     const updatedCart = cartProducts.map((product) => {
       if (product.id === productId) {
-        return { ...product, quantity: product.quantity + 1 };
+        if (product.StockQuantity !== product.quantity) {
+          return { ...product, quantity: product.quantity + 1 };
+        }
       }
       return product;
     });

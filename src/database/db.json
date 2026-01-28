@@ -26,21 +26,7 @@
       "Name": "a",
       "Email": "a",
       "Password": "a",
-      "type": "admin",
-      "cart": [
-        {
-          "id": "1bee",
-          "Quantity": 22
-        },
-        {
-          "id": "216c",
-          "Quantity": 1
-        },
-        {
-          "id": "6a8d",
-          "Quantity": 3
-        }
-      ]
+      "type": "admin"
     },
     {
       "id": "47d9",
@@ -135,23 +121,11 @@
       "id": "a2b0",
       "cart": [
         {
-          "id": "9b59",
+          "id": "6a8d",
           "Quantity": 3
         },
         {
-          "id": "62a2",
-          "Quantity": 1
-        },
-        {
-          "id": "5e14",
-          "Quantity": 2
-        },
-        {
-          "id": "ff38",
-          "Quantity": 2
-        },
-        {
-          "id": "69e9",
+          "id": "1bee",
           "Quantity": 3
         }
       ]
@@ -173,7 +147,7 @@
       "Description": "Repellendus Pariatu",
       "image": "Ut aut rerum aperiam",
       "Category": "fashion",
-      "StockQuantity": 2,
+      "StockQuantity": 3,
       "id": "6a8d"
     },
     {
@@ -182,7 +156,7 @@
       "Description": "Id reprehenderit exe",
       "image": "Pariatur A quisquam",
       "Category": "fashion",
-      "StockQuantity": 67890,
+      "StockQuantity": 0,
       "id": "216c"
     }
   ]

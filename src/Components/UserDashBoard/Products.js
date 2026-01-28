@@ -138,6 +138,15 @@ const Products = () => {
                       <p className="text-yellow-600 font-semibold text-lg">
                         ${product.price}
                       </p>
+
+                      <span className="inline-block w-fit text-xs font-medium text-red-600 px-3 py-1 rounded-full">
+                        {product.StockQuantity === 0
+                          ? "Item is out of stock"
+                          : product.StockQuantity > 0 &&
+                            product.StockQuantity <= 3
+                          ? `${product.StockQuantity} item are left`
+                          : null}
+                      </span>
                     </div>
 
                     {/* Actions */}
