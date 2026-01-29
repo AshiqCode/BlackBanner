@@ -139,6 +139,34 @@
           "Quantity": 1
         }
       ]
+    },
+    {
+      "id": "8203",
+      "Name": "Molestiae qui ut odi",
+      "Email": "nuboceze@mailinato",
+      "Password": "Doloremque impedit ",
+      "type": "admin"
+    },
+    {
+      "id": "aa86",
+      "Name": "Sit et alias proide",
+      "Email": "tagakuri",
+      "Password": "Ad sunt quam ut dolo",
+      "type": "admin"
+    },
+    {
+      "id": "8957",
+      "Name": "Sit et alias proide",
+      "Email": "tagakuri",
+      "Password": "Ad sunt quam ut dolo",
+      "type": "admin"
+    },
+    {
+      "id": "683d",
+      "Name": "Sit et alias proide",
+      "Email": "tagakuri",
+      "Password": "Ad sunt quam ut dolo",
+      "type": "admin"
     }
   ],
   "products": [
