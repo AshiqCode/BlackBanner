@@ -28,7 +28,9 @@ const ProductDetails = () => {
     }
   }, [data]);
 
-  console.log(stockStatus);
+  // console.log(stockStatus);
+  // console.log(data);
+  // if (data.StockQuantity === item.Quantity)
 
   const navigate = useNavigate();
   const AddToCartHandle = () => {
@@ -40,6 +42,13 @@ const ProductDetails = () => {
           if (user.cart) {
             const item = user.cart.find((cart) => param === cart.id);
             if (item) {
+              if (item.Quantity >= data.StockQuantity) {
+                toast.warning(
+                  `You can't place more than ${data.StockQuantity} items.`
+                );
+                return;
+              }
+
               mergedObj = {
                 ...user,
                 cart: user.cart.map((cart) =>
@@ -65,8 +74,8 @@ const ProductDetails = () => {
             method: "PUT",
             body: JSON.stringify(mergedObj),
           });
+          toast.success("Product Added successfully");
         });
-      toast.success("Product Added successfully");
     } else {
       toast.warning("Your cart awaits, just log in!");
       navigate("/login");

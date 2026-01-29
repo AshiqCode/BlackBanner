@@ -3,9 +3,11 @@ import useFetch from "../../Hooks/usefetch";
 import Loading from "../DashBoard/Loading";
 import { useEffect, useState } from "react";
 import NavBar from "./NavBar";
+import { toast } from "react-toastify";
 
 const Cart = () => {
   const [cartProducts, setCartProducts] = useState([]);
+  // const [isProceed, setIsProceed] = useState(true);
 
   const param = useParams().user;
   const { data, setData, Ispending } = useFetch(
@@ -13,7 +15,7 @@ const Cart = () => {
   );
   const cart = data.cart;
 
-  console.log(cart);
+  // console.log(cart);
 
   useEffect(() => {
     if (cart && cartProducts.length === 0) {
@@ -36,8 +38,12 @@ const Cart = () => {
     // console.log(productId);
     const updatedCart = cartProducts.map((product) => {
       if (product.id === productId) {
-        if (product.StockQuantity !== product.quantity) {
+        if (product.StockQuantity > product.quantity) {
           return { ...product, quantity: product.quantity + 1 };
+        } else {
+          toast.warning(
+            `You can't place more than  ${product.StockQuantity}  items`
+          );
         }
       }
       return product;
@@ -98,6 +104,63 @@ const Cart = () => {
       method: "PUT",
       body: JSON.stringify(newData),
     });
+  };
+
+  const placeOrder = () => {
+    console.log("Order Placed");
+  };
+  var stockIssue = true;
+  const handleValidation = () => {
+    return new Promise((resolve, reject) => {
+      if (!cart || cart.length === 0) {
+        resolve(true); // nothing to validate
+        return;
+      }
+
+      let stockIssue = true;
+
+      // Create an array of fetch promises
+      const fetchPromises = cart.map((product) =>
+        fetch(`http://localhost:3000/products/${product.id}`)
+          .then((res) => res.json())
+          .then((json) => {
+            const item = { ...json, quantity: product.Quantity };
+            if (item.quantity > item.StockQuantity) {
+              if (item.StockQuantity === 0) {
+                toast.warning(`Item ${item.Name} is out of stock`);
+              } else {
+                toast.warning(
+                  `Available quantity of ${item.Name} is ${item.StockQuantity}`
+                );
+              }
+              stockIssue = false;
+            }
+          })
+          .catch((err) => {
+            console.error(`Error fetching product ${product.id}:`, err);
+            stockIssue = false;
+          })
+      );
+
+      // Wait for all fetches to complete
+      Promise.all(fetchPromises)
+        .then(() => resolve(stockIssue))
+        .catch((err) => reject(err));
+    });
+  };
+
+  const checkOutHandle = () => {
+    handleValidation().then(() => {
+      if (!stockIssue) {
+        console.log("proceed");
+      }
+    });
+
+    // console.log(cartProducts);
+    // let proceed = true;
+    // cartProducts.map((item) => {
+    //   console.log(item.quantity, "quantity", item.StockQuantity, "stock");
+    // });
   };
 
   // useEffect(() => {}, []);
@@ -182,6 +245,14 @@ const Cart = () => {
               </div>
             );
           })}
+          <div>
+            <button
+              onClick={checkOutHandle}
+              className="flex-1 py-3 px-8 mt-8 font-medium rounded-lg transition bg-yellow-500 hover:bg-yellow-400 text-black"
+            >
+              Check Out
+            </button>
+          </div>
         </main>
       )}
 
