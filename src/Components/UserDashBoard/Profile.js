@@ -419,7 +419,7 @@ const Profile = () => {
         </main>
       )}
       {/* Footer */}
-      <footer className="mt-auto pb-6 text-center text-xs text-gray-600 border-t bg-white">
+      <footer className="mt-auto pb-6 text-center text-xs text-gray-600 ">
         <div className="flex justify-center gap-4 mb-2">
           <span className="text-blue-700 hover:underline cursor-pointer">
             Conditions of Use
