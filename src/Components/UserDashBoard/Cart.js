@@ -109,17 +109,16 @@ const Cart = () => {
   const placeOrder = () => {
     console.log("Order Placed");
   };
-  var stockIssue = true;
+  // var stockIssue = true;
   const handleValidation = () => {
     return new Promise((resolve, reject) => {
+      let stockIssue = true;
+
       if (!cart || cart.length === 0) {
-        resolve(true); // nothing to validate
+        resolve(true);
         return;
       }
 
-      let stockIssue = true;
-
-      // Create an array of fetch promises
       const fetchPromises = cart.map((product) =>
         fetch(`http://localhost:3000/products/${product.id}`)
           .then((res) => res.json())
@@ -136,31 +135,25 @@ const Cart = () => {
               stockIssue = false;
             }
           })
-          .catch((err) => {
-            console.error(`Error fetching product ${product.id}:`, err);
+          .catch(() => {
             stockIssue = false;
           })
       );
 
-      // Wait for all fetches to complete
       Promise.all(fetchPromises)
         .then(() => resolve(stockIssue))
-        .catch((err) => reject(err));
+        .catch(reject);
     });
   };
 
   const checkOutHandle = () => {
-    handleValidation().then(() => {
-      if (!stockIssue) {
-        console.log("proceed");
+    handleValidation().then((isValid) => {
+      if (isValid) {
+        placeOrder();
+      } else {
+        console.log("err");
       }
     });
-
-    // console.log(cartProducts);
-    // let proceed = true;
-    // cartProducts.map((item) => {
-    //   console.log(item.quantity, "quantity", item.StockQuantity, "stock");
-    // });
   };
 
   // useEffect(() => {}, []);

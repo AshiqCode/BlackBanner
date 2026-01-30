@@ -122,13 +122,27 @@
       "id": "f49f",
       "Name": "q",
       "Email": "q",
-      "Password": "q"
+      "Password": "q",
+      "cart": [
+        {
+          "id": "216c",
+          "Quantity": 1
+        },
+        {
+          "id": "1bee",
+          "Quantity": 1
+        }
+      ]
     },
     {
-      "id": "1882",
       "Name": "w",
       "Email": "w",
       "Password": "w",
+      "Number": "23",
+      "Province": "Culpa dignissimos l",
+      "City": "Et eum deleniti quia",
+      "Street": "Eveniet voluptatum ",
+      "Address": "Dolor commodo debiti",
       "cart": [
         {
           "id": "6a8d",
@@ -136,9 +150,10 @@
         },
         {
           "id": "216c",
-          "Quantity": 1
+          "Quantity": 6
         }
-      ]
+      ],
+      "id": "1882"
     },
     {
       "id": "8203",
@@ -176,7 +191,7 @@
       "Description": "Eiusmod optio eum n",
       "image": "https://img.freepik.com/free-vector/girl-choosing-…ams-lotions-taking-shampoo-bottle_74855-10674.jpg",
       "Category": "books",
-      "StockQuantity": 0,
+      "StockQuantity": 1,
       "id": "1bee"
     },
     {
@@ -185,7 +200,7 @@
       "Description": "Repellendus Pariatu",
       "image": "https://img.freepik.com/free-photo/flat-lay-natura…tion_23-2148990019.jpg?semt=ais_hybrid&w=740&q=80",
       "Category": "fashion",
-      "StockQuantity": 10,
+      "StockQuantity": 0,
       "id": "6a8d"
     },
     {
@@ -194,7 +209,7 @@
       "Description": "Id reprehenderit exe",
       "image": "https://www.dermalogica.com/cdn/shop/files/Site_HSAFSA_MobileHomepageBanner_V4_850x600_b9c7ab4d-fe50-4f59-a541-ec84bc4a91dd.jpg?v=1767101514&width=550",
       "Category": "fashion",
-      "StockQuantity": 6,
+      "StockQuantity": 8,
       "id": "216c"
     }
   ]
