@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import useFetch from "../../Hooks/usefetch";
 import Loading from "../DashBoard/Loading";
 import { useEffect, useState } from "react";
@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 
 const Cart = () => {
   const [cartProducts, setCartProducts] = useState([]);
+  const navigate = useNavigate();
   // const [isProceed, setIsProceed] = useState(true);
 
   const param = useParams().user;
@@ -108,6 +109,7 @@ const Cart = () => {
 
   const placeOrder = () => {
     console.log("Order Placed");
+    navigate("/CheckOut");
   };
   // var stockIssue = true;
   const handleValidation = () => {
