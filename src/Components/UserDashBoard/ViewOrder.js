@@ -1,7 +1,9 @@
-import React from "react";
+import useFetch from "../../Hooks/usefetch";
 import NavBar from "./NavBar";
-
 const ViewOrders = () => {
+  const { data } = useFetch("http://localhost:3000/orders");
+  console.log(data);
+
   return (
     <div className="min-h-screen bg-gray-50 text-gray-900 flex flex-col">
       {/* Navbar */}
