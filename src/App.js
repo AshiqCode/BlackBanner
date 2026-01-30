@@ -8,6 +8,7 @@ import ProductDetails from "./Components/UserDashBoard/ProductDetails";
 import Profile from "./Components/UserDashBoard/Profile";
 import Cart from "./Components/UserDashBoard/Cart";
 import Checkout from "./Components/UserDashBoard/CheckOut";
+import ViewOrders from "./Components/UserDashBoard/ViewOrder";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/Profile/:user" element={<Profile />} />
         <Route path="/Cart/:user" element={<Cart />} />
         <Route path="/CheckOut" element={<Checkout />} />
+        <Route path="/ViewOrder" element={<ViewOrders />} />
       </Routes>
     </BrowserRouter>
   );

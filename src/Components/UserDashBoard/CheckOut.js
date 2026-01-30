@@ -88,6 +88,7 @@ const Checkout = () => {
       method: "PUT",
       body: JSON.stringify(user),
     });
+    navigate("/ViewOrder");
   };
 
   // var stockIssue = true;

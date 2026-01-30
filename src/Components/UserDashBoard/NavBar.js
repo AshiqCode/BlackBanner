@@ -27,6 +27,15 @@ const NavBar = () => {
           </Link>
         )}
 
+        {user && (
+          <Link
+            to={`/ViewOrder`}
+            className="flex items-center justify-center h-10 px-4 rounded-md text-gray-900 hover:bg-gray-100 hover:text-yellow-500 transition-colors"
+          >
+            View Orders
+          </Link>
+        )}
+
         {/* Profile / Login */}
         <Link
           to={user ? `/Profile/${user}` : "/Login"}
@@ -46,7 +55,7 @@ const NavBar = () => {
             }}
             className="flex items-center justify-center h-10 px-4 rounded-md text-gray-900 hover:bg-gray-100 hover:text-yellow-500 transition-colors"
           >
-            {user ? "Logout" : "ab"}
+            {user ? "Logout" : ""}
           </Link>
         )}
       </nav>
