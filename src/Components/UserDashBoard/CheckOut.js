@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useId, useState } from "react";
 import useFetch from "../../Hooks/usefetch";
 import Loading from "../DashBoard/Loading";
 import NavBar from "./NavBar";
@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 const Checkout = () => {
   const [cartProducts, setCartProducts] = useState([]);
+  const [orderedProducts, setOrderedProducts] = useState([]);
   const navigate = useNavigate();
   const userId = localStorage.getItem("user");
   //   console.log(userId);
@@ -26,33 +27,69 @@ const Checkout = () => {
 
   useEffect(() => {
     if (cart && cartProducts.length === 0) {
-      cart.map((product) => {
+      cart.forEach((product) => {
         fetch(`http://localhost:3000/products/${product.id}`)
           .then((res) => res.json())
           .then((json) => {
             setCartProducts((prev) => [
               ...prev,
-              { ...json, quantity: product.Quantity },
+              { ...json, quantity: product.quantity },
+            ]);
+            setOrderedProducts((prev) => [
+              ...prev,
+              { id: product.id, quantity: product.Quantity },
             ]);
           });
       });
     }
   }, [cart]);
-  //   console.log(cartProducts);
+
+  //   console.log(cartProducts, "cartproducts");
 
   const subTotal = cartProducts.reduce(
-    (total, product) => total + product.price,
+    (sum, product) => sum + product.price,
     0
   );
-  const shipping = cartProducts.length * 4;
-  const tax = cartProducts.length * 2;
 
-  const totalPrice = subTotal + shipping + tax;
+  const shipping = cartProducts.length * 4;
+  const totalPrice = subTotal + shipping + cartProducts.length * 2;
+
+  const orderData = {
+    products: orderedProducts,
+    subtotal: subTotal,
+    shipping: shipping,
+    total: totalPrice,
+    deliveryAddress: userProvince + userCity + userStreet + userAddress,
+
+    userId: userId,
+  };
 
   const placeOrder = () => {
     console.log("Order Placed");
-    console.log("tested");
+    console.log(orderData);
+
+    fetch("http://localhost:3000/orders", {
+      method: "POST",
+      body: JSON.stringify(orderData),
+    });
+    const user = {
+      Name: data.Name,
+      Email: data.Email,
+      Password: data.Password,
+      Number: data.Number,
+      Province: data.Province,
+      City: data.City,
+      Street: data.Street,
+      Address: data.Address,
+    };
+    console.log(user);
+
+    fetch(`http://localhost:3000/users/${userId}`, {
+      method: "PUT",
+      body: JSON.stringify(user),
+    });
   };
+
   // var stockIssue = true;
   const handleValidation = () => {
     return new Promise((resolve, reject) => {
@@ -68,6 +105,8 @@ const Checkout = () => {
           .then((res) => res.json())
           .then((json) => {
             const item = { ...json, quantity: product.Quantity };
+            // console.log(item);
+
             if (item.quantity > item.StockQuantity) {
               if (item.StockQuantity === 0) {
                 toast.warning(`Item ${item.Name} is out of stock`);
@@ -179,10 +218,6 @@ const Checkout = () => {
                 <div className="flex justify-between">
                   <span>Shipping</span>
                   <span>{shipping} $</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>Tax</span>
-                  <span>{tax} $</span>
                 </div>
 
                 <hr className="my-4" />
