@@ -74,7 +74,7 @@ const Cart = () => {
     const updatedData = { ...data };
     updatedData.cart = updatedCart.map((item) => ({
       id: item.id,
-      Quantity: item.quantity, // match your original cart structure
+      Quantity: item.quantity,
     }));
     setData(updatedData);
 
@@ -154,8 +154,6 @@ const Cart = () => {
       }
     });
   };
-
-  // useEffect(() => {}, []);
 
   return (
     <div className="min-h-screen bg-gray-50 text-gray-900 flex flex-col">
