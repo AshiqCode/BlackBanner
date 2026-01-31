@@ -26,7 +26,6 @@ const NavBar = () => {
             <span className="text-lg">🛒</span>
           </Link>
         )}
-
         {user && (
           <Link
             to={`/ViewOrder`}
@@ -35,15 +34,12 @@ const NavBar = () => {
             View Orders
           </Link>
         )}
-
-        {/* Profile / Login */}
         <Link
           to={user ? `/Profile/${user}` : "/Login"}
           className="flex items-center justify-center h-10 px-4 rounded-md text-gray-900 hover:bg-gray-100 hover:text-yellow-500 transition-colors"
         >
           {user ? "Profile" : "Login"}
         </Link>
-
         {isUser && user && (
           <Link
             to={"/"}
