@@ -78,7 +78,6 @@ const ViewOrders = () => {
                           ➜
                         </span>
 
-                        {/* glow effect */}
                         <span className="absolute inset-0  opacity-0 group-hover:opacity-100 transition" />
                       </button>
                     </td>
