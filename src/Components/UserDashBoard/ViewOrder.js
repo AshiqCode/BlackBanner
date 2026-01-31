@@ -17,10 +17,7 @@ const ViewOrders = () => {
 
   return (
     <div className="min-h-screen bg-gray-50 text-gray-900 flex flex-col">
-      {/* Navbar */}
       <NavBar />
-
-      {/* Main Content */}
       <main className="flex-1  mx-auto w-full px-4 sm:px-6 py-12">
         <h2 className="text-3xl font-bold mb-8 text-gray-900">My Orders</h2>
 
@@ -89,7 +86,6 @@ const ViewOrders = () => {
         </div>
       </main>
 
-      {/* Footer */}
       <footer className="mt-auto pb-6 text-center text-xs text-gray-600 bg-gray-50">
         <div className="flex justify-center gap-4 mb-2">
           <span className="text-blue-700 hover:underline cursor-pointer">

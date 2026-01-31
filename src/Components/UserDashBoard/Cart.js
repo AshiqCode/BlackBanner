@@ -16,8 +16,6 @@ const Cart = () => {
   );
   const cart = data.cart;
 
-  // console.log(cart);
-
   useEffect(() => {
     if (cart && cartProducts.length === 0) {
       cart.map((product) => {
@@ -32,7 +30,6 @@ const Cart = () => {
       });
     }
   }, [cart]);
-  // console.log(cartProducts, "Products");
   // console.log(data.cart, "Quanity");
 
   const increaseQuantityHandle = (productId) => {
