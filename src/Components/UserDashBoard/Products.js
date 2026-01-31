@@ -122,14 +122,12 @@ const Products = () => {
                   className="bg-white rounded-xl shadow-md border border-gray-200 hover:shadow-lg transition-all flex flex-col"
                 >
                   <Link to={`/ProductDetails/${product.id}`}>
-                    {/* Image */}
                     <img
                       src={product.image}
                       alt={product.Name}
                       className="w-full h-48 object-cover rounded-t-xl"
                     />
 
-                    {/* Content */}
                     <div className="p-4 flex flex-col gap-2 flex-1">
                       <h3 className="text-lg font-semibold text-gray-900">
                         {product.Name}
