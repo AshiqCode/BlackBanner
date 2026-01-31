@@ -95,7 +95,6 @@ const ProductDetails = () => {
       <main className="flex justify-center items-start capitalize  px-4 bg-gray-50">
         {!Ispending && (
           <div className="max-w-5xl mt-12 w-full bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden grid grid-cols-1 md:grid-cols-2 gap-8 p-6">
-            {/* Product Image */}
             <div className="w-full h-96 relative rounded-xl overflow-hidden shadow-md">
               <img
                 src={data.image}
@@ -104,35 +103,27 @@ const ProductDetails = () => {
               />
             </div>
 
-            {/* Product Info */}
             <div className="flex flex-col gap-4">
-              {/* Title */}
               <h1 className="text-2xl md:text-3xl font-semibold  text-gray-900">
                 {data.Name}
               </h1>
 
-              {/* Category */}
               <span className="inline-block w-fit text-xs font-medium bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full">
                 {data.Category}
               </span>
 
-              {/* Price */}
               <p className="text-2xl font-bold text-gray-900">${data.price}</p>
 
-              {/* Description */}
               <p className="text-gray-600 leading-relaxed">
                 {data.Description}
               </p>
 
-              {/* stockStatus */}
               {stockStatus && (
-                // <p className="text-green-500  leading-relaxed">{stockStatus}</p>
                 <span className="inline-block w-fit text-xs font-medium bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full">
                   {stockStatus}
                 </span>
               )}
 
-              {/* Actions */}
               <div className="flex gap-3 mt-6">
                 <button
                   disabled={isOutOfStock}
