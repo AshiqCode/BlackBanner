@@ -1,19 +1,21 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import useFetch from "../../Hooks/usefetch";
 import NavBar from "./NavBar";
+import OrderDetails from "./OrderDetails";
 const ViewOrders = () => {
   const user = localStorage.getItem("user");
-  const [product, setProduct] = useState([]);
+  const [productId, setProductId] = useState("");
   const { data } = useFetch("http://localhost:3000/orders");
+  const [isPopUp, setIsPopUp] = useState(false);
   const orders = data.filter((item) => item.userId === user);
-  console.log(orders);
+  // console.log(orders);
 
-  orders.map((item) => {
-    console.log();
-    item.products.map((product) => {
-      console.log(product.id);
-    });
-  });
+  const handleViewDetails = (productId) => {
+    // console.log(productId);
+    setIsPopUp(true);
+    setProductId(productId);
+  };
+  // console.log(productId);
 
   return (
     <div className="min-h-screen bg-gray-50 text-gray-900 flex flex-col">
@@ -40,7 +42,7 @@ const ViewOrders = () => {
               </thead>
 
               <tbody className="bg-white divide-y divide-gray-100">
-                {orders.map((product) => (
+                {orders.map((product, index) => (
                   <tr
                     key={product.id}
                     className="group  hover:bg-gradient-to-r hover:from-indigo-50/40 hover:to-transparent transition-all"
@@ -65,7 +67,10 @@ const ViewOrders = () => {
 
                     <td className="px-6 py-5 text-right">
                       <button
-                        // onClick={() => handleViewDetails(product.id)}
+                        onClick={
+                          () => handleViewDetails(product.products)
+                          // console.log(product.id)
+                        }
                         className="relative inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium
                        text-indigo-600 bg-indigo-50 hover:bg-indigo-600 hover:text-white
                        transition-all duration-300 overflow-hidden"
@@ -86,6 +91,13 @@ const ViewOrders = () => {
         </div>
       </main>
 
+      {isPopUp && (
+        <OrderDetails
+          productId={productId}
+          setIsPopUp={setIsPopUp}
+          orders={orders}
+        />
+      )}
       <footer className="mt-auto pb-6 text-center text-xs text-gray-600 bg-gray-50">
         <div className="flex justify-center gap-4 mb-2">
           <span className="text-blue-700 hover:underline cursor-pointer">
