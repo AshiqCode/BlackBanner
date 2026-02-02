@@ -5,6 +5,14 @@ const ViewOrders = () => {
   const { data, setData, Ispending } = useFetch("http://localhost:3000/orders");
   const [orderedProducts, setOrderedProducts] = useState([]);
   const [status, setStatus] = useState("");
+  // console.log(data);
+
+  // fetch(`http://localhost:3000/users/${product.userId}`)
+  //           .then((res) => res.json())
+  //           .then((user) => {
+  //             console.log(user);
+
+  //           });
 
   useEffect(() => {
     data.map((product) => {
@@ -20,7 +28,6 @@ const ViewOrders = () => {
       });
     });
   }, [data]);
-  console.log(data);
 
   const statusHandle = (statusvaluse, orderId) => {
     console.log(statusvaluse, orderId);
@@ -36,6 +43,8 @@ const ViewOrders = () => {
         );
       });
   };
+
+  console.log(data);
 
   return (
     <div className="flex-1 p-4 bg-gray-100 min-h-screen">
@@ -56,7 +65,7 @@ const ViewOrders = () => {
                   Order #{order.id}
                 </h2>
                 <span className="text-sm text-gray-500 mt-1 sm:mt-0">
-                  User ID: {order.userId}
+                  {/* User ID: {order.user.Name} */}
                 </span>
               </div>
 
