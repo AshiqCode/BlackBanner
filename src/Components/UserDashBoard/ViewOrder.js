@@ -72,7 +72,7 @@ const ViewOrders = () => {
                               text: "text-blue-800",
                               dot: "bg-blue-500",
                             },
-                            completed: {
+                            delivered: {
                               bg: "bg-green-100",
                               text: "text-green-800",
                               dot: "bg-green-500",

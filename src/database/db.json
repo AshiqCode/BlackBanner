@@ -263,7 +263,7 @@
       "subtotal": 92,
       "shipping": 8,
       "total": 104,
-      "status": "panding",
+      "status": "pending",
       "deliveryAddress": "Vitae provident cilIn pariatur ConsequTotam facere voluptaRepellendus Mollit ",
       "userId": "f4c5"
     },
@@ -301,7 +301,7 @@
       "subtotal": 92,
       "shipping": 8,
       "total": 104,
-      "status": "completed",
+      "status": "delivered",
       "deliveryAddress": "Iusto eaque enim adiPariatur Ullam perfEum vel quasi cum quIste fugiat beatae v",
       "userId": "c712"
     },
@@ -316,11 +316,10 @@
       "subtotal": 60,
       "shipping": 4,
       "total": 66,
-      "status": "completed",
+      "status": "delivered",
       "deliveryAddress": "Vitae provident cilIn pariatur ConsequTotam facere voluptaRepellendus Mollit ",
       "userId": "f4c5"
     },
-  
     {
       "id": "65c6",
       "products": [
@@ -333,7 +332,7 @@
       "shipping": 4,
       "total": 66,
       "deliveryAddress": "Qui qui atque totam Sit magni debitis sAutem quam dicta impHic maxime nostrum r",
-      "status": "panding",
+      "status": "shipped",
       "userId": "a150"
     }
   ]
