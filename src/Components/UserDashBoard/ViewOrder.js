@@ -23,72 +23,120 @@ const ViewOrders = () => {
       <main className="flex-1  mx-auto w-full px-4 sm:px-6 py-12">
         <h2 className="text-3xl font-bold mb-8 text-gray-900">My Orders</h2>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
-          {/* Left Section: Orders Table */}
-          <div className="lg:col-span-2 bg-white rounded-2xl shadow border border-gray-200 overflow-x-auto">
-            <table className="min-w-full divide-y divide-gray-200">
-              <thead className="bg-gray-100">
-                <tr>
-                  <th className="px-6 py-3 text-left text-sm font-semibold text-gray-700 uppercase">
-                    # Order ID
-                  </th>
-                  <th className="px-6 py-3 text-left text-sm font-semibold text-gray-700 uppercase">
-                    Status
-                  </th>
-                  <th className="px-6 py-3 text-right text-sm font-semibold text-gray-700 uppercase">
-                    Action
-                  </th>
-                </tr>
-              </thead>
+        {orders.length !== 0 && (
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
+            {/* Left Section: Orders Table */}
+            <div className="lg:col-span-2 bg-white rounded-2xl shadow border border-gray-200 overflow-x-auto">
+              <table className="min-w-full divide-y divide-gray-200">
+                <thead className="bg-gray-100">
+                  <tr>
+                    <th className="px-6 py-3 text-left text-sm font-semibold text-gray-700 uppercase">
+                      # Order ID
+                    </th>
+                    <th className="px-6 py-3 text-left text-sm font-semibold text-gray-700 uppercase">
+                      Status
+                    </th>
+                    <th className="px-6 py-3 text-right text-sm font-semibold text-gray-700 uppercase">
+                      Action
+                    </th>
+                  </tr>
+                </thead>
 
-              <tbody className="bg-white divide-y divide-gray-100">
-                {orders.map((product, index) => (
-                  <tr
-                    key={product.id}
-                    className="group  hover:bg-gradient-to-r hover:from-indigo-50/40 hover:to-transparent transition-all"
-                  >
-                    <td className="px-6 py-5">
-                      <div className="flex flex-col">
-                        <span className="text-sm font-semibold text-gray-900">
-                          Order #{product.id}
-                        </span>
-                        <span className="text-xs text-gray-400">
-                          Tap to inspect details
-                        </span>
-                      </div>
-                    </td>
+                <tbody className="bg-white divide-y divide-gray-100">
+                  {orders.map((product, index) => (
+                    <tr
+                      key={product.id}
+                      className="group  hover:bg-gradient-to-r hover:from-indigo-50/40 hover:to-transparent transition-all"
+                    >
+                      <td className="px-6 py-5">
+                        <div className="flex flex-col">
+                          <span className="text-sm font-semibold text-gray-900">
+                            Order #{product.id}
+                          </span>
+                          <span className="text-xs text-gray-400">
+                            Tap to inspect details
+                          </span>
+                        </div>
+                      </td>
 
-                    <td className="px-6 py-5">
-                      <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold bg-amber-100 text-amber-800">
-                        <span className="w-2 h-2 rounded-full bg-amber-500 animate-pulse" />
-                        Pending
-                      </span>
-                    </td>
+                      <td className="px-6 py-5">
+                        {(() => {
+                          const statusStyles = {
+                            pending: {
+                              bg: "bg-amber-100",
+                              text: "text-amber-800",
+                              dot: "bg-amber-500",
+                            },
+                            shipped: {
+                              bg: "bg-blue-100",
+                              text: "text-blue-800",
+                              dot: "bg-blue-500",
+                            },
+                            completed: {
+                              bg: "bg-green-100",
+                              text: "text-green-800",
+                              dot: "bg-green-500",
+                            },
+                          };
 
-                    <td className="px-6 py-5 text-right">
-                      <button
-                        onClick={
-                          () => handleViewDetails(product.products)
-                          // console.log(product.id)
-                        }
-                        className="relative inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium
+                          const style = statusStyles[product.status] || {
+                            bg: "bg-gray-100",
+                            text: "text-gray-800",
+                            dot: "bg-gray-500",
+                          };
+
+                          return (
+                            <span
+                              className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold ${style.bg} ${style.text}`}
+                            >
+                              <span
+                                className={`w-2 h-2 rounded-full animate-pulse ${style.dot}`}
+                              />
+                              {product.status}
+                            </span>
+                          );
+                        })()}
+                      </td>
+
+                      <td className="px-6 py-5 text-right">
+                        <button
+                          onClick={
+                            () => handleViewDetails(product.products)
+                            // console.log(product.id)
+                          }
+                          className="relative inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium
                        text-indigo-600 bg-indigo-50 hover:bg-indigo-600 hover:text-white
                        transition-all duration-300 overflow-hidden"
-                      >
-                        <span className="z-10">Details</span>
-                        <span className="z-10 transform group-hover:translate-x-1 transition">
-                          ➜
-                        </span>
+                        >
+                          <span className="z-10">Details</span>
+                          <span className="z-10 transform group-hover:translate-x-1 transition">
+                            ➜
+                          </span>
 
-                        <span className="absolute inset-0  opacity-0 group-hover:opacity-100 transition" />
-                      </button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+                          <span className="absolute inset-0  opacity-0 group-hover:opacity-100 transition" />
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
-        </div>
+        )}
+        {orders.length === 0 && (
+          <div className="flex flex-col items-center justify-center py-20">
+            <h2 className="text-2xl font-semibold mb-4">No Orders Yet</h2>
+            <p className="text-gray-500 mb-6">
+              You haven't placed any orders so far.
+            </p>
+            <a
+              href="/"
+              className="px-6 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition"
+            >
+              Start Shopping
+            </a>
+          </div>
+        )}
       </main>
 
       {isPopUp && (

@@ -236,12 +236,30 @@ const Cart = () => {
             );
           })}
           <div>
-            <button
-              onClick={checkOutHandle}
-              className="flex-1 py-3 px-8 mt-8 font-medium rounded-lg transition bg-yellow-500 hover:bg-yellow-400 text-black"
-            >
-              Check Out
-            </button>
+            {cartProducts.length !== 0 && (
+              <button
+                onClick={checkOutHandle}
+                className="flex-1 py-3 px-8 mt-8 font-medium rounded-lg transition bg-yellow-500 hover:bg-yellow-400 text-black"
+              >
+                Check Out
+              </button>
+            )}
+            {cartProducts.length === 0 && (
+              <div className="flex flex-col items-center justify-center py-20">
+                <h2 className="text-2xl font-semibold mb-4">
+                  Your cart is empty
+                </h2>
+                <p className="text-gray-500 mb-6">
+                  Looks like you haven't added any items yet.
+                </p>
+                <a
+                  href="/" // replace with your shop page route
+                  className="px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition"
+                >
+                  Continue Shopping
+                </a>
+              </div>
+            )}
           </div>
         </main>
       )}

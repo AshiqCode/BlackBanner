@@ -60,7 +60,7 @@ const Checkout = () => {
     shipping: shipping,
     total: totalPrice,
     deliveryAddress: userProvince + userCity + userStreet + userAddress,
-
+    status: "panding",
     userId: userId,
   };
 
