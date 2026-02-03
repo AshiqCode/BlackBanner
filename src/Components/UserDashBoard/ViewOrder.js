@@ -5,7 +5,7 @@ import OrderDetails from "./OrderDetails";
 const ViewOrders = () => {
   const user = localStorage.getItem("user");
   const [productId, setProductId] = useState("");
-  const { data } = useFetch("http://localhost:3000/orders");
+  const { data, setData } = useFetch("http://localhost:3000/orders");
   const [isPopUp, setIsPopUp] = useState(false);
   const orders = data.filter((item) => item.userId === user);
   // console.log(orders);
@@ -16,6 +16,21 @@ const ViewOrders = () => {
     setProductId(productId);
   };
   // console.log(productId);
+
+  const statusHandle = (orderId) => {
+    fetch(`http://localhost:3000/orders/${orderId}`, {
+      method: "PATCH",
+      body: JSON.stringify({ status: "You canceled order" }),
+    })
+      .then((res) => res.json())
+      .then((json) => {
+        setData((prev) =>
+          prev.map((item) =>
+            item.id === json.id ? { ...json, user: item.user } : item
+          )
+        );
+      });
+  };
 
   return (
     <div className="min-h-screen bg-gray-50 text-gray-900 flex flex-col">
@@ -115,6 +130,9 @@ const ViewOrders = () => {
                         {(product.status === "confirmed" ||
                           product.status === "pending") && (
                           <button
+                            onClick={() => {
+                              statusHandle(product.id);
+                            }}
                             className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium
                           text-red-600 bg-red-50 hover:bg-red-600 hover:text-white
                           transition-all duration-300"

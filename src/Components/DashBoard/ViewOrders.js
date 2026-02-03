@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import useFetch from "../../Hooks/usefetch";
+import { toast } from "react-toastify";
 
 const ViewOrders = () => {
   // const { data, setData, Ispending } = useFetch("http://localhost:3000/orders");
@@ -112,14 +113,24 @@ const ViewOrders = () => {
                 </label>
                 <select
                   value={order.status}
-                  onChange={(e) => statusHandle(e.target.value, order.id)}
+                  onClick={() => {
+                    if (order.status === "You canceled order") {
+                      toast.warning(
+                        "User canceled order. Status cannot be changed!"
+                      );
+                    }
+                  }}
+                  onChange={(e) => {
+                    if (order.status === "You canceled order") return; // prevent changing
+                    statusHandle(e.target.value, order.id);
+                  }}
                   className="border border-gray-300 rounded-md px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                 >
                   <option value="pending">Pending</option>
-                  <option value="confirmed">Confirmed </option>
+                  <option value="confirmed">Confirmed</option>
                   <option value="shipped">Shipped</option>
                   <option value="delivered">Delivered</option>
-                  <option value="canceled">Canceled</option>
+                  <option value="Admin canceled order">Canceled</option>
                 </select>
               </div>
 

@@ -269,7 +269,7 @@
       "subtotal": 92,
       "shipping": 8,
       "total": 104,
-      "status": "confirmed ",
+      "status": "confirmed",
       "deliveryAddress": "Vitae provident cilIn pariatur ConsequTotam facere voluptaRepellendus Mollit ",
       "userId": "f4c5"
     },
@@ -338,7 +338,7 @@
       "shipping": 4,
       "total": 66,
       "deliveryAddress": "Qui qui atque totam Sit magni debitis sAutem quam dicta impHic maxime nostrum r",
-      "status": "pending",
+      "status": "You canceled order",
       "userId": "a150"
     },
     {
@@ -353,7 +353,7 @@
       "shipping": 4,
       "total": 38,
       "deliveryAddress": "Labore aut delectusExplicabo VoluptateMinus aliquip enim vQuo voluptate labore",
-      "status": "panding",
+      "status": "pending",
       "userId": "f49f"
     },
     {
