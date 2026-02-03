@@ -20,7 +20,7 @@ const ViewOrders = () => {
   const statusHandle = (orderId) => {
     fetch(`http://localhost:3000/orders/${orderId}`, {
       method: "PATCH",
-      body: JSON.stringify({ status: "You canceled order" }),
+      body: JSON.stringify({ status: "canceled" }),
     })
       .then((res) => res.json())
       .then((json) => {

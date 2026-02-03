@@ -113,24 +113,18 @@ const ViewOrders = () => {
                 </label>
                 <select
                   value={order.status}
-                  onClick={() => {
-                    if (order.status === "You canceled order") {
-                      toast.warning(
-                        "User canceled order. Status cannot be changed!"
-                      );
-                    }
-                  }}
                   onChange={(e) => {
-                    if (order.status === "You canceled order") return; // prevent changing
+                    if (order.status === "canceled") return;
                     statusHandle(e.target.value, order.id);
                   }}
-                  className="border border-gray-300 rounded-md px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  disabled={order.status === "canceled"}
+                  className="border border-gray-300 rounded-md px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-gray-100 disabled:cursor-not-allowed"
                 >
                   <option value="pending">Pending</option>
+                  <option value="canceled">Canceled</option>
                   <option value="confirmed">Confirmed</option>
                   <option value="shipped">Shipped</option>
                   <option value="delivered">Delivered</option>
-                  <option value="Admin canceled order">Canceled</option>
                 </select>
               </div>
 
