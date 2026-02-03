@@ -98,23 +98,30 @@ const ViewOrders = () => {
                         })()}
                       </td>
 
-                      <td className="px-6 py-5 text-right">
+                      <td className="px-6 py-5 text-right flex gap-2 justify-end">
+                        {/* Details Button */}
                         <button
-                          onClick={
-                            () => handleViewDetails(product.products)
-                            // console.log(product.id)
-                          }
+                          onClick={() => handleViewDetails(product.products)}
                           className="relative inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium
-                       text-indigo-600 bg-indigo-50 hover:bg-indigo-600 hover:text-white
-                       transition-all duration-300 overflow-hidden"
+               text-indigo-600 bg-indigo-50 hover:bg-indigo-600 hover:text-white
+               transition-all duration-300 overflow-hidden"
                         >
                           <span className="z-10">Details</span>
                           <span className="z-10 transform group-hover:translate-x-1 transition">
                             ➜
                           </span>
-
-                          <span className="absolute inset-0  opacity-0 group-hover:opacity-100 transition" />
+                          <span className="absolute inset-0 opacity-0 group-hover:opacity-100 transition" />
                         </button>
+                        {(product.status === "confirmed" ||
+                          product.status === "pending") && (
+                          <button
+                            className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium
+                          text-red-600 bg-red-50 hover:bg-red-600 hover:text-white
+                          transition-all duration-300"
+                          >
+                            Cancel
+                          </button>
+                        )}
                       </td>
                     </tr>
                   ))}
