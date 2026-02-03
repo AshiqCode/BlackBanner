@@ -56,46 +56,16 @@
       "type": "admin"
     },
     {
-      "id": "df58",
-      "Name": "Modi repellendus Am",
-      "Email": "Eveniet deserunt ir",
-      "Password": "Enim cumque sint no"
-    },
-    {
-      "id": "b458",
-      "Name": "Labore excepteur et ",
-      "Email": "Aut id ipsum magnam",
-      "Password": "Eos dolore occaecat"
-    },
-    {
       "id": "4f57",
       "Name": "Soluta ducimus iste",
       "Email": "Eiusmod tempor qui a",
       "Password": "Qui cupiditate qui n"
     },
     {
-      "id": "8534",
-      "Name": "Ab ut saepe ut id q",
-      "Email": "Fugit sed accusamus",
-      "Password": "Sit harum explicabo"
-    },
-    {
       "id": "c8a2",
       "Name": "z",
       "Email": "z",
       "Password": "z"
-    },
-    {
-      "id": "8deb",
-      "Name": "Magni sed fugiat fu",
-      "Email": "Quos dicta ducimus ",
-      "Password": "Consequatur dolores"
-    },
-    {
-      "id": "87f9",
-      "Name": "Porro in aut dolore ",
-      "Email": "Illum non itaque su",
-      "Password": "Et quasi maxime tota"
     },
     {
       "id": "7f65",
@@ -110,21 +80,6 @@
       "Password": "Quia dolore nostrum "
     },
     {
-      "id": "ef9c",
-      "Name": "Nobis velit volupta",
-      "Email": "Id quo eius laborios",
-      "Password": "Et qui reprehenderit"
-    },
-    {
-      "id": "a2b0",
-      "cart": [
-        {
-          "id": "6a8d",
-          "Quantity": 1
-        }
-      ]
-    },
-    {
       "Name": "q",
       "Email": "q",
       "Password": "q",
@@ -134,27 +89,6 @@
       "Street": "Minus aliquip enim v",
       "Address": "Quo voluptate labore",
       "id": "f49f"
-    },
-    {
-      "Name": "w",
-      "Email": "w",
-      "Password": "w",
-      "Number": "23",
-      "Province": "Culpa dignissimos l",
-      "City": "Et eum deleniti quia",
-      "Street": "Eveniet voluptatum ",
-      "Address": "Dolor commodo debiti",
-      "cart": [
-        {
-          "id": "6a8d",
-          "Quantity": 1
-        },
-        {
-          "id": "216c",
-          "Quantity": 6
-        }
-      ],
-      "id": "1882"
     },
     {
       "id": "8203",
@@ -183,62 +117,6 @@
       "Email": "tagakuri",
       "Password": "Ad sunt quam ut dolo",
       "type": "admin"
-    },
-    {
-      "Name": "n",
-      "Email": "n",
-      "Password": "n",
-      "Number": "13",
-      "Province": "Vitae provident cil",
-      "City": "In pariatur Consequ",
-      "Street": "Totam facere volupta",
-      "Address": "Repellendus Mollit ",
-      "id": "f4c5",
-      "cart": []
-    },
-    {
-      "Name": "m",
-      "Email": "m",
-      "Password": "m",
-      "Number": "44",
-      "Province": "Iusto eaque enim adi",
-      "City": "Pariatur Ullam perf",
-      "Street": "Eum vel quasi cum qu",
-      "Address": "Iste fugiat beatae v",
-      "id": "c712"
-    },
-    {
-      "Name": "p",
-      "Email": "p",
-      "Password": "p",
-      "Number": "20",
-      "Province": "Qui qui atque totam ",
-      "City": "Sit magni debitis s",
-      "Street": "Autem quam dicta imp",
-      "Address": "Hic maxime nostrum r",
-      "id": "a150"
-    },
-    {
-      "Name": "o",
-      "Email": "o",
-      "Password": "o",
-      "Number": "41",
-      "Province": "Id fuga Vitae inven",
-      "City": "Tempora magnam ad ne",
-      "Street": "Iste dolor distincti",
-      "Address": "Ut non voluptatem o",
-      "id": "d301"
-    },
-    {
-      "Name": "i",
-      "Email": "i",
-      "Password": "i",
-      "Number": "67",
-      "Province": "Minim veniam amet ",
-      "City": "Velit est a ut magn",
-      "Street": "Sed laborum velit ve",
-      "Address": "Est labore unde aut ",
-      "id": "e412"
     }
   ],
   "products": [
@@ -281,204 +159,27 @@
   ],
   "orders": [
     {
-      "id": "1e47",
-      "products": [
-        {
-          "id": "6a8d",
-          "quantity": 5
-        },
-        {
-          "id": "216c",
-          "quantity": 3
-        }
-      ],
-      "subtotal": 92,
-      "shipping": 8,
-      "total": 104,
-      "status": "canceled",
-      "deliveryAddress": "Vitae provident cilIn pariatur ConsequTotam facere voluptaRepellendus Mollit ",
-      "userId": "f4c5"
-    },
-    {
-      "id": "5505",
-      "products": [
-        {
-          "id": "6a8d",
-          "quantity": 3
-        },
-        {
-          "id": "216c",
-          "quantity": 1
-        }
-      ],
-      "subtotal": 92,
-      "shipping": 8,
-      "total": 104,
-      "status": "delivered",
-      "deliveryAddress": "Vitae provident cilIn pariatur ConsequTotam facere voluptaRepellendus Mollit ",
-      "userId": "f4c5"
-    },
-    {
-      "id": "a1e2",
+      "id": "afa9",
       "products": [
         {
           "id": "6a8d",
           "quantity": 1
         },
-        {
-          "id": "216c",
-          "quantity": 2
-        }
-      ],
-      "subtotal": 92,
-      "shipping": 8,
-      "total": 104,
-      "status": "delivered",
-      "deliveryAddress": "Iusto eaque enim adiPariatur Ullam perfEum vel quasi cum quIste fugiat beatae v",
-      "userId": "c712"
-    },
-    {
-      "id": "cf3e",
-      "products": [
-        {
-          "id": "216c",
-          "quantity": 8
-        }
-      ],
-      "subtotal": 60,
-      "shipping": 4,
-      "total": 66,
-      "status": "delivered",
-      "deliveryAddress": "Vitae provident cilIn pariatur ConsequTotam facere voluptaRepellendus Mollit ",
-      "userId": "f4c5"
-    },
-    {
-      "id": "65c6",
-      "products": [
-        {
-          "id": "216c",
-          "quantity": 1
-        }
-      ],
-      "subtotal": 60,
-      "shipping": 4,
-      "total": 66,
-      "deliveryAddress": "Qui qui atque totam Sit magni debitis sAutem quam dicta impHic maxime nostrum r",
-      "status": "canceled",
-      "userId": "a150"
-    },
-    {
-      "id": "4c10",
-      "products": [
-        {
-          "id": "6a8d",
-          "quantity": 1
-        }
-      ],
-      "subtotal": 32,
-      "shipping": 4,
-      "total": 38,
-      "deliveryAddress": "Labore aut delectusExplicabo VoluptateMinus aliquip enim vQuo voluptate labore",
-      "status": "canceled",
-      "userId": "f49f"
-    },
-    {
-      "id": "8f30",
-      "products": [
-        {
-          "id": "216c",
-          "quantity": 1
-        }
-      ],
-      "subtotal": 60,
-      "shipping": 4,
-      "total": 66,
-      "deliveryAddress": "Labore aut delectusExplicabo VoluptateMinus aliquip enim vQuo voluptate labore",
-      "status": "delivered",
-      "userId": "f49f"
-    },
-    {
-      "id": "f164",
-      "products": [
-        {
-          "id": "216c",
-          "quantity": 6
-        }
-      ],
-      "subtotal": 60,
-      "shipping": 4,
-      "total": 66,
-      "deliveryAddress": "Labore aut delectusExplicabo VoluptateMinus aliquip enim vQuo voluptate labore",
-      "status": "delivered",
-      "userId": "f49f"
-    },
-    {
-      "id": "e74e",
-      "products": [
-        {
-          "id": "6a8d",
-          "quantity": 1
-        }
-      ],
-      "subtotal": 32,
-      "shipping": 4,
-      "total": 38,
-      "deliveryAddress": "Id fuga Vitae invenTempora magnam ad neIste dolor distinctiUt non voluptatem o",
-      "status": "delivered",
-      "userId": "d301"
-    },
-    {
-      "id": "a9fd",
-      "products": [
-        {
-          "id": "6a8d",
-          "quantity": 3
-        },
-        {
-          "id": "216c",
-          "quantity": 2
-        }
-      ],
-      "subtotal": 92,
-      "shipping": 8,
-      "total": 104,
-      "deliveryAddress": "Id fuga Vitae invenTempora magnam ad neIste dolor distinctiUt non voluptatem o",
-      "status": "delivered",
-      "userId": "d301"
-    },
-    {
-      "id": "9cde",
-      "products": [
-        {
-          "id": "6a8d",
-          "quantity": 5
-        }
-      ],
-      "subtotal": 32,
-      "shipping": 4,
-      "total": 38,
-      "deliveryAddress": "Minim veniam amet Velit est a ut magnSed laborum velit veEst labore unde aut ",
-      "status": "delivered",
-      "userId": "e412"
-    },
-    {
-      "id": "ccff",
-      "products": [
         {
           "id": "2c27",
-          "quantity": 4
+          "quantity": 1
         },
         {
-          "id": "6a8d",
-          "quantity": 4
+          "id": "216c",
+          "quantity": 1
         }
       ],
-      "subtotal": 125,
-      "shipping": 8,
-      "total": 137,
-      "deliveryAddress": "Qui qui atque totam Sit magni debitis sAutem quam dicta impHic maxime nostrum r",
-      "status": "panding",
-      "userId": "a150"
+      "subtotal": 185,
+      "shipping": 12,
+      "total": 203,
+      "deliveryAddress": "Labore aut delectusExplicabo VoluptateMinus aliquip enim vQuo voluptate labore",
+      "status": "delivered",
+      "userId": "f49f"
     }
   ]
 }
