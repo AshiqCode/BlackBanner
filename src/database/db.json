@@ -269,7 +269,7 @@
       "subtotal": 92,
       "shipping": 8,
       "total": 104,
-      "status": "pending",
+      "status": "canceled",
       "deliveryAddress": "Vitae provident cilIn pariatur ConsequTotam facere voluptaRepellendus Mollit ",
       "userId": "f4c5"
     },
@@ -288,7 +288,7 @@
       "subtotal": 92,
       "shipping": 8,
       "total": 104,
-      "status": "shipped",
+      "status": "delivered",
       "deliveryAddress": "Vitae provident cilIn pariatur ConsequTotam facere voluptaRepellendus Mollit ",
       "userId": "f4c5"
     },
@@ -322,7 +322,7 @@
       "subtotal": 60,
       "shipping": 4,
       "total": 66,
-      "status": "pending",
+      "status": "delivered",
       "deliveryAddress": "Vitae provident cilIn pariatur ConsequTotam facere voluptaRepellendus Mollit ",
       "userId": "f4c5"
     },
@@ -353,7 +353,7 @@
       "shipping": 4,
       "total": 38,
       "deliveryAddress": "Labore aut delectusExplicabo VoluptateMinus aliquip enim vQuo voluptate labore",
-      "status": "pending",
+      "status": "canceled",
       "userId": "f49f"
     },
     {
@@ -368,7 +368,7 @@
       "shipping": 4,
       "total": 66,
       "deliveryAddress": "Labore aut delectusExplicabo VoluptateMinus aliquip enim vQuo voluptate labore",
-      "status": "panding",
+      "status": "delivered",
       "userId": "f49f"
     },
     {
@@ -383,7 +383,7 @@
       "shipping": 4,
       "total": 66,
       "deliveryAddress": "Labore aut delectusExplicabo VoluptateMinus aliquip enim vQuo voluptate labore",
-      "status": "panding",
+      "status": "delivered",
       "userId": "f49f"
     },
     {
@@ -398,7 +398,7 @@
       "shipping": 4,
       "total": 38,
       "deliveryAddress": "Id fuga Vitae invenTempora magnam ad neIste dolor distinctiUt non voluptatem o",
-      "status": "shipped",
+      "status": "delivered",
       "userId": "d301"
     },
     {
@@ -417,7 +417,7 @@
       "shipping": 8,
       "total": 104,
       "deliveryAddress": "Id fuga Vitae invenTempora magnam ad neIste dolor distinctiUt non voluptatem o",
-      "status": "panding",
+      "status": "confirmed",
       "userId": "d301"
     }
   ]

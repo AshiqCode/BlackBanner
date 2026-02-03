@@ -8,6 +8,13 @@ const ViewOrders = () => {
   const [orderedProducts, setOrderedProducts] = useState([]);
   const [status, setStatus] = useState("");
   const [data, setData] = useState([]);
+  const statusOptions = [
+    "pending",
+    "canceled",
+    "confirmed",
+    "shipped",
+    "delivered",
+  ];
   // console.log(data);
   useEffect(() => {
     const fetchOrdersWithUsers = async () => {
@@ -24,7 +31,7 @@ const ViewOrders = () => {
 
             return {
               ...order,
-              user, // attach user data here
+              user,
             };
           })
         );
@@ -111,20 +118,26 @@ const ViewOrders = () => {
                 <label className="text-gray-700 font-medium">
                   Change Status:
                 </label>
+
                 <select
                   value={order.status}
                   onChange={(e) => {
-                    if (order.status === "canceled") return;
                     statusHandle(e.target.value, order.id);
                   }}
                   disabled={order.status === "canceled"}
                   className="border border-gray-300 rounded-md px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-gray-100 disabled:cursor-not-allowed"
                 >
-                  <option value="pending">Pending</option>
-                  <option value="canceled">Canceled</option>
-                  <option value="confirmed">Confirmed</option>
-                  <option value="shipped">Shipped</option>
-                  <option value="delivered">Delivered</option>
+                  {statusOptions
+                    .filter((status) => {
+                      const currentIndex = statusOptions.indexOf(order.status);
+                      const optionIndex = statusOptions.indexOf(status);
+                      return optionIndex >= currentIndex;
+                    })
+                    .map((status) => (
+                      <option key={status} value={status}>
+                        {status.slice(0)}
+                      </option>
+                    ))}
                 </select>
               </div>
 
