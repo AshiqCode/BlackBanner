@@ -2,17 +2,40 @@ import { useEffect, useState } from "react";
 import useFetch from "../../Hooks/usefetch";
 
 const ViewOrders = () => {
-  const { data, setData, Ispending } = useFetch("http://localhost:3000/orders");
+  // const { data, setData, Ispending } = useFetch("http://localhost:3000/orders");
+
   const [orderedProducts, setOrderedProducts] = useState([]);
   const [status, setStatus] = useState("");
+  const [data, setData] = useState([]);
   // console.log(data);
+  useEffect(() => {
+    const fetchOrdersWithUsers = async () => {
+      try {
+        const res = await fetch("http://localhost:3000/orders");
+        const orders = await res.json();
 
-  // fetch(`http://localhost:3000/users/${product.userId}`)
-  //           .then((res) => res.json())
-  //           .then((user) => {
-  //             console.log(user);
+        const ordersWithUsers = await Promise.all(
+          orders.map(async (order) => {
+            const userRes = await fetch(
+              `http://localhost:3000/users/${order.userId}`
+            );
+            const user = await userRes.json();
 
-  //           });
+            return {
+              ...order,
+              user, // attach user data here
+            };
+          })
+        );
+
+        setData(ordersWithUsers);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchOrdersWithUsers();
+  }, []);
 
   useEffect(() => {
     data.map((product) => {
@@ -39,7 +62,9 @@ const ViewOrders = () => {
       .then((res) => res.json())
       .then((json) => {
         setData((prev) =>
-          prev.map((item) => (item.id === json.id ? json : item))
+          prev.map((item) =>
+            item.id === json.id ? { ...json, user: item.user } : item
+          )
         );
       });
   };
@@ -47,62 +72,62 @@ const ViewOrders = () => {
   console.log(data);
 
   return (
-    <div className="flex-1 p-4 bg-gray-100 min-h-screen">
+    <div className="flex-1 p-6 bg-gray-50 min-h-screen">
       <main className="flex-1 max-w-7xl mx-auto">
-        <h1 className="text-2xl md:text-3xl font-bold mb-6 text-gray-800">
-          Orders
-        </h1>
+        <h1 className="text-3xl font-bold mb-8 text-gray-900">Orders</h1>
 
-        <div className="space-y-5">
+        <div className="space-y-6">
           {data.map((order) => (
             <div
               key={order.id}
-              className="bg-white shadow rounded-lg p-5 hover:shadow-lg transition-shadow duration-200"
+              className="bg-white shadow-md rounded-xl p-6 hover:shadow-lg transition-shadow duration-300"
             >
               {/* Order Header */}
-              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-3">
-                <h2 className="text-lg font-semibold text-gray-700">
+              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-4 gap-2 sm:gap-0">
+                <h2 className="text-lg font-semibold text-gray-800">
                   Order #{order.id}
                 </h2>
-                <span className="text-sm text-gray-500 mt-1 sm:mt-0">
-                  {/* User ID: {order.user.Name} */}
-                </span>
+                <div className="flex flex-col sm:flex-row sm:space-x-4 text-gray-500 text-sm">
+                  <span>User: {order.user.Name}</span>
+                  <span>Email: {order.user.Email}</span>
+                  <span>Number: {order.user.Number}</span>
+                </div>
               </div>
 
               {/* Order Info */}
-              <div className="flex flex-col sm:flex-row sm:justify-between mb-4 text-sm text-gray-600">
+              <div className="flex flex-col sm:flex-row sm:justify-between mb-5 text-gray-600 text-sm">
                 <p>
                   <span className="font-semibold">Total:</span> ${order.total}
                 </p>
                 <p className="mt-1 sm:mt-0">
-                  <span className="font-semibold">Delivery:</span>
+                  <span className="font-semibold">Delivery:</span>{" "}
                   {order.deliveryAddress}
                 </p>
               </div>
 
-              {/* Buttons & Dropdown */}
-              <div className="flex items-center justify-between mb-4 flex-wrap gap-2">
-                <div className="flex gap-2">
-                  <p>Change Order Status</p>
-                  <select
-                    value={order.status}
-                    onChange={(e) => {
-                      statusHandle(e.target.value, order.id);
-                    }}
-                    className="border border-gray-300 rounded px-2 py-1 text-sm focus:outline-none focus:ring-1 focus:ring-blue-500"
-                  >
-                    <option value="pending">Pending</option>
-                    <option value="shipped">Shipped</option>
-                    <option value="delivered">Delivered</option>
-                  </select>
-                </div>
+              {/* Status Dropdown */}
+              <div className="flex items-center gap-3 mb-5 flex-wrap">
+                <label className="text-gray-700 font-medium">
+                  Change Status:
+                </label>
+                <select
+                  value={order.status}
+                  onChange={(e) => statusHandle(e.target.value, order.id)}
+                  className="border border-gray-300 rounded-md px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                >
+                  <option value="pending">Pending</option>
+                  <option value="shipped">Shipped</option>
+                  <option value="delivered">Delivered</option>
+
+                  <option value="canceled">Canceled</option>
+                </select>
               </div>
 
               {/* Products Grid */}
-              <h3 className="text-md font-semibold mb-2 text-gray-700">
+              <h3 className="text-md font-semibold mb-3 text-gray-800">
                 Products:
               </h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                 {order.products.map((item) => {
                   const productDetails = orderedProducts.find(
                     (p) => p.id === item.id
@@ -110,7 +135,7 @@ const ViewOrders = () => {
                   return productDetails ? (
                     <div
                       key={item.id}
-                      className="flex items-center bg-gray-50 rounded-md p-2 shadow-sm hover:shadow-md transition-shadow duration-150"
+                      className="flex items-center bg-gray-50 rounded-lg p-3 shadow-sm hover:shadow-md transition-shadow duration-200"
                     >
                       <img
                         src={productDetails.image}
