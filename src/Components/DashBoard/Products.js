@@ -3,6 +3,8 @@ import useFetch from "../../Hooks/usefetch";
 import Loading from "./Loading";
 import { toast } from "react-toastify";
 import DeletePopUp from "./DeletePopUp";
+import Navbar from "./Navbar";
+import Sidebar from "./Sidebar";
 // import AddProduct from "./AddProduct";/
 const Products = () => {
   const [isEdit, setIsEdit] = useState(false);
@@ -118,217 +120,224 @@ const Products = () => {
   // console.log(data);
 
   return (
-    <div className="flex-1 p-6">
-      {/* Dashboard Content */}
-      <main className="flex-1 p-6 bg-gray-50 min-h-screen">
-        <div className="mb-6 flex items-center justify-between">
-          {/* Title */}
-          <h2 className="text-2xl font-bold text-gray-900">Products</h2>
+    <div className="h-screen flex flex-col bg-gray-50">
+      {/* Navbar */}
+      <header className="h-16 bg-white shadow sticky top-0 z-50">
+        <Navbar />
+      </header>
 
-          {/* Add Product Button */}
-          <button
-            className="px-4 py-2 text-sm font-semibold text-white bg-blue-600 rounded-lg
-               shadow hover:bg-blue-700 hover:shadow-md focus:outline-none focus:ring-2
-               focus:ring-blue-400 active:scale-95 transition-all duration-200"
-            onClick={() => {
-              setIsAddProduct(true);
-              // console.log(isAddProduct);
-            }}
-          >
-            Add Product
-          </button>
-        </div>
+      {/* Sidebar + Main */}
+      <div className="flex flex-1 overflow-hidden">
+        {/* Sidebar */}
+        <aside className="w-64 bg-white border-r border-gray-200 overflow-y-auto">
+          <Sidebar />
+        </aside>
 
-        {Ispending && <Loading />}
-        {/* {isAddProduct && (
-          <AddProduct setIsAddProduct={setIsAddProduct} setData={setData} />
-        )} */}
-        {/* Products Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          {data.map((product) => (
-            <div
-              key={product.id}
-              className="bg-white rounded-xl shadow-md border border-gray-200 hover:shadow-lg transition-shadow flex flex-col"
+        {/* Main Content */}
+        <main className="flex-1 overflow-y-auto p-6 bg-gray-50">
+          {/* Page Header */}
+          <div className="mb-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <h2 className="text-2xl font-bold text-gray-900">Products</h2>
+            <button
+              onClick={() => setIsAddProduct(true)}
+              className="px-4 py-2 text-sm font-semibold text-white bg-blue-600 rounded-lg shadow hover:bg-blue-700 transition"
             >
-              {/* Product Image */}
-              <img
-                src={product.image}
-                alt={product.Name}
-                className="w-full h-48 object-center rounded-t-xl"
-              />
+              Add Product
+            </button>
+          </div>
 
-              {/* Product Details */}
-              <div className="p-4 flex flex-col gap-2 flex-1">
-                <h3 className="text-lg font-semibold text-gray-900">
-                  {product.Name}
-                </h3>
-                <p className="text-gray-700 font-medium">${product.price}</p>
-                <p className="text-gray-700 font-medium">
-                  Item In Stock {product.StockQuantity}
-                </p>
-                <p className="text-gray-600 text-sm">{product.Description}</p>
-                <span className="text-yellow-500 font-semibold mt-auto">
-                  {product.Category}
-                </span>
-              </div>
+          {/* Loading */}
+          {Ispending && <Loading />}
 
-              {/* Optional Actions */}
-              <div className="px-4 pb-4 flex gap-2 mt-auto">
-                <button
-                  onClick={() => {
-                    editHandle(product);
-                  }}
-                  className="flex-1 py-2 px-4 bg-yellow-500 hover:bg-yellow-400 text-black rounded shadow transition text-sm"
-                >
-                  Edit
-                </button>
-                <button
-                  onClick={() => {
-                    setIdToDelete(product.id);
-                    setIsDeletePopUp(true);
-                  }}
-                  className="flex-1 py-2 px-4 bg-red-500 hover:bg-red-400 text-white rounded shadow transition text-sm"
-                >
-                  Delete
-                </button>
-              </div>
-            </div>
-          ))}
+          {/* Products Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {data.map((product) => (
+              <div
+                key={product.id}
+                className="bg-white rounded-xl shadow border hover:shadow-lg transition flex flex-col"
+              >
+                <img
+                  src={product.image}
+                  alt={product.Name}
+                  className="w-full h-48 object-cover rounded-t-xl"
+                />
 
-          {/* Overlay */}
-        </div>
-        {(isEdit || isAddProduct) && (
-          <div className="fixed inset-0 bg-black bg-opacity-30 backdrop-blur-sm flex items-center justify-center z-50">
-            {/* Form Container */}
-            <div className="bg-white w-1/3 max-w-2xl p-8 rounded-xl shadow-lg relative">
-              {/* Logo + Title */}
-              <div className="flex items-center gap-3 mb-6">
-                <span className="text-xl font-medium text-gray-700">
-                  {isAddProduct ? "Add Produce" : "Edit Product"}
-                </span>
-              </div>
-
-              {/* Form */}
-              <div className="flex flex-col gap-4">
-                {/* Product Name */}
-                <div>
-                  <label className="block text-sm font-semibold mb-1 text-gray-700">
-                    Product Name
-                  </label>
-                  <input
-                    type="text"
-                    onChange={(e) => setProductName(e.target.value)}
-                    value={productName}
-                    placeholder="Enter product name"
-                    className="w-full rounded border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400"
-                  />
+                <div className="p-4 flex flex-col flex-1 gap-2">
+                  <h3 className="text-lg font-semibold">{product.Name}</h3>
+                  <p className="font-medium">${product.price}</p>
+                  <p>Stock: {product.StockQuantity}</p>
+                  <p className="text-sm text-gray-600">{product.Description}</p>
+                  <span className="mt-auto text-yellow-500 font-semibold">
+                    {product.Category}
+                  </span>
                 </div>
 
-                {/* Price */}
-                <div>
-                  <label className="block text-sm font-semibold mb-1 text-gray-700">
-                    Price ($)
-                  </label>
-                  <input
-                    type="number"
-                    onChange={(e) => setPrice(e.target.value)}
-                    value={price}
-                    placeholder="Enter price"
-                    className="w-full rounded border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400"
-                  />
-                </div>
-
-                {/* Image URL */}
-                <div>
-                  <label className="block text-sm font-semibold mb-1 text-gray-700">
-                    Image URL
-                  </label>
-                  <input
-                    type="text"
-                    onChange={(e) => setImage(e.target.value)}
-                    value={image}
-                    placeholder="Image URL"
-                    className="w-full rounded border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400"
-                  />
-                </div>
-
-                {/* Stock Quantity */}
-                <div>
-                  <label className="block text-sm font-semibold mb-1 text-gray-700">
-                    Stock Quantity
-                  </label>
-
-                  <input
-                    type="number"
-                    onChange={(e) => setStockQuantity(e.target.value)}
-                    value={stockQuantity}
-                    placeholder="Stock Quantity"
-                    className="w-full rounded border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400"
-                  />
-                </div>
-
-                {/* Description */}
-                <div>
-                  <label className="block text-sm font-semibold mb-1 text-gray-700">
-                    Description
-                  </label>
-                  <textarea
-                    placeholder="Enter product description"
-                    rows={4}
-                    onChange={(e) => setDescription(e.target.value)}
-                    value={description}
-                    className="w-full rounded border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400"
-                  />
-                </div>
-
-                {/* Category */}
-                <div>
-                  <label className="block text-sm font-semibold mb-1 text-gray-700">
-                    Category
-                  </label>
-                  <select
-                    onChange={(e) => setCategory(e.target.value)}
-                    value={category}
-                    className="w-full rounded border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400"
-                  >
-                    <option value="">Select category</option>
-                    <option value="electronics">Electronics</option>
-                    <option value="fashion">Fashion</option>
-                    <option value="books">Books</option>
-                    <option value="other">Other</option>
-                  </select>
-                </div>
-
-                {/* Submit Button */}
-                <div className="flex justify-center gap-6 mt-4">
+                <div className="px-4 pb-4 flex gap-2">
                   <button
-                    onClick={saveEdits}
-                    className="w-32 rounded bg-[#f0c14b] py-2 text-sm font-medium text-black border border-[#a88734] shadow-[inset_0_1px_0_rgba(255,255,255,0.6)] hover:bg-[#eeb933] active:bg-[#e6ac2c] transition-colors"
+                    onClick={() => editHandle(product)}
+                    className="flex-1 py-2 bg-yellow-500 rounded hover:bg-yellow-400"
                   >
-                    {isAddProduct ? "Add" : "Save   Edit"}
+                    Edit
                   </button>
+                  <button
+                    onClick={() => {
+                      setIdToDelete(product.id);
+                      setIsDeletePopUp(true);
+                    }}
+                    className="flex-1 py-2 bg-red-500 text-white rounded hover:bg-red-400"
+                  >
+                    Delete
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
 
+          {/* Add/Edit Modal */}
+          {(isEdit || isAddProduct) && (
+            <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
+              <div className="relative w-full max-w-2xl bg-white rounded-2xl shadow-xl transform transition-all duration-200 scale-100">
+                {/* Header */}
+                <div className="flex items-center justify-between px-6 py-4 border-b">
+                  <h3 className="text-lg font-semibold text-gray-800">
+                    {isAddProduct ? "Add Product" : "Edit Product"}
+                  </h3>
                   <button
                     onClick={cancelHandle}
-                    className="w-32 rounded bg-[#f0c14b] py-2 text-sm font-medium text-black border border-[#a88734] shadow-[inset_0_1px_0_rgba(255,255,255,0.6)] hover:bg-[#eeb933] active:bg-[#e6ac2c] transition-colors"
+                    className="text-gray-400 hover:text-gray-600 transition text-xl leading-none"
+                  >
+                    &times;
+                  </button>
+                </div>
+
+                {/* Body */}
+                <div className="px-6 py-5 max-h-[70vh] overflow-y-auto">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    {/* Product Name */}
+                    <div className="sm:col-span-2">
+                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                        Product Name
+                      </label>
+                      <input
+                        value={productName}
+                        onChange={(e) => setProductName(e.target.value)}
+                        placeholder="Enter product name"
+                        className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm
+                         focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 transition"
+                      />
+                    </div>
+
+                    {/* Price */}
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                        Price ($)
+                      </label>
+                      <input
+                        type="number"
+                        value={price}
+                        onChange={(e) => setPrice(e.target.value)}
+                        placeholder="0.00"
+                        className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm
+                         focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 transition"
+                      />
+                    </div>
+
+                    {/* Stock Quantity */}
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                        Stock Quantity
+                      </label>
+                      <input
+                        type="number"
+                        value={stockQuantity}
+                        onChange={(e) => setStockQuantity(e.target.value)}
+                        placeholder="0"
+                        className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm
+                         focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 transition"
+                      />
+                    </div>
+
+                    {/* Image URL */}
+                    <div className="sm:col-span-2">
+                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                        Image URL
+                      </label>
+                      <input
+                        value={image}
+                        onChange={(e) => setImage(e.target.value)}
+                        placeholder="https://example.com/image.jpg"
+                        className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm
+                         focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 transition"
+                      />
+                    </div>
+
+                    {/* Description */}
+                    <div className="sm:col-span-2">
+                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                        Description
+                      </label>
+                      <textarea
+                        rows={4}
+                        value={description}
+                        onChange={(e) => setDescription(e.target.value)}
+                        placeholder="Enter product description"
+                        className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm resize-none
+                         focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 transition"
+                      />
+                    </div>
+
+                    {/* Category */}
+                    <div className="sm:col-span-2">
+                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                        Category
+                      </label>
+                      <select
+                        value={category}
+                        onChange={(e) => setCategory(e.target.value)}
+                        className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm
+                         focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 transition"
+                      >
+                        <option value="">Select category</option>
+                        <option value="electronics">Electronics</option>
+                        <option value="fashion">Fashion</option>
+                        <option value="books">Books</option>
+                        <option value="other">Other</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Footer */}
+                <div className="flex justify-end gap-3 px-6 py-4 border-t bg-gray-50 rounded-b-2xl">
+                  <button
+                    onClick={cancelHandle}
+                    className="px-5 py-2 text-sm font-medium text-gray-700 bg-gray-200 rounded-lg
+                     hover:bg-gray-300 transition"
                   >
                     Cancel
                   </button>
+
+                  <button
+                    onClick={saveEdits}
+                    className="px-5 py-2 text-sm font-semibold text-black bg-yellow-400 rounded-lg
+                     hover:bg-yellow-500 transition shadow"
+                  >
+                    {isAddProduct ? "Add Product" : "Save Changes"}
+                  </button>
                 </div>
               </div>
             </div>
-          </div>
-        )}
+          )}
 
-        {isDeletePopUp && (
-          <DeletePopUp
-            setIsDeletePopUp={setIsDeletePopUp}
-            deletehandle={() => {
-              deleteHandle();
-            }}
-          />
-        )}
-      </main>
+          {/* Delete Popup */}
+          {isDeletePopUp && (
+            <DeletePopUp
+              setIsDeletePopUp={setIsDeletePopUp}
+              deletehandle={deleteHandle}
+            />
+          )}
+        </main>
+      </div>
     </div>
   );
 };

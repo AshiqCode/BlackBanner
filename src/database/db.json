@@ -26,7 +26,13 @@
       "Name": "a",
       "Email": "a",
       "Password": "a",
-      "type": "admin"
+      "type": "admin",
+      "cart": [
+        {
+          "id": "6a8d",
+          "Quantity": 1
+        }
+      ]
     },
     {
       "id": "47d9",
@@ -222,6 +228,17 @@
       "Street": "Iste dolor distincti",
       "Address": "Ut non voluptatem o",
       "id": "d301"
+    },
+    {
+      "Name": "i",
+      "Email": "i",
+      "Password": "i",
+      "Number": "67",
+      "Province": "Minim veniam amet ",
+      "City": "Velit est a ut magn",
+      "Street": "Sed laborum velit ve",
+      "Address": "Est labore unde aut ",
+      "id": "e412"
     }
   ],
   "products": [
@@ -251,6 +268,15 @@
       "Category": "fashion",
       "StockQuantity": 8,
       "id": "216c"
+    },
+    {
+      "id": "2c27",
+      "Name": "Voluptate laborum si",
+      "price": 93,
+      "Description": "Corrupti nihil nisi",
+      "image": "https://img.freepik.com/premium-photo/open-laptop-with-black-screen-against-black-background_93675-167043.jpg",
+      "Category": "fashion",
+      "StockQuantity": 91
     }
   ],
   "orders": [
@@ -417,8 +443,42 @@
       "shipping": 8,
       "total": 104,
       "deliveryAddress": "Id fuga Vitae invenTempora magnam ad neIste dolor distinctiUt non voluptatem o",
-      "status": "confirmed",
+      "status": "delivered",
       "userId": "d301"
+    },
+    {
+      "id": "9cde",
+      "products": [
+        {
+          "id": "6a8d",
+          "quantity": 5
+        }
+      ],
+      "subtotal": 32,
+      "shipping": 4,
+      "total": 38,
+      "deliveryAddress": "Minim veniam amet Velit est a ut magnSed laborum velit veEst labore unde aut ",
+      "status": "delivered",
+      "userId": "e412"
+    },
+    {
+      "id": "ccff",
+      "products": [
+        {
+          "id": "2c27",
+          "quantity": 4
+        },
+        {
+          "id": "6a8d",
+          "quantity": 4
+        }
+      ],
+      "subtotal": 125,
+      "shipping": 8,
+      "total": 137,
+      "deliveryAddress": "Qui qui atque totam Sit magni debitis sAutem quam dicta impHic maxime nostrum r",
+      "status": "panding",
+      "userId": "a150"
     }
   ]
 }

@@ -3,6 +3,8 @@ import useFetch from "../../Hooks/usefetch";
 import Loading from "./Loading";
 
 import { toast } from "react-toastify";
+import Navbar from "./Navbar";
+import Sidebar from "./Sidebar";
 
 const Admins = () => {
   const { data, setData, Ispending } = useFetch("http://localhost:3000/users");
@@ -44,189 +46,165 @@ const Admins = () => {
   //   console.log(usersData);
 
   return (
-    <div className="flex-1 bg-gray-50 min-h-screen">
-      {/* Page Wrapper */}
-      <main className="p-6 max-w-7xl mx-auto">
-        {/* Page Header */}
-        <div className="mb-8 flex items-center justify-between">
-          <div>
-            <h2 className="text-3xl font-bold text-gray-900">
-              Users <span className="text-yellow-500">Overview</span>
-            </h2>
-            <p className="text-sm text-gray-600 mt-1">
-              Manage and review all registered users in your system
-            </p>
+    <div className="h-screen flex flex-col bg-gray-50">
+      {/* Navbar */}
+      <header className="h-16 bg-white shadow sticky top-0 z-50">
+        <Navbar />
+      </header>
+
+      {/* Body */}
+      <div className="flex flex-1 overflow-hidden">
+        {/* Sidebar */}
+        <aside className="w-64 bg-white border-r border-gray-200 overflow-y-auto">
+          <Sidebar />
+        </aside>
+
+        {/* Main Content */}
+        <main className="flex-1 overflow-y-auto p-6">
+          {/* Page Header */}
+          <div className="mb-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+            <div>
+              <h2 className="text-3xl font-bold text-gray-900">
+                Admins <span className="text-yellow-500">Overview</span>
+              </h2>
+              <p className="text-sm text-gray-600 mt-1">
+                Manage and review all registered users in your system
+              </p>
+            </div>
+
+            <button
+              className="px-4 py-2 text-sm font-semibold text-white bg-green-600 rounded-lg shadow hover:bg-green-700 focus:ring-2 focus:ring-green-400 active:scale-95 transition"
+              onClick={() => setIsaddAdmin(true)}
+            >
+              Add Admin
+            </button>
           </div>
 
-          <button
-            className="px-4 py-2 text-sm font-semibold text-white bg-green-600 rounded-lg
-               shadow hover:bg-green-700 hover:shadow-md focus:outline-none focus:ring-2
-               focus:ring-green-400 active:scale-95 transition-all duration-200"
-            onClick={() => {
-              setIsaddAdmin(true);
-            }}
-          >
-            Add Admin
-          </button>
-        </div>
+          {/* Loading */}
+          {Ispending && (
+            <div className="flex justify-center my-10">
+              <Loading />
+            </div>
+          )}
 
-        {/* Loading State */}
-        {Ispending && (
-          <div className="flex justify-center my-10">
-            <Loading />
-          </div>
-        )}
-
-        {/* Users Grid */}
-        {!Ispending && (
-          <div className="overflow-x-auto">
-            <table className="min-w-full border border-gray-200 divide-y divide-gray-200">
-              <thead className="bg-gray-50">
-                <tr>
-                  <th
-                    scope="col"
-                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                  >
-                    Name
-                  </th>
-                  <th
-                    scope="col"
-                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                  >
-                    Email
-                  </th>
-                  <th
-                    scope="col"
-                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                  >
-                    Password
-                  </th>
-                </tr>
-              </thead>
-              <tbody className="bg-white divide-y divide-gray-200">
-                {currentAdmins.map((user) => (
-                  <tr
-                    key={user.id}
-                    className="hover:bg-gray-50 transition-colors"
-                  >
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                      {user.Name}
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 break-all">
-                      {user.Email}
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 tracking-widest">
-                      {user.Password}
-                    </td>
+          {/* Table */}
+          {!Ispending && (
+            <div className="overflow-x-auto">
+              <table className="min-w-full border border-gray-200 divide-y divide-gray-200 bg-white">
+                <thead className="bg-gray-50">
+                  <tr>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                      Name
+                    </th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                      Email
+                    </th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                      Password
+                    </th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-            <div className="flex justify-center items-center gap-2 mt-4">
-              {/* Prev button */}
-              <button
-                className={`px-3 py-1 rounded ${
-                  currentPage === 0 ? "bg-gray-300" : "bg-yellow-500 text-white"
-                }`}
-                onClick={() =>
-                  currentPage > 0 && setCurrentPage(currentPage - 1)
-                }
-                disabled={currentPage === 0}
-              >
-                Prev
-              </button>
+                </thead>
 
-              {/* Page numbers */}
-              {Array.from({ length: totalPages }).map((_, index) => (
+                <tbody className="divide-y divide-gray-200">
+                  {currentAdmins.map((user) => (
+                    <tr key={user.id} className="hover:bg-gray-50">
+                      <td className="px-6 py-4 text-sm">{user.Name}</td>
+                      <td className="px-6 py-4 text-sm break-all">
+                        {user.Email}
+                      </td>
+                      <td className="px-6 py-4 text-sm tracking-widest">
+                        {user.Password}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+
+              {/* Pagination */}
+              <div className="flex justify-center gap-2 mt-4">
                 <button
-                  key={index}
+                  disabled={currentPage === 0}
+                  onClick={() => setCurrentPage(currentPage - 1)}
                   className={`px-3 py-1 rounded ${
-                    currentPage === index
-                      ? "bg-red-500 text-white"
-                      : "bg-gray-700 text-white"
+                    currentPage === 0
+                      ? "bg-gray-300"
+                      : "bg-yellow-500 text-white"
                   }`}
-                  onClick={() => setCurrentPage(index)}
                 >
-                  {index + 1}
+                  Prev
                 </button>
-              ))}
 
-              {/* Next button */}
-              <button
-                className={`px-3 py-1 rounded ${
-                  currentPage === totalPages - 1
-                    ? "bg-gray-300"
-                    : "bg-yellow-500 text-white"
-                }`}
-                onClick={() =>
-                  currentPage < totalPages - 1 &&
-                  setCurrentPage(currentPage + 1)
-                }
-                disabled={currentPage === totalPages - 1}
-              >
-                Next
-              </button>
-            </div>
-          </div>
-        )}
-        {isaddAdmin && (
-          // Popup Overlay
-          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-            {/* Popup Content */}
-            <div className="bg-white rounded-lg shadow-lg w-full max-w-md p-6 relative">
-              {/* Close Button */}
-              <button
-                className="absolute top-3 right-3 text-gray-500 hover:text-gray-700"
-                onClick={() => {
-                  setIsaddAdmin(false);
-                }}
-              >
-                &times;
-              </button>
+                {Array.from({ length: totalPages }).map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentPage(index)}
+                    className={`px-3 py-1 rounded ${
+                      currentPage === index
+                        ? "bg-red-500 text-white"
+                        : "bg-gray-700 text-white"
+                    }`}
+                  >
+                    {index + 1}
+                  </button>
+                ))}
 
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">
-                Add Admin
-              </h3>
-
-              {/* Input Fields */}
-              <div className="flex flex-col gap-4">
-                <input
-                  type="text"
-                  onChange={(e) => {
-                    setName(e.target.value);
-                  }}
-                  placeholder="Name"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400"
-                />
-                <input
-                  type="email"
-                  onChange={(e) => {
-                    setEmail(e.target.value);
-                  }}
-                  placeholder="Email"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400"
-                />
-                <input
-                  type="text"
-                  onChange={(e) => {
-                    setPassword(e.target.value);
-                  }}
-                  placeholder="Password"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400"
-                />
+                <button
+                  disabled={currentPage === totalPages - 1}
+                  onClick={() => setCurrentPage(currentPage + 1)}
+                  className={`px-3 py-1 rounded ${
+                    currentPage === totalPages - 1
+                      ? "bg-gray-300"
+                      : "bg-yellow-500 text-white"
+                  }`}
+                >
+                  Next
+                </button>
               </div>
-
-              {/* Submit Button */}
-              <button
-                className="mt-6 w-full px-4 py-2 bg-yellow-500 text-white font-semibold rounded-lg shadow hover:bg-yellow-600 hover:shadow-md transition-all duration-200"
-                onClick={handleAddAdmin}
-              >
-                Add Admin
-              </button>
             </div>
-          </div>
-        )}
-      </main>
+          )}
+
+          {/* Add Admin Modal */}
+          {isaddAdmin && (
+            <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+              <div className="bg-white rounded-lg w-full max-w-md p-6 relative">
+                <button
+                  className="absolute top-3 right-3 text-xl"
+                  onClick={() => setIsaddAdmin(false)}
+                >
+                  &times;
+                </button>
+
+                <h3 className="text-xl font-semibold mb-4">Add Admin</h3>
+
+                <div className="flex flex-col gap-4">
+                  <input
+                    placeholder="Name"
+                    onChange={(e) => setName(e.target.value)}
+                    className="border px-4 py-2 rounded"
+                  />
+                  <input
+                    placeholder="Email"
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="border px-4 py-2 rounded"
+                  />
+                  <input
+                    placeholder="Password"
+                    onChange={(e) => setPassword(e.target.value)}
+                    className="border px-4 py-2 rounded"
+                  />
+                </div>
+
+                <button
+                  onClick={handleAddAdmin}
+                  className="mt-6 w-full bg-yellow-500 text-white py-2 rounded"
+                >
+                  Add Admin
+                </button>
+              </div>
+            </div>
+          )}
+        </main>
+      </div>
     </div>
   );
 };

@@ -9,6 +9,10 @@ import Profile from "./Components/UserDashBoard/Profile";
 import Cart from "./Components/UserDashBoard/Cart";
 import Checkout from "./Components/UserDashBoard/CheckOut";
 import ViewOrders from "./Components/UserDashBoard/ViewOrder";
+import Admins from "./Components/DashBoard/Admins";
+import UsersOverView from "./Components/DashBoard/UsersOverView";
+import AdminProducts from "./Components/DashBoard/Products";
+import AdminViewOrders from "./Components/DashBoard/ViewOrders";
 
 function App() {
   return (
@@ -24,6 +28,10 @@ function App() {
         <Route path="/Cart/:user" element={<Cart />} />
         <Route path="/CheckOut" element={<Checkout />} />
         <Route path="/ViewOrder" element={<ViewOrders />} />
+        <Route path="/dashboard/admins" element={<Admins />} />
+        <Route path="/dashboard/users" element={<UsersOverView />} />
+        <Route path="/dashboard/products" element={<AdminProducts />} />
+        <Route path="/dashboard/orders" element={<AdminViewOrders />} />
       </Routes>
     </BrowserRouter>
   );

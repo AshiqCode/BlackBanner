@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import useFetch from "../../Hooks/usefetch";
 import Loading from "./Loading";
 import DeletePopUp from "./DeletePopUp";
+import Navbar from "./Navbar";
+import Sidebar from "./Sidebar";
 
 const UsersOverView = () => {
   const { data, Ispending } = useFetch("http://localhost:3000/users");
@@ -32,162 +34,141 @@ const UsersOverView = () => {
   };
 
   return (
-    <div className="flex-1 bg-gray-50 min-h-screen">
-      {/* Page Wrapper */}
-      <main className="p-6 max-w-7xl mx-auto">
-        {/* Page Header */}
-        <div className="mb-8">
-          <h2 className="text-3xl font-bold text-gray-900">
-            Users <span className="text-yellow-500">Overview</span>
-          </h2>
-          <p className="text-sm text-gray-600 mt-1">
-            Manage and review all registered users in your system
-          </p>
-        </div>
+    <div className="h-screen flex flex-col bg-gray-50">
+      {/* Navbar */}
+      <header className="h-16 bg-white shadow sticky top-0 z-50">
+        <Navbar />
+      </header>
 
-        {/* Loading State */}
-        {Ispending && (
-          <div className="flex justify-center my-10">
-            <Loading />
+      {/* Sidebar + Main */}
+      <div className="flex flex-1 overflow-hidden">
+        {/* Sidebar */}
+        <aside className="w-64 bg-white border-r border-gray-200 overflow-y-auto">
+          <Sidebar />
+        </aside>
+
+        {/* Main Content */}
+        <main className="flex-1 overflow-y-auto p-6">
+          {/* Page Header */}
+          <div className="mb-8">
+            <h2 className="text-3xl font-bold text-gray-900">
+              Users <span className="text-yellow-500">Overview</span>
+            </h2>
+            <p className="text-sm text-gray-600 mt-1">
+              Manage and review all registered users in your system
+            </p>
           </div>
-        )}
 
-        {/* Users Grid */}
-        {!Ispending && (
-          <div className="overflow-x-auto">
-            <table className="min-w-full border border-gray-200 divide-y divide-gray-200">
-              <thead className="bg-gray-50">
-                <tr>
-                  <th
-                    scope="col"
-                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                  >
-                    Name
-                  </th>
-                  <th
-                    scope="col"
-                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                  >
-                    Email
-                  </th>
-                  <th
-                    scope="col"
-                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                  >
-                    Password
-                  </th>
-                  <th
-                    scope="col"
-                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                  >
-                    Actions
-                  </th>
-                </tr>
-              </thead>
-              <tbody className="bg-white divide-y divide-gray-200">
-                {currentUsers.map((user) => (
-                  <tr
-                    key={user.id}
-                    className="hover:bg-gray-50 transition-colors"
-                  >
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                      {user.Name}
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 break-all">
-                      {user.Email}
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 tracking-widest">
-                      {user.Password}
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                      <button
-                        className="flex items-center gap-2 px-3 py-1 text-white bg-red-600 rounded-lg shadow hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-400 active:scale-95 transition-all duration-200"
-                        onClick={() => {
-                          setId(user.id);
-                          setIsDeletePopUp(true);
-                        }}
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          className="h-4 w-4"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                          strokeWidth={2}
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M6 18L18 6M6 6l12 12"
-                          />
-                        </svg>
-                        Delete
-                      </button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-            <div className="flex justify-center items-center gap-2 mt-4">
-              {/* Prev button */}
-              <button
-                className={`px-3 py-1 rounded ${
-                  currentPage === 0 ? "bg-gray-300" : "bg-orange-500 text-white"
-                }`}
-                onClick={() =>
-                  currentPage > 0 && setCurrentPage(currentPage - 1)
-                }
-                disabled={currentPage === 0}
-              >
-                Prev
-              </button>
-
-              {/* Page numbers */}
-              {Array.from({
-                length: Math.ceil(usersData.length / pageSize),
-              }).map((_, index) => (
-                <button
-                  key={index}
-                  className={`px-3 py-1 rounded ${
-                    currentPage === index
-                      ? "bg-red-500 text-white"
-                      : "bg-black text-white"
-                  }`}
-                  onClick={() => setCurrentPage(index)}
-                >
-                  {index + 1}
-                </button>
-              ))}
-
-              {/* Next button */}
-              <button
-                className={`px-3 py-1 rounded ${
-                  currentPage === Math.ceil(usersData.length / pageSize) - 1
-                    ? "bg-gray-300"
-                    : "bg-orange-500 text-white"
-                }`}
-                onClick={() =>
-                  currentPage < Math.ceil(usersData.length / pageSize) - 1 &&
-                  setCurrentPage(currentPage + 1)
-                }
-                disabled={
-                  currentPage === Math.ceil(usersData.length / pageSize) - 1
-                }
-              >
-                Next
-              </button>
+          {/* Loading */}
+          {Ispending && (
+            <div className="flex justify-center my-10">
+              <Loading />
             </div>
-          </div>
-        )}
-        {isDeletePopUp && (
-          <DeletePopUp
-            setIsDeletePopUp={setIsDeletePopUp}
-            deletehandle={() => {
-              deletehandle();
-            }}
-          />
-        )}
-      </main>
+          )}
+
+          {/* Table */}
+          {!Ispending && (
+            <div className="overflow-x-auto">
+              <table className="min-w-full border border-gray-200 divide-y divide-gray-200 bg-white">
+                <thead className="bg-gray-50">
+                  <tr>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                      Name
+                    </th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                      Email
+                    </th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                      Password
+                    </th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                      Actions
+                    </th>
+                  </tr>
+                </thead>
+
+                <tbody className="divide-y divide-gray-200">
+                  {currentUsers.map((user) => (
+                    <tr key={user.id} className="hover:bg-gray-50">
+                      <td className="px-6 py-4 text-sm">{user.Name}</td>
+                      <td className="px-6 py-4 text-sm break-all">
+                        {user.Email}
+                      </td>
+                      <td className="px-6 py-4 text-sm tracking-widest">
+                        {user.Password}
+                      </td>
+                      <td className="px-6 py-4">
+                        <button
+                          onClick={() => {
+                            setId(user.id);
+                            setIsDeletePopUp(true);
+                          }}
+                          className="flex items-center gap-2 px-3 py-1 bg-red-600 text-white rounded hover:bg-red-700 transition"
+                        >
+                          Delete
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+
+              {/* Pagination */}
+              <div className="flex justify-center gap-2 mt-4">
+                <button
+                  disabled={currentPage === 0}
+                  onClick={() => setCurrentPage(currentPage - 1)}
+                  className={`px-3 py-1 rounded ${
+                    currentPage === 0
+                      ? "bg-gray-300"
+                      : "bg-orange-500 text-white"
+                  }`}
+                >
+                  Prev
+                </button>
+
+                {Array.from({
+                  length: Math.ceil(usersData.length / pageSize),
+                }).map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentPage(index)}
+                    className={`px-3 py-1 rounded ${
+                      currentPage === index
+                        ? "bg-red-500 text-white"
+                        : "bg-black text-white"
+                    }`}
+                  >
+                    {index + 1}
+                  </button>
+                ))}
+
+                <button
+                  disabled={
+                    currentPage === Math.ceil(usersData.length / pageSize) - 1
+                  }
+                  onClick={() => setCurrentPage(currentPage + 1)}
+                  className={`px-3 py-1 rounded ${
+                    currentPage === Math.ceil(usersData.length / pageSize) - 1
+                      ? "bg-gray-300"
+                      : "bg-orange-500 text-white"
+                  }`}
+                >
+                  Next
+                </button>
+              </div>
+            </div>
+          )}
+
+          {/* Delete Popup */}
+          {isDeletePopUp && (
+            <DeletePopUp
+              setIsDeletePopUp={setIsDeletePopUp}
+              deletehandle={deletehandle}
+            />
+          )}
+        </main>
+      </div>
     </div>
   );
 };
