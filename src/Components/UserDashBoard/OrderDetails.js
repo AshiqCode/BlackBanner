@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
+import ReviewPupUp from "./ReviewPupUp";
 
 const OrderDetails = ({ productId, setIsPopUp, orders }) => {
   const [orderedProducts, setOrderedProducts] = useState([]);
+  const [reviewPupUp, setReviewPupUp] = useState(false);
+  const [currentProductId, setcurrentProductId] = useState("");
 
   useEffect(() => {
     if (productId && orderedProducts.length === 0) {
@@ -75,11 +78,24 @@ const OrderDetails = ({ productId, setIsPopUp, orders }) => {
                     </p>
                   </div>
 
-                  <div className="pt-3 border-t text-sm flex justify-between text-gray-600">
+                  <div className="pt-3 border-t text-sm flex justify-between items-center text-gray-600">
                     <span>Ordered Quantity</span>
-                    <span className="font-semibold text-gray-800">
-                      {productId[index].quantity}
-                    </span>
+
+                    <div className="flex items-center gap-3">
+                      <span className="font-semibold text-gray-800">
+                        {productId[index].quantity}
+                      </span>
+
+                      <button
+                        onClick={() => {
+                          setReviewPupUp(true);
+                          setcurrentProductId(productId[index].id);
+                        }}
+                        className="text-xs px-2 py-1 border rounded-md text-green-600 border-green-600 hover:bg-green-50"
+                      >
+                        Review Product
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -102,6 +118,13 @@ const OrderDetails = ({ productId, setIsPopUp, orders }) => {
           </div>
         </div>
       </div>
+
+      {reviewPupUp && (
+        <ReviewPupUp
+          setReviewPupUp={setReviewPupUp}
+          currentProductId={currentProductId}
+        />
+      )}
     </div>
   );
 };
