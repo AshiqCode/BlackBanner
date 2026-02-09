@@ -8,12 +8,19 @@ const ViewOrders = () => {
   const { data, setData } = useFetch("http://localhost:3000/orders");
   const [isPopUp, setIsPopUp] = useState(false);
   const orders = data.filter((item) => item.userId === user);
+  const [currentStatus, setCurrentStatus] = useState("");
+  const [total, setTotal] = useState("");
+
   // console.log(orders);
 
-  const handleViewDetails = (productId) => {
+  const handleViewDetails = (productId, currentStatus, total) => {
     // console.log(productId);
     setIsPopUp(true);
     setProductId(productId);
+    setTotal(total);
+
+    setCurrentStatus(currentStatus);
+    // console.log(currentStatus);
   };
   // console.log(productId);
 
@@ -116,7 +123,13 @@ const ViewOrders = () => {
                       <td className="px-6 py-5 text-right flex gap-2 justify-end">
                         {/* Details Button */}
                         <button
-                          onClick={() => handleViewDetails(product.products)}
+                          onClick={() =>
+                            handleViewDetails(
+                              product.products,
+                              product.status,
+                              product.total
+                            )
+                          }
                           className="relative inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium
                text-indigo-600 bg-indigo-50 hover:bg-indigo-600 hover:text-white
                transition-all duration-300 overflow-hidden"
@@ -169,6 +182,8 @@ const ViewOrders = () => {
           productId={productId}
           setIsPopUp={setIsPopUp}
           orders={orders}
+          currentStatus={currentStatus}
+          total={total}
         />
       )}
       <footer className="mt-auto pb-6 text-center text-xs text-gray-600 bg-gray-50">

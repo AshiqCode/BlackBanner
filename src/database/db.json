@@ -139,13 +139,30 @@
       "id": "6a8d"
     },
     {
-      "Name": "Deserunt dolorem max",
-      "price": 60,
-      "Description": "Id reprehenderit exe",
-      "image": "https://www.dermalogica.com/cdn/shop/files/Site_HSAFSA_MobileHomepageBanner_V4_850x600_b9c7ab4d-fe50-4f59-a541-ec84bc4a91dd.jpg?v=1767101514&width=550",
+      "id": "216c",
+      "Name": "Voluptate laborum si",
+      "price": 93,
+      "Description": "Corrupti nihil nisi",
+      "image": "https://img.freepik.com/premium-photo/open-laptop-with-black-screen-against-black-background_93675-167043.jpg",
       "Category": "fashion",
-      "StockQuantity": 8,
-      "id": "216c"
+      "StockQuantity": 91,
+      "reviews": [
+        {
+          "userId": "f49f",
+          "rating": 4,
+          "reviewMessage": "Deleniti consequatur"
+        },
+        {
+          "userId": "f49f",
+          "rating": 3,
+          "reviewMessage": "  jhvv"
+        },
+        {
+          "userId": "f49f",
+          "rating": 3,
+          "reviewMessage": "gcyty"
+        }
+      ]
     },
     {
       "id": "2c27",
