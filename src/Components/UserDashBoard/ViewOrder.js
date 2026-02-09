@@ -10,15 +10,21 @@ const ViewOrders = () => {
   const orders = data.filter((item) => item.userId === user);
   const [currentStatus, setCurrentStatus] = useState("");
   const [total, setTotal] = useState("");
+  const [currenorderId, setCurrenorderId] = useState("");
 
   // console.log(orders);
 
-  const handleViewDetails = (productId, currentStatus, total) => {
+  const handleViewDetails = (
+    productId,
+    currentStatus,
+    total,
+    currenorderId
+  ) => {
     // console.log(productId);
     setIsPopUp(true);
     setProductId(productId);
     setTotal(total);
-
+    setCurrenorderId(currenorderId);
     setCurrentStatus(currentStatus);
     // console.log(currentStatus);
   };
@@ -127,7 +133,8 @@ const ViewOrders = () => {
                             handleViewDetails(
                               product.products,
                               product.status,
-                              product.total
+                              product.total,
+                              product.id
                             )
                           }
                           className="relative inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium
@@ -184,6 +191,7 @@ const ViewOrders = () => {
           orders={orders}
           currentStatus={currentStatus}
           total={total}
+          currenorderId={currenorderId}
         />
       )}
       <footer className="mt-auto pb-6 text-center text-xs text-gray-600 bg-gray-50">

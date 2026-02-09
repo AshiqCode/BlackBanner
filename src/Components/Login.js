@@ -27,7 +27,6 @@ const Login = () => {
 
       // navigate("/");
       localStorage.setItem("user", user.id);
-      localStorage.setItem("userName", user.Name);
       localStorage.setItem("type", user.type);
       if (user.type === "admin") {
         navigate("/dashboard");

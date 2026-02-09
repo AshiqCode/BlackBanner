@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
-const ReviewPupUp = ({ setReviewPupUp, currentProductId }) => {
+const ReviewPupUp = ({ setReviewPupUp, currentProductId, currenorderId }) => {
   const stars = [1, 2, 3, 4, 5];
   const [rating, setRating] = useState("");
   const [reviewMessage, setRreviewMessage] = useState("");
-  const user = localStorage.getItem("userName");
+  const user = localStorage.getItem("user");
   const [curretData, setCurretData] = useState();
 
   useEffect(() => {
@@ -18,9 +18,10 @@ const ReviewPupUp = ({ setReviewPupUp, currentProductId }) => {
 
   const addReview = () => {
     const review = {
-      userName: user,
+      userId: user,
       rating: rating,
       reviewMessage: reviewMessage,
+      orderId: currenorderId,
     };
 
     setCurretData((prev) => {});

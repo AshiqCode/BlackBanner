@@ -7,6 +7,7 @@ const OrderDetails = ({
   orders,
   currentStatus,
   total,
+  currenorderId,
 }) => {
   const [orderedProducts, setOrderedProducts] = useState([]);
   const [reviewPupUp, setReviewPupUp] = useState(false);
@@ -129,6 +130,7 @@ const OrderDetails = ({
         <ReviewPupUp
           setReviewPupUp={setReviewPupUp}
           currentProductId={currentProductId}
+          currenorderId={currenorderId}
         />
       )}
     </div>
