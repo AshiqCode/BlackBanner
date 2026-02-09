@@ -88,7 +88,8 @@
       "City": "Explicabo Voluptate",
       "Street": "Minus aliquip enim v",
       "Address": "Quo voluptate labore",
-      "id": "f49f"
+      "id": "f49f",
+      "cart": []
     },
     {
       "id": "8203",
@@ -148,20 +149,16 @@
       "StockQuantity": 91,
       "reviews": [
         {
-          "userId": "f49f",
-          "rating": 4,
-          "reviewMessage": "Deleniti consequatur"
-        },
-        {
-          "userId": "f49f",
-          "rating": 3,
-          "reviewMessage": "  jhvv"
-        },
-        {
-          "userId": "f49f",
-          "rating": 3,
-          "reviewMessage": "gcyty"
-        }
+  "userName": "honestReviewer92",
+  "rating": 2,
+  "reviewMessage": "The product works, but the quality didn’t meet my expectations. It could definitely be improved."
+},
+{
+  "userName": "casualUser_jay",
+  "rating": 3,
+  "reviewMessage": "Overall it’s okay. Some features are useful, but there’s still room for improvement."
+}
+
       ]
     },
     {

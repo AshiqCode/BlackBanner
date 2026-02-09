@@ -5,7 +5,7 @@ const ReviewPupUp = ({ setReviewPupUp, currentProductId }) => {
   const stars = [1, 2, 3, 4, 5];
   const [rating, setRating] = useState("");
   const [reviewMessage, setRreviewMessage] = useState("");
-  const user = localStorage.getItem("user");
+  const user = localStorage.getItem("userName");
   const [curretData, setCurretData] = useState();
 
   useEffect(() => {
@@ -18,7 +18,7 @@ const ReviewPupUp = ({ setReviewPupUp, currentProductId }) => {
 
   const addReview = () => {
     const review = {
-      userId: user,
+      userName: user,
       rating: rating,
       reviewMessage: reviewMessage,
     };

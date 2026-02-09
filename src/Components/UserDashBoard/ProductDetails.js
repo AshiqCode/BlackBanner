@@ -4,9 +4,11 @@ import Loading from "../DashBoard/Loading";
 import { toast } from "react-toastify";
 import NavBar from "./NavBar";
 import { useEffect, useState } from "react";
+import ProductReview from "./ProductReview";
 
 const ProductDetails = () => {
   const param = useParams().id;
+
   const user = localStorage.getItem("user");
   const { data, Ispending } = useFetch(
     `http://localhost:3000/products/${param}`
@@ -152,21 +154,7 @@ const ProductDetails = () => {
         )}
       </main>
 
-      {/* Footer */}
-      <footer className="absolute bottom-0 left-1/2 transform -translate-x-1/2 pb-6 text-center text-xs text-gray-600 w-full">
-        <div className="flex justify-center gap-4 mb-2">
-          <span className="text-blue-700 hover:underline cursor-pointer">
-            Conditions of Use
-          </span>
-          <span className="text-blue-700 hover:underline cursor-pointer">
-            Privacy Notice
-          </span>
-          <span className="text-blue-700 hover:underline cursor-pointer">
-            Help
-          </span>
-        </div>
-        <p>© {new Date().getFullYear()} BlackBanner</p>
-      </footer>
+      <ProductReview ProductId={param} />
     </div>
   );
 };
